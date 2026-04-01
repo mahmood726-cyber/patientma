@@ -4,3 +4,4 @@ TrialFit/outputs/trial_fit_results.csv
 __pycache__/
 *.pyc
 .pytest_cache/
+shared/cv_trial_locations.csv
