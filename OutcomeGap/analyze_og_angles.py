@@ -4,7 +4,7 @@ import json
 import os
 import sys
 
-csv.field_size_limit(2**30)
+csv.field_size_limit(10 * 1024 * 1024)
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "shared"))
 

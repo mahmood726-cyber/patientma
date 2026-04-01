@@ -6,7 +6,7 @@ import os
 import sys
 from statistics import median
 
-csv.field_size_limit(2**30)
+csv.field_size_limit(10 * 1024 * 1024)
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "shared"))
 from stats_utils import chi_squared_2x2, cramers_v, mann_whitney_u, rank_biserial, logistic_regression_simple
@@ -64,9 +64,9 @@ def analyze_sponsor_comparison(classified_trials, fit_trials):
 
         fit = fit_by_id.get(t["nct_id"])
         if fit:
-            gi = _to_int(fit.get("generalizability_index"))
-            if gi:
-                g["gi_values"].append(gi)
+            gi_val = fit.get("generalizability_index")
+            if gi_val is not None and gi_val != "" and gi_val != "None":
+                g["gi_values"].append(_to_int(gi_val))
 
     by_sponsor = {}
     for sponsor, g in sponsor_groups.items():

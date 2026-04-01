@@ -7,7 +7,7 @@ import time
 import urllib.request
 import urllib.parse
 
-csv.field_size_limit(2**30)
+csv.field_size_limit(10 * 1024 * 1024)
 
 BASE_URL = "https://clinicaltrials.gov/api/v2/studies"
 SHARED_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -24,7 +24,7 @@ def fetch_locations_for_ids(nct_ids):
         "format": "json",
     }
     url = BASE_URL + "?" + urllib.parse.urlencode(params)
-    with urllib.request.urlopen(url) as resp:
+    with urllib.request.urlopen(url, timeout=30) as resp:
         data = json.loads(resp.read().decode("utf-8"))
 
     results = {}

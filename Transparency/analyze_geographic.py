@@ -4,7 +4,7 @@ import json
 import os
 import sys
 
-csv.field_size_limit(2**30)
+csv.field_size_limit(10 * 1024 * 1024)
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "shared"))
 
@@ -24,14 +24,14 @@ WHO_REGIONS = {
     "Australia": "Western Pacific", "Taiwan": "Western Pacific", "New Zealand": "Western Pacific",
     "India": "South-East Asia", "Thailand": "South-East Asia", "Indonesia": "South-East Asia",
     "South Africa": "Africa", "Egypt": "Eastern Mediterranean", "Iran": "Eastern Mediterranean",
-    "Saudi Arabia": "Eastern Mediterranean", "Israel": "Eastern Mediterranean",
+    "Saudi Arabia": "Eastern Mediterranean", "Israel": "Europe",
     "Pakistan": "Eastern Mediterranean",
 }
 
-# CV deaths per million population by WHO region (WHO GHE 2019, approximate)
+# Total CV deaths by WHO region (WHO GHE 2019, approximate)
 CV_MORTALITY_BY_REGION = {
     "Americas": 1_200_000,
-    "Europe": 4_200_000,
+    "Europe": 3_900_000,
     "Western Pacific": 6_100_000,
     "South-East Asia": 4_600_000,
     "Eastern Mediterranean": 1_700_000,

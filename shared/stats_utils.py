@@ -48,6 +48,8 @@ def chi_squared_cdf_approx(chi2, df):
         raise ValueError("df must be positive")
     if chi2 <= 0:
         return 0.0
+    if df == 1:
+        return 2.0 * normal_cdf(math.sqrt(chi2)) - 1.0
     # Wilson-Hilferty cube-root transform
     k = df
     z = ((chi2 / k) ** (1.0 / 3.0) - (1.0 - 2.0 / (9.0 * k))) / math.sqrt(
@@ -72,7 +74,7 @@ def chi_squared_2x2(a, b, c, d):
     Returns (chi2, p_value).
     """
     n = a + b + c + d
-    if n == 0:
+    if n == 0 or (a + b) == 0 or (c + d) == 0 or (a + c) == 0 or (b + d) == 0:
         return (0.0, 1.0)
     # Yates correction
     numerator = abs(a * d - b * c) - n / 2.0
@@ -88,7 +90,7 @@ def chi_squared_2x2(a, b, c, d):
 def cramers_v(a, b, c, d):
     """Cramer's V for a 2x2 table (equals |phi| for 2x2)."""
     n = a + b + c + d
-    if n == 0:
+    if n == 0 or (a + b) == 0 or (c + d) == 0 or (a + c) == 0 or (b + d) == 0:
         return 0.0
     # No Yates correction for Cramer's V — use standard phi coefficient
     numerator = a * d - b * c
@@ -168,9 +170,9 @@ def mann_whitney_u(group1, group2):
     if sigma == 0:
         return (u_stat, 1.0)
 
-    z = (u_stat - mu) / sigma
+    z = (abs(u_stat - mu) - 0.5) / sigma
     # Two-sided p-value
-    p_value = 2.0 * normal_cdf(z)  # z is always <= 0 since u_stat = min(u1,u2)
+    p_value = 2.0 * normal_cdf(-abs(z))
     return (u_stat, p_value)
 
 
@@ -358,7 +360,7 @@ def _bic(sse, n, k):
 # ---------------------------------------------------------------------------
 
 
-def logistic_regression_simple(X, y, max_iter=50):
+def logistic_regression_simple(X, y, max_iter=200):
     """Simple logistic regression via gradient descent.
 
     X: list of lists (n_samples x n_features)
@@ -392,6 +394,15 @@ def logistic_regression_simple(X, y, max_iter=50):
             grad[0] += err
             for j in range(p):
                 grad[j + 1] += err * X[i][j]
+
+        # Convergence check: break if max gradient < 1e-6
+        max_grad = max(abs(g / n) for g in grad)
+        if max_grad < 1e-6:
+            return {
+                "intercept": w[0],
+                "coefficients": w[1:],
+                "iterations": iteration,
+            }
 
         # Update
         for j in range(p + 1):

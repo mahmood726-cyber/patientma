@@ -6,7 +6,7 @@ import re
 import sys
 from statistics import median
 
-csv.field_size_limit(2**30)
+csv.field_size_limit(10 * 1024 * 1024)
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "shared"))
 from outcome_classifier import _detect_condition
@@ -49,17 +49,20 @@ def parse_age_range(text):
     for pattern in [
         r'(?:<=|≤|younger than|not older than|no older than)\s*(\d+)',
         r'(?:age|aged?)\s*(?:<=|≤|<|less than|under)\s*(\d+)',
-        r'(?:greater than|>|older than)\s*(\d+)',
     ]:
         m = re.search(pattern, text_lower)
         if m:
-            val = int(m.group(1))
-            if 'greater than' in pattern or '>' in pattern or 'older than' in pattern:
-                if max_age is None or val < max_age:
-                    max_age = val
-            else:
-                max_age = val
+            max_age = int(m.group(1))
             break
+
+    # "greater than X" / "older than X" in EXCLUSION context = max_age
+    if max_age is None:
+        _, excl_text = _split_inclusion_exclusion(text)
+        if excl_text:
+            excl_lower = excl_text.lower()
+            m = re.search(r'(?:greater than|>|older than)\s*(\d+)', excl_lower)
+            if m:
+                max_age = int(m.group(1))
 
     if min_age is None and re.search(r'\badults?\b', text_lower):
         min_age = 18

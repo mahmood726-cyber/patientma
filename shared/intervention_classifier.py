@@ -1,7 +1,7 @@
 """Classify trial interventions into types (drug, device, procedure, behavioral, diagnostic)."""
 
 INTERVENTION_TYPES = {
-    "drug": ["drug", "pharmaceutical", "medication", "tablet", "capsule", "injection", "infusion", "dose", "mg ", "placebo", "oral", "intravenous", "subcutaneous", "pill", "solution", "suspension", "patch", "inhaler", "spray", "olol", "sartan", "pril", "statin", "mab", "nib", "afil", "gliflozin", "gliptin", "parin", "xaban", "dipine", "flozin", "azole", "mycin", "cillin", "oxacin"],
+    "drug": ["drug", "pharmaceutical", "medication", "tablet", "capsule", "injection", "infusion", "dose", "mg ", "placebo", "oral", "intravenous", "subcutaneous", "pill", "solution", "suspension", "patch", "inhaler", "spray", "prolol", "tolol", "sartan", "pril", "statin", "zumab", "ximab", "tinib", "afil", "gliflozin", "gliptin", "parin", "xaban", "dipine", "flozin", "azole", "mycin", "cillin", "oxacin"],
     "device": ["device", "implant", "pacemaker", "stent", "catheter", "icd", "crt", "lead", "generator", "valve", "prosthesis", "electrode", "sensor", "wearable", "monitor device"],
     "procedure": ["surgery", "ablation", "revascularization", "pci", "cabg", "transplant", "bypass", "angioplasty", "thrombectomy", "endarterectomy", "denervation", "cardioversion", "implantation"],
     "behavioral": ["exercise", "rehabilitation", "lifestyle", "diet", "counseling", "education", "self-management", "cognitive behavioral", "mindfulness", "physical activity", "walking", "yoga", "meditation", "telehealth", "coaching", "training program"],

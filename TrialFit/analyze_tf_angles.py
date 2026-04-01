@@ -6,7 +6,7 @@ import re
 import sys
 from statistics import median
 
-csv.field_size_limit(2**30)
+csv.field_size_limit(10 * 1024 * 1024)
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "shared"))
 from outcome_classifier import _detect_condition
@@ -17,9 +17,9 @@ OUTPUT_DIR = os.path.join(os.path.dirname(__file__), "outputs")
 # Real-world age distribution: % of patients > 75 by condition
 # Source: ESC registries, NHANES, published meta-analyses
 ELDERLY_PREVALENCE = {
-    "heart_failure": 0.50,
+    "heart_failure": 0.45,
     "acute_coronary_syndrome": 0.35,
-    "atrial_fibrillation": 0.60,
+    "atrial_fibrillation": 0.42,
     "hypertension": 0.40,
     "other": 0.30,
 }

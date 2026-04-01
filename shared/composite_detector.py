@@ -9,6 +9,7 @@ COMPOSITE_PATTERNS = [
     r"combined\s+(?:endpoint|outcome|primary)",
     r"co-?primary",
     r"defined\s+as\s+.+(?:,|and|or)",
+    r"first\s+occurrence\s+of\s+.+(?:,|and|or)",
 ]
 
 def detect_composite(outcome_text):

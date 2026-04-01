@@ -100,7 +100,7 @@ def fetch_all_cv_trials(progress=True):
 
     while True:
         url = build_query_url(page_token=page_token)
-        with urllib.request.urlopen(url) as resp:
+        with urllib.request.urlopen(url, timeout=30) as resp:
             data = json.loads(resp.read().decode("utf-8"))
 
         if total is None:

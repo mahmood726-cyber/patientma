@@ -56,7 +56,7 @@ body.tf-dark {
   --bg-header: #020617;
   --text-primary: #e2e8f0;
   --text-secondary: #94a3b8;
-  --text-muted: #64748b;
+  --text-muted: #94a3b8;
   --text-on-header: #f1f5f9;
   --border-color: #334155;
   --shadow-card: 0 2px 8px rgba(0,0,0,0.3);
@@ -437,7 +437,7 @@ body.tf-dark #tf-theme-toggle::after {
 <!-- Header -->
 <header id="tf-header">
   <div>
-    <div id="tf-header-title">CardioTrialFit</div>
+    <h1 id="tf-header-title">CardioTrialFit</h1>
     <div id="tf-header-subtitle">Generalizability of Cardiovascular Trials &mdash; 65,383 studies from ClinicalTrials.gov</div>
   </div>
   <div id="tf-header-controls">
@@ -1317,6 +1317,15 @@ document.getElementById('tf-theme-toggle').addEventListener('click', function() 
 });
 
 /* ===== Export CSV ===== */
+function tfCsvEsc(v) {
+  if (v == null) return '';
+  var s = String(v);
+  if (s.length > 0 && '=+@\t\r'.indexOf(s[0]) !== -1) s = "'" + s;
+  if (s.indexOf(',') >= 0 || s.indexOf('"') >= 0 || s.indexOf('\n') >= 0) {
+    return '"' + s.replace(/"/g, '""') + '"';
+  }
+  return s;
+}
 function buildCSV() {
   var lines = [];
 
@@ -1376,7 +1385,7 @@ function buildCSV() {
 
 document.getElementById('tf-export-btn').addEventListener('click', function() {
   var csv = buildCSV();
-  var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  var blob = new Blob(['\uFEFF' + csv], { type: 'text/csv;charset=utf-8;' });
   var url = URL.createObjectURL(blob);
   var a = document.createElement('a');
   a.href = url;

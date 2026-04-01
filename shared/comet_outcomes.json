@@ -3,7 +3,7 @@
     "core_outcomes": [
       {"name": "All-cause mortality", "category": "survival", "keywords": ["all-cause mortality", "all cause mortality", "death from any cause", "overall survival", "total mortality"]},
       {"name": "Cardiovascular mortality", "category": "survival", "keywords": ["cardiovascular mortality", "cardiovascular death", "cardiac death", "cv mortality", "cv death"]},
-      {"name": "Heart failure hospitalization", "category": "hospitalization", "keywords": ["heart failure hospitalization", "hf hospitalization", "hospitalization for heart failure", "hospitalization for worsening heart failure", "hfh"]},
+      {"name": "Heart failure hospitalization", "category": "hospitalization", "keywords": ["heart failure hospitalization", "hf hospitalization", "hospitalization for heart failure", "hospitalization for worsening heart failure", "hfh", "worsening heart failure", "worsening hf", "urgent heart failure"]},
       {"name": "Quality of life", "category": "patient_reported", "keywords": ["quality of life", "qol", "kccq", "kansas city cardiomyopathy", "eq-5d", "eq5d", "euroqol", "mlhfq", "minnesota living"]},
       {"name": "NYHA functional class", "category": "functional", "keywords": ["nyha", "new york heart association", "functional class", "functional capacity"]},
       {"name": "6-minute walk distance", "category": "functional", "keywords": ["6-minute walk", "6 minute walk", "6mwt", "6mwd", "six-minute walk", "six minute walk"]},
@@ -22,7 +22,9 @@
       {"name": "MACE", "category": "composite", "keywords": ["mace", "major adverse cardiovascular", "major adverse cardiac", "composite endpoint", "composite of death"]},
       {"name": "Quality of life", "category": "patient_reported", "keywords": ["quality of life", "qol", "saq", "seattle angina", "eq-5d", "eq5d", "euroqol", "sf-36", "sf36"]},
       {"name": "Angina frequency", "category": "patient_reported", "keywords": ["angina", "chest pain frequency", "angina frequency", "anginal episodes"]},
-      {"name": "Revascularization", "category": "clinical_event", "keywords": ["revascularization", "revascularisation", "pci", "cabg", "percutaneous coronary", "coronary artery bypass"]}
+      {"name": "Revascularization", "category": "clinical_event", "keywords": ["revascularization", "revascularisation", "pci", "cabg", "percutaneous coronary", "coronary artery bypass"]},
+      {"name": "Stent thrombosis", "category": "safety", "keywords": ["stent thrombosis", "definite stent thrombosis", "probable stent thrombosis", "arc definite"]},
+      {"name": "Major bleeding", "category": "safety", "keywords": ["major bleeding", "timi major", "barc 3", "barc 5", "major hemorrhage", "major haemorrhage", "isth major"]}
     ],
     "surrogate_outcomes": [
       {"name": "Troponin levels", "category": "biomarker", "keywords": ["troponin", "hs-troponin", "hstnt", "troponin i", "troponin t", "cardiac biomarker"]},
