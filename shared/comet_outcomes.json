@@ -1,0 +1,69 @@
+{
+  "heart_failure": {
+    "core_outcomes": [
+      {"name": "All-cause mortality", "category": "survival", "keywords": ["all-cause mortality", "all cause mortality", "death from any cause", "overall survival", "total mortality"]},
+      {"name": "Cardiovascular mortality", "category": "survival", "keywords": ["cardiovascular mortality", "cardiovascular death", "cardiac death", "cv mortality", "cv death"]},
+      {"name": "Heart failure hospitalization", "category": "hospitalization", "keywords": ["heart failure hospitalization", "hf hospitalization", "hospitalization for heart failure", "hospitalization for worsening heart failure", "hfh"]},
+      {"name": "Quality of life", "category": "patient_reported", "keywords": ["quality of life", "qol", "kccq", "kansas city cardiomyopathy", "eq-5d", "eq5d", "euroqol", "mlhfq", "minnesota living"]},
+      {"name": "NYHA functional class", "category": "functional", "keywords": ["nyha", "new york heart association", "functional class", "functional capacity"]},
+      {"name": "6-minute walk distance", "category": "functional", "keywords": ["6-minute walk", "6 minute walk", "6mwt", "6mwd", "six-minute walk", "six minute walk"]},
+      {"name": "Symptom burden", "category": "patient_reported", "keywords": ["symptom", "dyspnea", "dyspnoea", "breathlessness", "fatigue", "edema", "oedema", "patient-reported", "patient reported"]}
+    ],
+    "surrogate_outcomes": [
+      {"name": "LVEF", "category": "biomarker", "keywords": ["lvef", "left ventricular ejection fraction", "ejection fraction", "ef change"]},
+      {"name": "NT-proBNP", "category": "biomarker", "keywords": ["nt-probnp", "nt probnp", "ntprobnp", "bnp", "brain natriuretic", "n-terminal pro-bnp", "natriuretic peptide"]},
+      {"name": "LV volumes", "category": "imaging", "keywords": ["lv volume", "left ventricular volume", "lvedv", "lvesv", "lv end-diastolic", "lv end-systolic", "ventricular remodeling", "ventricular remodelling"]}
+    ]
+  },
+  "acute_coronary_syndrome": {
+    "core_outcomes": [
+      {"name": "All-cause mortality", "category": "survival", "keywords": ["all-cause mortality", "all cause mortality", "death from any cause", "overall survival", "total mortality"]},
+      {"name": "Myocardial infarction", "category": "clinical_event", "keywords": ["myocardial infarction", "mi ", "heart attack", "reinfarction", "recurrent mi", "nonfatal mi", "non-fatal mi"]},
+      {"name": "MACE", "category": "composite", "keywords": ["mace", "major adverse cardiovascular", "major adverse cardiac", "composite endpoint", "composite of death"]},
+      {"name": "Quality of life", "category": "patient_reported", "keywords": ["quality of life", "qol", "saq", "seattle angina", "eq-5d", "eq5d", "euroqol", "sf-36", "sf36"]},
+      {"name": "Angina frequency", "category": "patient_reported", "keywords": ["angina", "chest pain frequency", "angina frequency", "anginal episodes"]},
+      {"name": "Revascularization", "category": "clinical_event", "keywords": ["revascularization", "revascularisation", "pci", "cabg", "percutaneous coronary", "coronary artery bypass"]}
+    ],
+    "surrogate_outcomes": [
+      {"name": "Troponin levels", "category": "biomarker", "keywords": ["troponin", "hs-troponin", "hstnt", "troponin i", "troponin t", "cardiac biomarker"]},
+      {"name": "Angiographic outcomes", "category": "imaging", "keywords": ["angiographic", "stenosis", "lesion", "timi flow", "thrombolysis in myocardial", "late lumen loss", "diameter stenosis"]}
+    ]
+  },
+  "atrial_fibrillation": {
+    "core_outcomes": [
+      {"name": "Stroke/systemic embolism", "category": "clinical_event", "keywords": ["stroke", "systemic embolism", "thromboembolic", "cerebrovascular", "ischemic stroke", "ischaemic stroke"]},
+      {"name": "All-cause mortality", "category": "survival", "keywords": ["all-cause mortality", "all cause mortality", "death from any cause", "overall survival", "total mortality"]},
+      {"name": "Major bleeding", "category": "safety", "keywords": ["major bleeding", "major haemorrhage", "major hemorrhage", "isth major", "timi major", "intracranial bleeding", "intracranial hemorrhage"]},
+      {"name": "Quality of life", "category": "patient_reported", "keywords": ["quality of life", "qol", "afeqt", "af effect", "eq-5d", "eq5d", "euroqol", "sf-36", "sf36"]},
+      {"name": "Symptom burden", "category": "patient_reported", "keywords": ["symptom", "ehra", "palpitation", "af burden", "af-related symptoms", "patient-reported", "patient reported"]},
+      {"name": "AF recurrence", "category": "clinical_event", "keywords": ["af recurrence", "atrial fibrillation recurrence", "freedom from af", "af-free", "rhythm control", "sinus rhythm maintenance"]}
+    ],
+    "surrogate_outcomes": [
+      {"name": "AF burden monitoring", "category": "biomarker", "keywords": ["af burden", "time in af", "af episodes", "holter", "continuous monitoring"]},
+      {"name": "LA size", "category": "imaging", "keywords": ["left atrial", "la size", "la diameter", "la volume", "atrial remodeling", "atrial remodelling"]}
+    ]
+  },
+  "hypertension": {
+    "core_outcomes": [
+      {"name": "All-cause mortality", "category": "survival", "keywords": ["all-cause mortality", "all cause mortality", "death from any cause", "overall survival", "total mortality"]},
+      {"name": "Cardiovascular events", "category": "clinical_event", "keywords": ["cardiovascular event", "cv event", "myocardial infarction", "stroke", "mace", "heart failure", "cv death"]},
+      {"name": "Renal outcomes", "category": "clinical_event", "keywords": ["renal", "kidney", "egfr decline", "esrd", "end-stage renal", "dialysis", "creatinine doubling", "nephropathy"]},
+      {"name": "Quality of life", "category": "patient_reported", "keywords": ["quality of life", "qol", "eq-5d", "eq5d", "euroqol", "sf-36", "sf36", "patient satisfaction"]},
+      {"name": "Medication side effects", "category": "patient_reported", "keywords": ["side effect", "adverse effect", "tolerability", "medication adherence", "drug discontinuation", "treatment discontinuation"]}
+    ],
+    "surrogate_outcomes": [
+      {"name": "Blood pressure reduction", "category": "biomarker", "keywords": ["blood pressure", "systolic", "diastolic", "sbp", "dbp", "bp reduction", "bp change", "mmhg"]},
+      {"name": "Ambulatory BP", "category": "biomarker", "keywords": ["ambulatory", "abpm", "24-hour", "24 hour", "daytime bp", "nighttime bp"]},
+      {"name": "Arterial stiffness", "category": "biomarker", "keywords": ["pulse wave velocity", "pwv", "arterial stiffness", "augmentation index", "aortic stiffness"]}
+    ]
+  },
+  "_meta": {
+    "version": "1.0.0",
+    "description": "COMET-aligned core outcome taxonomy for cardiovascular conditions",
+    "conditions": ["heart_failure", "acute_coronary_syndrome", "atrial_fibrillation", "hypertension"],
+    "categories": {
+      "core": ["survival", "hospitalization", "clinical_event", "composite", "patient_reported", "functional", "safety"],
+      "surrogate": ["biomarker", "imaging"]
+    }
+  }
+}
