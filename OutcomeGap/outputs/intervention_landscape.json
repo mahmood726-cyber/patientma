@@ -1,0 +1,173 @@
+{
+  "by_type": {
+    "other": {
+      "count": 38861,
+      "mean_gap_score": 0.9579,
+      "pct_with_core": 11.8,
+      "pct_with_PRO": 5.1,
+      "by_condition": {
+        "other": {
+          "count": 26091,
+          "mean_gap_score": 1.0
+        },
+        "acute_coronary_syndrome": {
+          "count": 4531,
+          "mean_gap_score": 0.829
+        },
+        "hypertension": {
+          "count": 3197,
+          "mean_gap_score": 0.9407
+        },
+        "heart_failure": {
+          "count": 3535,
+          "mean_gap_score": 0.8731
+        },
+        "atrial_fibrillation": {
+          "count": 1507,
+          "mean_gap_score": 0.8526
+        }
+      }
+    },
+    "drug": {
+      "count": 12861,
+      "mean_gap_score": 0.9495,
+      "pct_with_core": 15.1,
+      "pct_with_PRO": 6.8,
+      "by_condition": {
+        "hypertension": {
+          "count": 2091,
+          "mean_gap_score": 0.9431
+        },
+        "acute_coronary_syndrome": {
+          "count": 1451,
+          "mean_gap_score": 0.8247
+        },
+        "atrial_fibrillation": {
+          "count": 557,
+          "mean_gap_score": 0.7988
+        },
+        "heart_failure": {
+          "count": 1132,
+          "mean_gap_score": 0.855
+        },
+        "other": {
+          "count": 7630,
+          "mean_gap_score": 1.0
+        }
+      }
+    },
+    "device": {
+      "count": 4953,
+      "mean_gap_score": 0.9205,
+      "pct_with_core": 23.2,
+      "pct_with_PRO": 8.5,
+      "by_condition": {
+        "other": {
+          "count": 2892,
+          "mean_gap_score": 1.0
+        },
+        "heart_failure": {
+          "count": 623,
+          "mean_gap_score": 0.8405
+        },
+        "hypertension": {
+          "count": 159,
+          "mean_gap_score": 0.9097
+        },
+        "atrial_fibrillation": {
+          "count": 485,
+          "mean_gap_score": 0.8465
+        },
+        "acute_coronary_syndrome": {
+          "count": 794,
+          "mean_gap_score": 0.741
+        }
+      }
+    },
+    "behavioral": {
+      "count": 4594,
+      "mean_gap_score": 0.9656,
+      "pct_with_core": 13.3,
+      "pct_with_PRO": 11.1,
+      "by_condition": {
+        "hypertension": {
+          "count": 725,
+          "mean_gap_score": 0.9491
+        },
+        "other": {
+          "count": 3002,
+          "mean_gap_score": 1.0
+        },
+        "acute_coronary_syndrome": {
+          "count": 373,
+          "mean_gap_score": 0.9084
+        },
+        "heart_failure": {
+          "count": 413,
+          "mean_gap_score": 0.8252
+        },
+        "atrial_fibrillation": {
+          "count": 81,
+          "mean_gap_score": 0.8164
+        }
+      }
+    },
+    "diagnostic": {
+      "count": 3513,
+      "mean_gap_score": 0.9483,
+      "pct_with_core": 14.9,
+      "pct_with_PRO": 6.1,
+      "by_condition": {
+        "hypertension": {
+          "count": 283,
+          "mean_gap_score": 0.9275
+        },
+        "other": {
+          "count": 2149,
+          "mean_gap_score": 1.0
+        },
+        "heart_failure": {
+          "count": 386,
+          "mean_gap_score": 0.8905
+        },
+        "acute_coronary_syndrome": {
+          "count": 499,
+          "mean_gap_score": 0.8166
+        },
+        "atrial_fibrillation": {
+          "count": 196,
+          "mean_gap_score": 0.8603
+        }
+      }
+    },
+    "procedure": {
+      "count": 3556,
+      "mean_gap_score": 0.9067,
+      "pct_with_core": 27.0,
+      "pct_with_PRO": 12.5,
+      "by_condition": {
+        "other": {
+          "count": 1744,
+          "mean_gap_score": 1.0
+        },
+        "atrial_fibrillation": {
+          "count": 811,
+          "mean_gap_score": 0.8663
+        },
+        "acute_coronary_syndrome": {
+          "count": 597,
+          "mean_gap_score": 0.7256
+        },
+        "hypertension": {
+          "count": 153,
+          "mean_gap_score": 0.8782
+        },
+        "heart_failure": {
+          "count": 251,
+          "mean_gap_score": 0.837
+        }
+      }
+    }
+  },
+  "total_trials": 65383
+}

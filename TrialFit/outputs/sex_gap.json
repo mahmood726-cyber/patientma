@@ -1,0 +1,153 @@
+{
+  "total_trials": 65383,
+  "total_sex_restricted": 16,
+  "pct_sex_restricted": 0.0,
+  "total_sex_stratified_mention": 773,
+  "pct_sex_stratified_mention": 1.2,
+  "by_era": {
+    "2020-2025": {
+      "count": 24587,
+      "restricted": 6,
+      "stratified": 281,
+      "pct_restricted": 0.0,
+      "pct_stratified": 1.1
+    },
+    "2005-2009": {
+      "count": 8267,
+      "restricted": 3,
+      "stratified": 130,
+      "pct_restricted": 0.0,
+      "pct_stratified": 1.6
+    },
+    "2000-2004": {
+      "count": 2929,
+      "restricted": 0,
+      "stratified": 28,
+      "pct_restricted": 0.0,
+      "pct_stratified": 1.0
+    },
+    "2015-2019": {
+      "count": 15876,
+      "restricted": 6,
+      "stratified": 162,
+      "pct_restricted": 0.0,
+      "pct_stratified": 1.0
+    },
+    "2010-2014": {
+      "count": 12081,
+      "restricted": 1,
+      "stratified": 162,
+      "pct_restricted": 0.0,
+      "pct_stratified": 1.3
+    },
+    "Unknown": {
+      "count": 309,
+      "restricted": 0,
+      "stratified": 4,
+      "pct_restricted": 0.0,
+      "pct_stratified": 1.3
+    },
+    "Pre-2000": {
+      "count": 1334,
+      "restricted": 0,
+      "stratified": 6,
+      "pct_restricted": 0.0,
+      "pct_stratified": 0.4
+    }
+  },
+  "by_condition": {
+    "other": {
+      "count": 41922,
+      "restricted": 8,
+      "stratified": 411,
+      "pct_restricted": 0.0,
+      "pct_stratified": 1.0
+    },
+    "hypertension": {
+      "count": 6392,
+      "restricted": 3,
+      "stratified": 113,
+      "pct_restricted": 0.0,
+      "pct_stratified": 1.8
+    },
+    "acute_coronary_syndrome": {
+      "count": 7752,
+      "restricted": 3,
+      "stratified": 154,
+      "pct_restricted": 0.0,
+      "pct_stratified": 2.0
+    },
+    "atrial_fibrillation": {
+      "count": 3231,
+      "restricted": 0,
+      "stratified": 24,
+      "pct_restricted": 0.0,
+      "pct_stratified": 0.7
+    },
+    "heart_failure": {
+      "count": 6086,
+      "restricted": 2,
+      "stratified": 71,
+      "pct_restricted": 0.0,
+      "pct_stratified": 1.2
+    }
+  },
+  "by_sponsor": {
+    "INDUSTRY": {
+      "count": 12840,
+      "restricted": 11,
+      "stratified": 153,
+      "pct_restricted": 0.1,
+      "pct_stratified": 1.2
+    },
+    "OTHER": {
+      "count": 48223,
+      "restricted": 5,
+      "stratified": 567,
+      "pct_restricted": 0.0,
+      "pct_stratified": 1.2
+    },
+    "NIH": {
+      "count": 1321,
+      "restricted": 0,
+      "stratified": 11,
+      "pct_restricted": 0.0,
+      "pct_stratified": 0.8
+    },
+    "FED": {
+      "count": 610,
+      "restricted": 0,
+      "stratified": 14,
+      "pct_restricted": 0.0,
+      "pct_stratified": 2.3
+    },
+    "NETWORK": {
+      "count": 500,
+      "restricted": 0,
+      "stratified": 3,
+      "pct_restricted": 0.0,
+      "pct_stratified": 0.6
+    },
+    "OTHER_GOV": {
+      "count": 1824,
+      "restricted": 0,
+      "stratified": 23,
+      "pct_restricted": 0.0,
+      "pct_stratified": 1.3
+    },
+    "INDIV": {
+      "count": 58,
+      "restricted": 0,
+      "stratified": 2,
+      "pct_restricted": 0.0,
+      "pct_stratified": 3.4
+    },
+    "UNKNOWN": {
+      "count": 7,
+      "restricted": 0,
+      "stratified": 0,
+      "pct_restricted": 0.0,
+      "pct_stratified": 0.0
+    }
+  }
+}

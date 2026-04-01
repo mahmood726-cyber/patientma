@@ -1,0 +1,91 @@
+{
+  "total_trials": 65383,
+  "total_with_composite": 2117,
+  "pct_composite": 3.2,
+  "total_mixed": 9,
+  "pct_mixed": 0.4,
+  "total_pure_core": 835,
+  "total_pure_surrogate": 20,
+  "common_composites": [
+    {
+      "text": "MACE",
+      "count": 90
+    },
+    {
+      "text": "Major adverse cardiovascular events (MACE)",
+      "count": 28
+    },
+    {
+      "text": "Major Adverse Cardiac Events (MACE)",
+      "count": 25
+    },
+    {
+      "text": "Major Adverse Cardiovascular Events (MACE)",
+      "count": 24
+    },
+    {
+      "text": "Major adverse cardiac events (MACE)",
+      "count": 18
+    },
+    {
+      "text": "MACE (major adverse cardiovascular events)",
+      "count": 9
+    },
+    {
+      "text": "Incidence of Major Adverse Cardiovascular Events (MACE)",
+      "count": 8
+    },
+    {
+      "text": "Major adverse cardiovascular event (MACE)",
+      "count": 7
+    },
+    {
+      "text": "Incidence of MACE",
+      "count": 7
+    },
+    {
+      "text": "Clinically-Indicated Major Adverse Cardiac Event (CI-MACE)",
+      "count": 7
+    },
+    {
+      "text": "MACE (time to event): MACE (time to event): myocardial infarction, unstable angina, cardiovascular death, revascularization, fatal/nonfatal cerebrovascular accident, peripheral arteriopathy, aortic event",
+      "count": 7
+    },
+    {
+      "text": "Composite of Outcomes",
+      "count": 5
+    },
+    {
+      "text": "Composite adverse event incidence (MACE/MALE) : myocardial infarction, ischemic stroke, acute limb ischemia, major amputation due to vascular disease",
+      "count": 5
+    },
+    {
+      "text": "Median Time to First Major Adverse Cardiovascular Event (MACE)",
+      "count": 4
+    },
+    {
+      "text": "Number of Participants With Major Adverse Cardiac Events (MACE; Cardiac Death, Protocol MI, ID-TLR)",
+      "count": 4
+    },
+    {
+      "text": "Co-primary outcomes",
+      "count": 4
+    },
+    {
+      "text": "Compare Edoxaban to Warfarin for Composite of Stroke and Systemic Embolic Events (SEE).",
+      "count": 4
+    },
+    {
+      "text": "Major adverse cardiac event (MACE)",
+      "count": 4
+    },
+    {
+      "text": "Event free survival of the composite of cardiovascular or unexplained death, stroke (including ischemic or hemorrhagic stroke), systemic embolism, bleeding (BARC type 2-5)",
+      "count": 4
+    },
+    {
+      "text": "Major Adverse Cardiac Event (MACE)",
+      "count": 3
+    }
+  ]
+}

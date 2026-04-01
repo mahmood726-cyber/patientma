@@ -1,0 +1,263 @@
+{
+  "total_trials": 65383,
+  "mean_gi": 80.3,
+  "median_gi": 82,
+  "pct_exclude_age75": 38.5,
+  "pct_exclude_ckd": 19.6,
+  "by_condition": {
+    "other": {
+      "count": 41922,
+      "mean_gi": 80.3,
+      "median_gi": 82.0,
+      "mean_excl": 1.26
+    },
+    "hypertension": {
+      "count": 6392,
+      "mean_gi": 80.7,
+      "median_gi": 83.0,
+      "mean_excl": 1.47
+    },
+    "acute_coronary_syndrome": {
+      "count": 7752,
+      "mean_gi": 79.9,
+      "median_gi": 81.0,
+      "mean_excl": 1.31
+    },
+    "atrial_fibrillation": {
+      "count": 3231,
+      "mean_gi": 81.6,
+      "median_gi": 85,
+      "mean_excl": 1.13
+    },
+    "heart_failure": {
+      "count": 6086,
+      "mean_gi": 79.3,
+      "median_gi": 80.0,
+      "mean_excl": 1.29
+    }
+  },
+  "by_phase": {
+    "": {
+      "count": 20762,
+      "mean_gi": 83.1,
+      "median_gi": 85.0,
+      "mean_excl": 0.74
+    },
+    "PHASE2": {
+      "count": 5658,
+      "mean_gi": 76.2,
+      "median_gi": 75.0,
+      "mean_excl": 1.93
+    },
+    "NA": {
+      "count": 24818,
+      "mean_gi": 80.3,
+      "median_gi": 81.0,
+      "mean_excl": 1.29
+    },
+    "PHASE3": {
+      "count": 4530,
+      "mean_gi": 78.0,
+      "median_gi": 78.0,
+      "mean_excl": 1.8
+    },
+    "PHASE1": {
+      "count": 4038,
+      "mean_gi": 76.9,
+      "median_gi": 75.0,
+      "mean_excl": 1.73
+    },
+    "PHASE4": {
+      "count": 5045,
+      "mean_gi": 77.9,
+      "median_gi": 78,
+      "mean_excl": 1.86
+    },
+    "EARLY_PHASE1": {
+      "count": 532,
+      "mean_gi": 77.8,
+      "median_gi": 76.0,
+      "mean_excl": 1.83
+    }
+  },
+  "by_era": {
+    "2020-2025": {
+      "count": 24587,
+      "mean_gi": 80.6,
+      "median_gi": 82,
+      "mean_excl": 1.36
+    },
+    "2005-2009": {
+      "count": 8267,
+      "mean_gi": 79.7,
+      "median_gi": 81,
+      "mean_excl": 1.25
+    },
+    "2000-2004": {
+      "count": 2929,
+      "mean_gi": 80.0,
+      "median_gi": 83,
+      "mean_excl": 1.07
+    },
+    "2015-2019": {
+      "count": 15876,
+      "mean_gi": 80.2,
+      "median_gi": 82.0,
+      "mean_excl": 1.28
+    },
+    "2010-2014": {
+      "count": 12081,
+      "mean_gi": 79.8,
+      "median_gi": 81,
+      "mean_excl": 1.29
+    },
+    "Unknown": {
+      "count": 309,
+      "mean_gi": 80.2,
+      "median_gi": 85,
+      "mean_excl": 1.04
+    },
+    "Pre-2000": {
+      "count": 1334,
+      "mean_gi": 82.9,
+      "median_gi": 85.0,
+      "mean_excl": 0.4
+    }
+  },
+  "by_sponsor_class": {
+    "INDUSTRY": {
+      "count": 12840,
+      "mean_gi": 79.3,
+      "median_gi": 80.0,
+      "mean_excl": 1.53
+    },
+    "OTHER": {
+      "count": 48223,
+      "mean_gi": 80.5,
+      "median_gi": 82,
+      "mean_excl": 1.23
+    },
+    "NIH": {
+      "count": 1321,
+      "mean_gi": 81.7,
+      "median_gi": 85,
+      "mean_excl": 0.83
+    },
+    "FED": {
+      "count": 610,
+      "mean_gi": 79.7,
+      "median_gi": 82.0,
+      "mean_excl": 1.4
+    },
+    "NETWORK": {
+      "count": 500,
+      "mean_gi": 78.7,
+      "median_gi": 78.0,
+      "mean_excl": 1.06
+    },
+    "OTHER_GOV": {
+      "count": 1824,
+      "mean_gi": 81.0,
+      "median_gi": 85.0,
+      "mean_excl": 1.13
+    },
+    "INDIV": {
+      "count": 58,
+      "mean_gi": 76.4,
+      "median_gi": 75.0,
+      "mean_excl": 1.97
+    },
+    "UNKNOWN": {
+      "count": 7,
+      "mean_gi": 82.6,
+      "median_gi": 85,
+      "mean_excl": 0.86
+    }
+  },
+  "exclusion_ranking": [
+    {
+      "exclusion": "ckd",
+      "count": 12791,
+      "pct_of_trials": 19.6,
+      "real_world_weight": 8,
+      "impact_score": 1.565
+    },
+    {
+      "exclusion": "diabetes",
+      "count": 7715,
+      "pct_of_trials": 11.8,
+      "real_world_weight": 7,
+      "impact_score": 0.826
+    },
+    {
+      "exclusion": "cancer",
+      "count": 12746,
+      "pct_of_trials": 19.5,
+      "real_world_weight": 4,
+      "impact_score": 0.78
+    },
+    {
+      "exclusion": "cognitive",
+      "count": 5831,
+      "pct_of_trials": 8.9,
+      "real_world_weight": 5,
+      "impact_score": 0.446
+    },
+    {
+      "exclusion": "pregnancy",
+      "count": 25299,
+      "pct_of_trials": 38.7,
+      "real_world_weight": 1,
+      "impact_score": 0.387
+    },
+    {
+      "exclusion": "bleeding",
+      "count": 5939,
+      "pct_of_trials": 9.1,
+      "real_world_weight": 4,
+      "impact_score": 0.363
+    },
+    {
+      "exclusion": "liver",
+      "count": 5463,
+      "pct_of_trials": 8.4,
+      "real_world_weight": 3,
+      "impact_score": 0.251
+    },
+    {
+      "exclusion": "copd",
+      "count": 3553,
+      "pct_of_trials": 5.4,
+      "real_world_weight": 4,
+      "impact_score": 0.217
+    },
+    {
+      "exclusion": "frailty",
+      "count": 1458,
+      "pct_of_trials": 2.2,
+      "real_world_weight": 6,
+      "impact_score": 0.134
+    },
+    {
+      "exclusion": "anemia",
+      "count": 1962,
+      "pct_of_trials": 3.0,
+      "real_world_weight": 3,
+      "impact_score": 0.09
+    },
+    {
+      "exclusion": "obesity",
+      "count": 981,
+      "pct_of_trials": 1.5,
+      "real_world_weight": 5,
+      "impact_score": 0.075
+    }
+  ],
+  "dimension_averages": {
+    "age": 9.4,
+    "sex": 10.0,
+    "comorbidity": 36.2,
+    "functional": 14.7,
+    "representation": 10.0
+  }
+}

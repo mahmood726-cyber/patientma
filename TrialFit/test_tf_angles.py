@@ -5,7 +5,7 @@ import pytest
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "shared"))
 
-from analyze_angles import analyze_sex_gap, analyze_elderly_exclusion
+from analyze_tf_angles import analyze_sex_gap, analyze_elderly_exclusion
 
 SAMPLE_TRIALS = [
     {"nct_id": "NCT001", "conditions": "Heart Failure", "phase": "PHASE3", "sponsor_class": "INDUSTRY", "start_date": "2018-01", "eligibility_criteria": "Inclusion:\n- Age >= 18\n- Male patients only\nExclusion:\n- eGFR < 30", "primary_outcomes": "All-cause mortality", "secondary_outcomes": "Subgroup by sex analysis planned", "sex": "male", "min_age": 18, "max_age": None},

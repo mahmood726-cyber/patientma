@@ -1,0 +1,1243 @@
+{
+  "total_with_location": 58803,
+  "total_countries": 174,
+  "by_country": {
+    "United States": {
+      "trial_count": 19556,
+      "mean_gap_score": 0.9625,
+      "pct_with_core": 10.9
+    },
+    "Canada": {
+      "trial_count": 4076,
+      "mean_gap_score": 0.9398,
+      "pct_with_core": 17.2
+    },
+    "Puerto Rico": {
+      "trial_count": 228,
+      "mean_gap_score": 0.9326,
+      "pct_with_core": 17.1
+    },
+    "United Kingdom": {
+      "trial_count": 3946,
+      "mean_gap_score": 0.9395,
+      "pct_with_core": 18.6
+    },
+    "Australia": {
+      "trial_count": 1408,
+      "mean_gap_score": 0.9272,
+      "pct_with_core": 19.8
+    },
+    "Peru": {
+      "trial_count": 127,
+      "mean_gap_score": 0.8745,
+      "pct_with_core": 29.9
+    },
+    "South Africa": {
+      "trial_count": 373,
+      "mean_gap_score": 0.9011,
+      "pct_with_core": 25.2
+    },
+    "Italy": {
+      "trial_count": 3772,
+      "mean_gap_score": 0.9332,
+      "pct_with_core": 18.2
+    },
+    "France": {
+      "trial_count": 5080,
+      "mean_gap_score": 0.9613,
+      "pct_with_core": 12.1
+    },
+    "Belgium": {
+      "trial_count": 1948,
+      "mean_gap_score": 0.9261,
+      "pct_with_core": 22.1
+    },
+    "Netherlands": {
+      "trial_count": 2467,
+      "mean_gap_score": 0.9162,
+      "pct_with_core": 24.9
+    },
+    "Germany": {
+      "trial_count": 4523,
+      "mean_gap_score": 0.9306,
+      "pct_with_core": 19.7
+    },
+    "Switzerland": {
+      "trial_count": 1713,
+      "mean_gap_score": 0.941,
+      "pct_with_core": 17.2
+    },
+    "Turkey (T\u00fcrkiye)": {
+      "trial_count": 1645,
+      "mean_gap_score": 0.9511,
+      "pct_with_core": 12.2
+    },
+    "Israel": {
+      "trial_count": 1269,
+      "mean_gap_score": 0.9326,
+      "pct_with_core": 16.5
+    },
+    "Greece": {
+      "trial_count": 885,
+      "mean_gap_score": 0.9265,
+      "pct_with_core": 19.5
+    },
+    "Czechia": {
+      "trial_count": 1187,
+      "mean_gap_score": 0.9144,
+      "pct_with_core": 23.8
+    },
+    "Slovakia": {
+      "trial_count": 381,
+      "mean_gap_score": 0.8909,
+      "pct_with_core": 26.0
+    },
+    "Finland": {
+      "trial_count": 655,
+      "mean_gap_score": 0.9245,
+      "pct_with_core": 21.5
+    },
+    "Spain": {
+      "trial_count": 2997,
+      "mean_gap_score": 0.9341,
+      "pct_with_core": 20.6
+    },
+    "United Arab Emirates": {
+      "trial_count": 73,
+      "mean_gap_score": 0.9159,
+      "pct_with_core": 27.4
+    },
+    "Hungary": {
+      "trial_count": 805,
+      "mean_gap_score": 0.9067,
+      "pct_with_core": 24.6
+    },
+    "Sweden": {
+      "trial_count": 1480,
+      "mean_gap_score": 0.9191,
+      "pct_with_core": 22.8
+    },
+    "Portugal": {
+      "trial_count": 611,
+      "mean_gap_score": 0.8992,
+      "pct_with_core": 26.8
+    },
+    "Russia": {
+      "trial_count": 1054,
+      "mean_gap_score": 0.9168,
+      "pct_with_core": 24.3
+    },
+    "Poland": {
+      "trial_count": 1673,
+      "mean_gap_score": 0.9063,
+      "pct_with_core": 25.1
+    },
+    "Argentina": {
+      "trial_count": 570,
+      "mean_gap_score": 0.8965,
+      "pct_with_core": 27.5
+    },
+    "Mexico": {
+      "trial_count": 599,
+      "mean_gap_score": 0.9174,
+      "pct_with_core": 23.2
+    },
+    "Austria": {
+      "trial_count": 1333,
+      "mean_gap_score": 0.9362,
+      "pct_with_core": 18.8
+    },
+    "Denmark": {
+      "trial_count": 1990,
+      "mean_gap_score": 0.9247,
+      "pct_with_core": 22.7
+    },
+    "Bulgaria": {
+      "trial_count": 351,
+      "mean_gap_score": 0.869,
+      "pct_with_core": 31.6
+    },
+    "Romania": {
+      "trial_count": 406,
+      "mean_gap_score": 0.8818,
+      "pct_with_core": 29.6
+    },
+    "Ireland": {
+      "trial_count": 374,
+      "mean_gap_score": 0.9441,
+      "pct_with_core": 19.0
+    },
+    "Singapore": {
+      "trial_count": 580,
+      "mean_gap_score": 0.9216,
+      "pct_with_core": 22.9
+    },
+    "Hong Kong": {
+      "trial_count": 535,
+      "mean_gap_score": 0.9421,
+      "pct_with_core": 18.5
+    },
+    "Norway": {
+      "trial_count": 942,
+      "mean_gap_score": 0.9328,
+      "pct_with_core": 19.9
+    },
+    "Malaysia": {
+      "trial_count": 344,
+      "mean_gap_score": 0.8866,
+      "pct_with_core": 29.9
+    },
+    "Chile": {
+      "trial_count": 292,
+      "mean_gap_score": 0.8929,
+      "pct_with_core": 26.0
+    },
+    "Brazil": {
+      "trial_count": 1605,
+      "mean_gap_score": 0.9278,
+      "pct_with_core": 20.4
+    },
+    "Taiwan": {
+      "trial_count": 1392,
+      "mean_gap_score": 0.9466,
+      "pct_with_core": 14.2
+    },
+    "Ukraine": {
+      "trial_count": 268,
+      "mean_gap_score": 0.909,
+      "pct_with_core": 22.0
+    },
+    "Ecuador": {
+      "trial_count": 32,
+      "mean_gap_score": 0.8957,
+      "pct_with_core": 28.1
+    },
+    "Philippines": {
+      "trial_count": 153,
+      "mean_gap_score": 0.8784,
+      "pct_with_core": 29.4
+    },
+    "China": {
+      "trial_count": 5629,
+      "mean_gap_score": 0.9326,
+      "pct_with_core": 18.6
+    },
+    "South Korea": {
+      "trial_count": 2413,
+      "mean_gap_score": 0.9219,
+      "pct_with_core": 22.8
+    },
+    "New Zealand": {
+      "trial_count": 454,
+      "mean_gap_score": 0.9197,
+      "pct_with_core": 22.7
+    },
+    "Latvia": {
+      "trial_count": 218,
+      "mean_gap_score": 0.8662,
+      "pct_with_core": 35.3
+    },
+    "Venezuela": {
+      "trial_count": 41,
+      "mean_gap_score": 0.8737,
+      "pct_with_core": 43.9
+    },
+    "India": {
+      "trial_count": 662,
+      "mean_gap_score": 0.9137,
+      "pct_with_core": 21.9
+    },
+    "Croatia": {
+      "trial_count": 229,
+      "mean_gap_score": 0.8907,
+      "pct_with_core": 28.4
+    },
+    "Lithuania": {
+      "trial_count": 251,
+      "mean_gap_score": 0.8891,
+      "pct_with_core": 26.7
+    },
+    "Colombia": {
+      "trial_count": 289,
+      "mean_gap_score": 0.9112,
+      "pct_with_core": 25.3
+    },
+    "Bermuda": {
+      "trial_count": 1,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "Estonia": {
+      "trial_count": 169,
+      "mean_gap_score": 0.8895,
+      "pct_with_core": 28.4
+    },
+    "Belarus": {
+      "trial_count": 51,
+      "mean_gap_score": 0.889,
+      "pct_with_core": 19.6
+    },
+    "Tunisia": {
+      "trial_count": 110,
+      "mean_gap_score": 0.9067,
+      "pct_with_core": 20.0
+    },
+    "Thailand": {
+      "trial_count": 371,
+      "mean_gap_score": 0.9135,
+      "pct_with_core": 21.3
+    },
+    "Uruguay": {
+      "trial_count": 15,
+      "mean_gap_score": 0.8705,
+      "pct_with_core": 26.7
+    },
+    "Jordan": {
+      "trial_count": 69,
+      "mean_gap_score": 0.8761,
+      "pct_with_core": 23.2
+    },
+    "Lebanon": {
+      "trial_count": 68,
+      "mean_gap_score": 0.9157,
+      "pct_with_core": 19.1
+    },
+    "Georgia": {
+      "trial_count": 111,
+      "mean_gap_score": 0.9091,
+      "pct_with_core": 25.2
+    },
+    "Zambia": {
+      "trial_count": 12,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "Serbia": {
+      "trial_count": 258,
+      "mean_gap_score": 0.8687,
+      "pct_with_core": 36.4
+    },
+    "Pakistan": {
+      "trial_count": 497,
+      "mean_gap_score": 0.9596,
+      "pct_with_core": 9.7
+    },
+    "Sri Lanka": {
+      "trial_count": 24,
+      "mean_gap_score": 0.9813,
+      "pct_with_core": 8.3
+    },
+    "Moldova": {
+      "trial_count": 22,
+      "mean_gap_score": 0.9106,
+      "pct_with_core": 18.2
+    },
+    "Guatemala": {
+      "trial_count": 46,
+      "mean_gap_score": 0.8683,
+      "pct_with_core": 26.1
+    },
+    "Japan": {
+      "trial_count": 1143,
+      "mean_gap_score": 0.9222,
+      "pct_with_core": 23.3
+    },
+    "Mauritius": {
+      "trial_count": 6,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "El Salvador": {
+      "trial_count": 8,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "Bolivia": {
+      "trial_count": 6,
+      "mean_gap_score": 0.9445,
+      "pct_with_core": 16.7
+    },
+    "Serbia and Montenegro": {
+      "trial_count": 6,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "Indonesia": {
+      "trial_count": 180,
+      "mean_gap_score": 0.9152,
+      "pct_with_core": 22.8
+    },
+    "Kuwait": {
+      "trial_count": 24,
+      "mean_gap_score": 0.9556,
+      "pct_with_core": 8.3
+    },
+    "Saudi Arabia": {
+      "trial_count": 178,
+      "mean_gap_score": 0.9207,
+      "pct_with_core": 20.8
+    },
+    "Morocco": {
+      "trial_count": 27,
+      "mean_gap_score": 0.9002,
+      "pct_with_core": 18.5
+    },
+    "Dominican Republic": {
+      "trial_count": 16,
+      "mean_gap_score": 0.8574,
+      "pct_with_core": 43.8
+    },
+    "Kenya": {
+      "trial_count": 25,
+      "mean_gap_score": 0.9206,
+      "pct_with_core": 28.0
+    },
+    "Uganda": {
+      "trial_count": 37,
+      "mean_gap_score": 0.9599,
+      "pct_with_core": 16.2
+    },
+    "Iceland": {
+      "trial_count": 46,
+      "mean_gap_score": 0.9411,
+      "pct_with_core": 19.6
+    },
+    "North Macedonia": {
+      "trial_count": 55,
+      "mean_gap_score": 0.8823,
+      "pct_with_core": 27.3
+    },
+    "Slovenia": {
+      "trial_count": 219,
+      "mean_gap_score": 0.944,
+      "pct_with_core": 21.0
+    },
+    "Vietnam": {
+      "trial_count": 104,
+      "mean_gap_score": 0.9031,
+      "pct_with_core": 26.9
+    },
+    "Costa Rica": {
+      "trial_count": 14,
+      "mean_gap_score": 0.8375,
+      "pct_with_core": 35.7
+    },
+    "Panama": {
+      "trial_count": 35,
+      "mean_gap_score": 0.9213,
+      "pct_with_core": 22.9
+    },
+    "Algeria": {
+      "trial_count": 26,
+      "mean_gap_score": 0.9548,
+      "pct_with_core": 19.2
+    },
+    "Guadeloupe": {
+      "trial_count": 13,
+      "mean_gap_score": 0.9915,
+      "pct_with_core": 7.7
+    },
+    "Nicaragua": {
+      "trial_count": 3,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "Egypt": {
+      "trial_count": 794,
+      "mean_gap_score": 0.9422,
+      "pct_with_core": 12.3
+    },
+    "Bosnia and Herzegovina": {
+      "trial_count": 29,
+      "mean_gap_score": 0.9355,
+      "pct_with_core": 24.1
+    },
+    "Nigeria": {
+      "trial_count": 62,
+      "mean_gap_score": 0.9679,
+      "pct_with_core": 9.7
+    },
+    "Iran": {
+      "trial_count": 173,
+      "mean_gap_score": 0.9539,
+      "pct_with_core": 12.7
+    },
+    "Malta": {
+      "trial_count": 14,
+      "mean_gap_score": 0.8517,
+      "pct_with_core": 42.9
+    },
+    "Luxembourg": {
+      "trial_count": 28,
+      "mean_gap_score": 0.9508,
+      "pct_with_core": 28.6
+    },
+    "Andorra": {
+      "trial_count": 2,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "Cameroon": {
+      "trial_count": 22,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "Paraguay": {
+      "trial_count": 37,
+      "mean_gap_score": 0.9633,
+      "pct_with_core": 10.8
+    },
+    "Iraq": {
+      "trial_count": 27,
+      "mean_gap_score": 0.9926,
+      "pct_with_core": 3.7
+    },
+    "Mali": {
+      "trial_count": 2,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "Cyprus": {
+      "trial_count": 21,
+      "mean_gap_score": 0.9579,
+      "pct_with_core": 28.6
+    },
+    "Grenada": {
+      "trial_count": 3,
+      "mean_gap_score": 0.9167,
+      "pct_with_core": 33.3
+    },
+    "Albania": {
+      "trial_count": 4,
+      "mean_gap_score": 0.7679,
+      "pct_with_core": 50.0
+    },
+    "Bangladesh": {
+      "trial_count": 45,
+      "mean_gap_score": 0.9251,
+      "pct_with_core": 24.4
+    },
+    "Jamaica": {
+      "trial_count": 9,
+      "mean_gap_score": 0.9444,
+      "pct_with_core": 11.1
+    },
+    "Ghana": {
+      "trial_count": 22,
+      "mean_gap_score": 0.948,
+      "pct_with_core": 22.7
+    },
+    "Kazakhstan": {
+      "trial_count": 50,
+      "mean_gap_score": 0.9563,
+      "pct_with_core": 16.0
+    },
+    "Yemen": {
+      "trial_count": 2,
+      "mean_gap_score": 0.7,
+      "pct_with_core": 100.0
+    },
+    "Kyrgyzstan": {
+      "trial_count": 17,
+      "mean_gap_score": 0.9639,
+      "pct_with_core": 23.5
+    },
+    "Cuba": {
+      "trial_count": 3,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "Gabon": {
+      "trial_count": 3,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "C\u00f4te d\u2019Ivoire": {
+      "trial_count": 5,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "Senegal": {
+      "trial_count": 8,
+      "mean_gap_score": 0.9375,
+      "pct_with_core": 12.5
+    },
+    "Montenegro": {
+      "trial_count": 3,
+      "mean_gap_score": 0.6944,
+      "pct_with_core": 66.7
+    },
+    "Bahrain": {
+      "trial_count": 5,
+      "mean_gap_score": 0.8956,
+      "pct_with_core": 40.0
+    },
+    "Oman": {
+      "trial_count": 12,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "Qatar": {
+      "trial_count": 27,
+      "mean_gap_score": 0.9836,
+      "pct_with_core": 7.4
+    },
+    "Monaco": {
+      "trial_count": 13,
+      "mean_gap_score": 0.9438,
+      "pct_with_core": 23.1
+    },
+    "Armenia": {
+      "trial_count": 16,
+      "mean_gap_score": 0.9131,
+      "pct_with_core": 37.5
+    },
+    "Lesotho": {
+      "trial_count": 6,
+      "mean_gap_score": 0.9872,
+      "pct_with_core": 16.7
+    },
+    "Honduras": {
+      "trial_count": 4,
+      "mean_gap_score": 0.7917,
+      "pct_with_core": 50.0
+    },
+    "Nepal": {
+      "trial_count": 52,
+      "mean_gap_score": 0.9464,
+      "pct_with_core": 21.2
+    },
+    "Montserrat": {
+      "trial_count": 1,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "Tanzania": {
+      "trial_count": 20,
+      "mean_gap_score": 0.9714,
+      "pct_with_core": 10.0
+    },
+    "Virgin Islands": {
+      "trial_count": 3,
+      "mean_gap_score": 0.7778,
+      "pct_with_core": 66.7
+    },
+    "Palestinian Territories": {
+      "trial_count": 10,
+      "mean_gap_score": 0.98,
+      "pct_with_core": 10.0
+    },
+    "Azerbaijan": {
+      "trial_count": 2,
+      "mean_gap_score": 0.85,
+      "pct_with_core": 50.0
+    },
+    "Mozambique": {
+      "trial_count": 12,
+      "mean_gap_score": 0.8397,
+      "pct_with_core": 33.3
+    },
+    "Martinique": {
+      "trial_count": 17,
+      "mean_gap_score": 0.9784,
+      "pct_with_core": 11.8
+    },
+    "Trinidad and Tobago": {
+      "trial_count": 8,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "Barbados": {
+      "trial_count": 2,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "The Bahamas": {
+      "trial_count": 2,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "Holy See": {
+      "trial_count": 2,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "Seychelles": {
+      "trial_count": 1,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "Rwanda": {
+      "trial_count": 5,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "Laos": {
+      "trial_count": 1,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "Fiji": {
+      "trial_count": 3,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "Uzbekistan": {
+      "trial_count": 16,
+      "mean_gap_score": 0.9688,
+      "pct_with_core": 6.2
+    },
+    "New Caledonia": {
+      "trial_count": 1,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "Reunion": {
+      "trial_count": 10,
+      "mean_gap_score": 0.9954,
+      "pct_with_core": 10.0
+    },
+    "Jersey": {
+      "trial_count": 3,
+      "mean_gap_score": 0.7278,
+      "pct_with_core": 100.0
+    },
+    "Zimbabwe": {
+      "trial_count": 4,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "Botswana": {
+      "trial_count": 6,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "Haiti": {
+      "trial_count": 4,
+      "mean_gap_score": 0.953,
+      "pct_with_core": 50.0
+    },
+    "Malawi": {
+      "trial_count": 5,
+      "mean_gap_score": 0.9882,
+      "pct_with_core": 20.0
+    },
+    "Guam": {
+      "trial_count": 1,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "Suriname": {
+      "trial_count": 3,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "Brunei": {
+      "trial_count": 4,
+      "mean_gap_score": 0.7854,
+      "pct_with_core": 75.0
+    },
+    "Sudan": {
+      "trial_count": 5,
+      "mean_gap_score": 0.9,
+      "pct_with_core": 20.0
+    },
+    "Burma": {
+      "trial_count": 6,
+      "mean_gap_score": 0.8299,
+      "pct_with_core": 33.3
+    },
+    "Ethiopia": {
+      "trial_count": 12,
+      "mean_gap_score": 0.8889,
+      "pct_with_core": 16.7
+    },
+    "Mongolia": {
+      "trial_count": 3,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "Democratic Republic of the Congo": {
+      "trial_count": 3,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "The Gambia": {
+      "trial_count": 1,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "Burundi": {
+      "trial_count": 1,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "Guinea": {
+      "trial_count": 1,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "Republic of the Congo": {
+      "trial_count": 1,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "Burkina Faso": {
+      "trial_count": 4,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "Benin": {
+      "trial_count": 2,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "Niger": {
+      "trial_count": 1,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "Cambodia": {
+      "trial_count": 1,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "Sierra Leone": {
+      "trial_count": 2,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "Eswatini": {
+      "trial_count": 1,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "Faroe Islands": {
+      "trial_count": 1,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "Mayotte": {
+      "trial_count": 2,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "Syria": {
+      "trial_count": 8,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "French Guiana": {
+      "trial_count": 1,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "Antigua and Barbuda": {
+      "trial_count": 3,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "Greenland": {
+      "trial_count": 2,
+      "mean_gap_score": 0.875,
+      "pct_with_core": 50.0
+    },
+    "Libya": {
+      "trial_count": 1,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "Afghanistan": {
+      "trial_count": 1,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "Macau": {
+      "trial_count": 2,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "Curacao": {
+      "trial_count": 1,
+      "mean_gap_score": 0.8462,
+      "pct_with_core": 100.0
+    },
+    "Niue": {
+      "trial_count": 4,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    },
+    "Angola": {
+      "trial_count": 1,
+      "mean_gap_score": 1.0,
+      "pct_with_core": 0.0
+    }
+  },
+  "by_region": {
+    "Americas": {
+      "trial_count": 27114,
+      "countries": [
+        "Argentina",
+        "Brazil",
+        "Canada",
+        "Chile",
+        "Colombia",
+        "Mexico",
+        "Peru",
+        "United States"
+      ],
+      "mean_gap_score": 0.9529,
+      "pct_with_core": 13.4,
+      "n_countries": 8,
+      "cv_deaths_total": 1200000,
+      "trials_per_million_cv_deaths": 22595.0
+    },
+    "Other": {
+      "trial_count": 8644,
+      "countries": [
+        "Afghanistan",
+        "Albania",
+        "Algeria",
+        "Andorra",
+        "Angola",
+        "Antigua and Barbuda",
+        "Armenia",
+        "Azerbaijan",
+        "Bahrain",
+        "Bangladesh",
+        "Barbados",
+        "Belarus",
+        "Benin",
+        "Bermuda",
+        "Bolivia",
+        "Bosnia and Herzegovina",
+        "Botswana",
+        "Brunei",
+        "Bulgaria",
+        "Burkina Faso",
+        "Burma",
+        "Burundi",
+        "Cambodia",
+        "Cameroon",
+        "Costa Rica",
+        "Croatia",
+        "Cuba",
+        "Curacao",
+        "Cyprus",
+        "Czechia",
+        "C\u00f4te d\u2019Ivoire",
+        "Democratic Republic of the Congo",
+        "Dominican Republic",
+        "Ecuador",
+        "El Salvador",
+        "Estonia",
+        "Eswatini",
+        "Ethiopia",
+        "Faroe Islands",
+        "Fiji",
+        "French Guiana",
+        "Gabon",
+        "Georgia",
+        "Ghana",
+        "Greenland",
+        "Grenada",
+        "Guadeloupe",
+        "Guam",
+        "Guatemala",
+        "Guinea",
+        "Haiti",
+        "Holy See",
+        "Honduras",
+        "Hong Kong",
+        "Iceland",
+        "Iraq",
+        "Jamaica",
+        "Jersey",
+        "Jordan",
+        "Kazakhstan",
+        "Kenya",
+        "Kuwait",
+        "Kyrgyzstan",
+        "Laos",
+        "Latvia",
+        "Lebanon",
+        "Lesotho",
+        "Libya",
+        "Lithuania",
+        "Luxembourg",
+        "Macau",
+        "Malawi",
+        "Malaysia",
+        "Mali",
+        "Malta",
+        "Martinique",
+        "Mauritius",
+        "Mayotte",
+        "Moldova",
+        "Monaco",
+        "Mongolia",
+        "Montenegro",
+        "Montserrat",
+        "Morocco",
+        "Mozambique",
+        "Nepal",
+        "New Caledonia",
+        "Nicaragua",
+        "Niger",
+        "Nigeria",
+        "Niue",
+        "North Macedonia",
+        "Oman",
+        "Palestinian Territories",
+        "Panama",
+        "Paraguay",
+        "Philippines",
+        "Puerto Rico",
+        "Qatar",
+        "Republic of the Congo",
+        "Reunion",
+        "Rwanda",
+        "Senegal",
+        "Serbia",
+        "Serbia and Montenegro",
+        "Seychelles",
+        "Sierra Leone",
+        "Singapore",
+        "Slovakia",
+        "Slovenia",
+        "Sri Lanka",
+        "Sudan",
+        "Suriname",
+        "Syria",
+        "Tanzania",
+        "The Bahamas",
+        "The Gambia",
+        "Trinidad and Tobago",
+        "Tunisia",
+        "Turkey (T\u00fcrkiye)",
+        "Uganda",
+        "United Arab Emirates",
+        "Uruguay",
+        "Uzbekistan",
+        "Venezuela",
+        "Vietnam",
+        "Virgin Islands",
+        "Yemen",
+        "Zambia",
+        "Zimbabwe"
+      ],
+      "mean_gap_score": 0.9185,
+      "pct_with_core": 22.0,
+      "n_countries": 130,
+      "trials_per_million_cv_deaths": 0
+    },
+    "Europe": {
+      "trial_count": 38922,
+      "countries": [
+        "Austria",
+        "Belgium",
+        "Denmark",
+        "Finland",
+        "France",
+        "Germany",
+        "Greece",
+        "Hungary",
+        "Ireland",
+        "Italy",
+        "Netherlands",
+        "Norway",
+        "Poland",
+        "Portugal",
+        "Romania",
+        "Russia",
+        "Spain",
+        "Sweden",
+        "Switzerland",
+        "Ukraine",
+        "United Kingdom"
+      ],
+      "mean_gap_score": 0.9317,
+      "pct_with_core": 19.8,
+      "n_countries": 21,
+      "cv_deaths_total": 4200000,
+      "trials_per_million_cv_deaths": 9267.1
+    },
+    "Western Pacific": {
+      "trial_count": 12439,
+      "countries": [
+        "Australia",
+        "China",
+        "Japan",
+        "New Zealand",
+        "South Korea",
+        "Taiwan"
+      ],
+      "mean_gap_score": 0.93,
+      "pct_with_core": 19.6,
+      "n_countries": 6,
+      "cv_deaths_total": 6100000,
+      "trials_per_million_cv_deaths": 2039.2
+    },
+    "Africa": {
+      "trial_count": 373,
+      "countries": [
+        "South Africa"
+      ],
+      "mean_gap_score": 0.9011,
+      "pct_with_core": 25.2,
+      "n_countries": 1,
+      "cv_deaths_total": 1300000,
+      "trials_per_million_cv_deaths": 286.9
+    },
+    "Eastern Mediterranean": {
+      "trial_count": 2911,
+      "countries": [
+        "Egypt",
+        "Iran",
+        "Israel",
+        "Pakistan",
+        "Saudi Arabia"
+      ],
+      "mean_gap_score": 0.9404,
+      "pct_with_core": 14.3,
+      "n_countries": 5,
+      "cv_deaths_total": 1700000,
+      "trials_per_million_cv_deaths": 1712.4
+    },
+    "South-East Asia": {
+      "trial_count": 1213,
+      "countries": [
+        "India",
+        "Indonesia",
+        "Thailand"
+      ],
+      "mean_gap_score": 0.9139,
+      "pct_with_core": 21.8,
+      "n_countries": 3,
+      "cv_deaths_total": 4600000,
+      "trials_per_million_cv_deaths": 263.7
+    }
+  },
+  "top_20_countries": [
+    {
+      "country": "United States",
+      "trial_count": 19556,
+      "mean_gap_score": 0.9625,
+      "pct_with_core": 10.9
+    },
+    {
+      "country": "China",
+      "trial_count": 5629,
+      "mean_gap_score": 0.9326,
+      "pct_with_core": 18.6
+    },
+    {
+      "country": "France",
+      "trial_count": 5080,
+      "mean_gap_score": 0.9613,
+      "pct_with_core": 12.1
+    },
+    {
+      "country": "Germany",
+      "trial_count": 4523,
+      "mean_gap_score": 0.9306,
+      "pct_with_core": 19.7
+    },
+    {
+      "country": "Canada",
+      "trial_count": 4076,
+      "mean_gap_score": 0.9398,
+      "pct_with_core": 17.2
+    },
+    {
+      "country": "United Kingdom",
+      "trial_count": 3946,
+      "mean_gap_score": 0.9395,
+      "pct_with_core": 18.6
+    },
+    {
+      "country": "Italy",
+      "trial_count": 3772,
+      "mean_gap_score": 0.9332,
+      "pct_with_core": 18.2
+    },
+    {
+      "country": "Spain",
+      "trial_count": 2997,
+      "mean_gap_score": 0.9341,
+      "pct_with_core": 20.6
+    },
+    {
+      "country": "Netherlands",
+      "trial_count": 2467,
+      "mean_gap_score": 0.9162,
+      "pct_with_core": 24.9
+    },
+    {
+      "country": "South Korea",
+      "trial_count": 2413,
+      "mean_gap_score": 0.9219,
+      "pct_with_core": 22.8
+    },
+    {
+      "country": "Denmark",
+      "trial_count": 1990,
+      "mean_gap_score": 0.9247,
+      "pct_with_core": 22.7
+    },
+    {
+      "country": "Belgium",
+      "trial_count": 1948,
+      "mean_gap_score": 0.9261,
+      "pct_with_core": 22.1
+    },
+    {
+      "country": "Switzerland",
+      "trial_count": 1713,
+      "mean_gap_score": 0.941,
+      "pct_with_core": 17.2
+    },
+    {
+      "country": "Poland",
+      "trial_count": 1673,
+      "mean_gap_score": 0.9063,
+      "pct_with_core": 25.1
+    },
+    {
+      "country": "Turkey (T\u00fcrkiye)",
+      "trial_count": 1645,
+      "mean_gap_score": 0.9511,
+      "pct_with_core": 12.2
+    },
+    {
+      "country": "Brazil",
+      "trial_count": 1605,
+      "mean_gap_score": 0.9278,
+      "pct_with_core": 20.4
+    },
+    {
+      "country": "Sweden",
+      "trial_count": 1480,
+      "mean_gap_score": 0.9191,
+      "pct_with_core": 22.8
+    },
+    {
+      "country": "Australia",
+      "trial_count": 1408,
+      "mean_gap_score": 0.9272,
+      "pct_with_core": 19.8
+    },
+    {
+      "country": "Taiwan",
+      "trial_count": 1392,
+      "mean_gap_score": 0.9466,
+      "pct_with_core": 14.2
+    },
+    {
+      "country": "Austria",
+      "trial_count": 1333,
+      "mean_gap_score": 0.9362,
+      "pct_with_core": 18.8
+    }
+  ]
+}

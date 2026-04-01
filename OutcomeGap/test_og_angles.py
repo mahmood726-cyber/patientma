@@ -5,7 +5,7 @@ import pytest
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..", "shared"))
 
-from analyze_angles import (
+from analyze_og_angles import (
     analyze_intervention_landscape,
     analyze_composites,
 )

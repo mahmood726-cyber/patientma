@@ -1,0 +1,207 @@
+{
+  "total_trials": 65383,
+  "cutoff_distribution": {
+    "no_limit": 32347,
+    "85+": 4981,
+    "80-84": 1641,
+    "75-79": 1224,
+    "70-74": 931,
+    "65-69": 694,
+    "<65": 23565
+  },
+  "pct_cutoff_below_75": 37.5,
+  "median_cutoff": 24.0,
+  "exclusion_burden": {
+    "heart_failure": {
+      "pct_trials_excluding_elderly": 41.3,
+      "real_world_elderly_pct": 50.0,
+      "estimated_exclusion_impact": 20.6
+    },
+    "acute_coronary_syndrome": {
+      "pct_trials_excluding_elderly": 39.5,
+      "real_world_elderly_pct": 35.0,
+      "estimated_exclusion_impact": 13.8
+    },
+    "atrial_fibrillation": {
+      "pct_trials_excluding_elderly": 36.6,
+      "real_world_elderly_pct": 60.0,
+      "estimated_exclusion_impact": 21.9
+    },
+    "hypertension": {
+      "pct_trials_excluding_elderly": 31.6,
+      "real_world_elderly_pct": 40.0,
+      "estimated_exclusion_impact": 12.6
+    },
+    "other": {
+      "pct_trials_excluding_elderly": 39.2,
+      "real_world_elderly_pct": 30.0,
+      "estimated_exclusion_impact": 11.7
+    }
+  },
+  "by_condition": {
+    "other": {
+      "count": 41922,
+      "has_cutoff": 20800,
+      "below_75": 16418,
+      "pct_has_cutoff": 49.6,
+      "pct_below_75": 39.2,
+      "median_cutoff": 18.0
+    },
+    "hypertension": {
+      "count": 6392,
+      "has_cutoff": 3274,
+      "below_75": 2017,
+      "pct_has_cutoff": 51.2,
+      "pct_below_75": 31.6,
+      "median_cutoff": 50.0
+    },
+    "acute_coronary_syndrome": {
+      "count": 7752,
+      "has_cutoff": 4064,
+      "below_75": 3063,
+      "pct_has_cutoff": 52.4,
+      "pct_below_75": 39.5,
+      "median_cutoff": 27.0
+    },
+    "atrial_fibrillation": {
+      "count": 3231,
+      "has_cutoff": 1585,
+      "below_75": 1181,
+      "pct_has_cutoff": 49.1,
+      "pct_below_75": 36.6,
+      "median_cutoff": 29
+    },
+    "heart_failure": {
+      "count": 6086,
+      "has_cutoff": 3313,
+      "below_75": 2511,
+      "pct_has_cutoff": 54.4,
+      "pct_below_75": 41.3,
+      "median_cutoff": 40
+    }
+  },
+  "by_era": {
+    "2020-2025": {
+      "count": 24587,
+      "has_cutoff": 12259,
+      "below_75": 9361,
+      "pct_has_cutoff": 49.9,
+      "pct_below_75": 38.1,
+      "median_cutoff": 24
+    },
+    "2005-2009": {
+      "count": 8267,
+      "has_cutoff": 4397,
+      "below_75": 3277,
+      "pct_has_cutoff": 53.2,
+      "pct_below_75": 39.6,
+      "median_cutoff": 24
+    },
+    "2000-2004": {
+      "count": 2929,
+      "has_cutoff": 1482,
+      "below_75": 1101,
+      "pct_has_cutoff": 50.6,
+      "pct_below_75": 37.6,
+      "median_cutoff": 21.0
+    },
+    "2015-2019": {
+      "count": 15876,
+      "has_cutoff": 7991,
+      "below_75": 6165,
+      "pct_has_cutoff": 50.3,
+      "pct_below_75": 38.8,
+      "median_cutoff": 21
+    },
+    "2010-2014": {
+      "count": 12081,
+      "has_cutoff": 6392,
+      "below_75": 4876,
+      "pct_has_cutoff": 52.9,
+      "pct_below_75": 40.4,
+      "median_cutoff": 25.0
+    },
+    "Unknown": {
+      "count": 309,
+      "has_cutoff": 137,
+      "below_75": 112,
+      "pct_has_cutoff": 44.3,
+      "pct_below_75": 36.2,
+      "median_cutoff": 18
+    },
+    "Pre-2000": {
+      "count": 1334,
+      "has_cutoff": 378,
+      "below_75": 298,
+      "pct_has_cutoff": 28.3,
+      "pct_below_75": 22.3,
+      "median_cutoff": 20.0
+    }
+  },
+  "by_sponsor": {
+    "INDUSTRY": {
+      "count": 12840,
+      "has_cutoff": 7451,
+      "below_75": 5521,
+      "pct_has_cutoff": 58.0,
+      "pct_below_75": 43.0,
+      "median_cutoff": 25
+    },
+    "OTHER": {
+      "count": 48223,
+      "has_cutoff": 23682,
+      "below_75": 18190,
+      "pct_has_cutoff": 49.1,
+      "pct_below_75": 37.7,
+      "median_cutoff": 22.0
+    },
+    "NIH": {
+      "count": 1321,
+      "has_cutoff": 483,
+      "below_75": 370,
+      "pct_has_cutoff": 36.6,
+      "pct_below_75": 28.0,
+      "median_cutoff": 21
+    },
+    "FED": {
+      "count": 610,
+      "has_cutoff": 291,
+      "below_75": 209,
+      "pct_has_cutoff": 47.7,
+      "pct_below_75": 34.3,
+      "median_cutoff": 28
+    },
+    "NETWORK": {
+      "count": 500,
+      "has_cutoff": 292,
+      "below_75": 262,
+      "pct_has_cutoff": 58.4,
+      "pct_below_75": 52.4,
+      "median_cutoff": 16.5
+    },
+    "OTHER_GOV": {
+      "count": 1824,
+      "has_cutoff": 801,
+      "below_75": 609,
+      "pct_has_cutoff": 43.9,
+      "pct_below_75": 33.4,
+      "median_cutoff": 28
+    },
+    "INDIV": {
+      "count": 58,
+      "has_cutoff": 34,
+      "below_75": 28,
+      "pct_has_cutoff": 58.6,
+      "pct_below_75": 48.3,
+      "median_cutoff": 21.0
+    },
+    "UNKNOWN": {
+      "count": 7,
+      "has_cutoff": 2,
+      "below_75": 1,
+      "pct_has_cutoff": 28.6,
+      "pct_below_75": 14.3,
+      "median_cutoff": 99.5
+    }
+  }
+}

@@ -1,0 +1,257 @@
+{
+  "total_trials": 65383,
+  "pct_with_core": 13.8,
+  "pct_with_PRO": 6.3,
+  "mean_gap_score": 0.9526,
+  "by_condition": {
+    "other": {
+      "count": 41922,
+      "core_sum": 0,
+      "pro_sum": 0,
+      "gap_sum": 41922.0,
+      "pct_with_core": 0.0,
+      "pct_with_PRO": 0.0,
+      "mean_gap_score": 1.0
+    },
+    "hypertension": {
+      "count": 6392,
+      "core_sum": 1321,
+      "pro_sum": 822,
+      "gap_sum": 6008.833600000014,
+      "pct_with_core": 20.7,
+      "pct_with_PRO": 12.9,
+      "mean_gap_score": 0.9401
+    },
+    "acute_coronary_syndrome": {
+      "count": 7752,
+      "core_sum": 3636,
+      "pro_sum": 808,
+      "gap_sum": 6356.3599000000095,
+      "pct_with_core": 46.9,
+      "pct_with_PRO": 10.4,
+      "mean_gap_score": 0.82
+    },
+    "atrial_fibrillation": {
+      "count": 3231,
+      "core_sum": 1429,
+      "pro_sum": 676,
+      "gap_sum": 2741.6681000000085,
+      "pct_with_core": 44.2,
+      "pct_with_PRO": 20.9,
+      "mean_gap_score": 0.8486
+    },
+    "heart_failure": {
+      "count": 6086,
+      "core_sum": 2610,
+      "pro_sum": 1810,
+      "gap_sum": 5257.939800000008,
+      "pct_with_core": 42.9,
+      "pct_with_PRO": 29.7,
+      "mean_gap_score": 0.8639
+    }
+  },
+  "by_phase": {
+    "": {
+      "count": 20762,
+      "core_sum": 2554,
+      "pro_sum": 656,
+      "gap_sum": 19705.63219999999,
+      "pct_with_core": 12.3,
+      "pct_with_PRO": 3.2,
+      "mean_gap_score": 0.9491
+    },
+    "PHASE2": {
+      "count": 5658,
+      "core_sum": 590,
+      "pro_sum": 310,
+      "gap_sum": 5483.887,
+      "pct_with_core": 10.4,
+      "pct_with_PRO": 5.5,
+      "mean_gap_score": 0.9692
+    },
+    "NA": {
+      "count": 24818,
+      "core_sum": 3698,
+      "pro_sum": 2248,
+      "gap_sum": 23720.726999999963,
+      "pct_with_core": 14.9,
+      "pct_with_PRO": 9.1,
+      "mean_gap_score": 0.9558
+    },
+    "PHASE3": {
+      "count": 4530,
+      "core_sum": 766,
+      "pro_sum": 334,
+      "gap_sum": 4233.527800000005,
+      "pct_with_core": 16.9,
+      "pct_with_PRO": 7.4,
+      "mean_gap_score": 0.9346
+    },
+    "PHASE1": {
+      "count": 4038,
+      "core_sum": 246,
+      "pro_sum": 153,
+      "gap_sum": 3965.180800000005,
+      "pct_with_core": 6.1,
+      "pct_with_PRO": 3.8,
+      "mean_gap_score": 0.982
+    },
+    "PHASE4": {
+      "count": 5045,
+      "core_sum": 1109,
+      "pro_sum": 398,
+      "gap_sum": 4657.115200000008,
+      "pct_with_core": 22.0,
+      "pct_with_PRO": 7.9,
+      "mean_gap_score": 0.9231
+    },
+    "EARLY_PHASE1": {
+      "count": 532,
+      "core_sum": 33,
+      "pro_sum": 17,
+      "gap_sum": 520.7314,
+      "pct_with_core": 6.2,
+      "pct_with_PRO": 3.2,
+      "mean_gap_score": 0.9788
+    }
+  },
+  "by_era": {
+    "2020-2025": {
+      "count": 24587,
+      "core_sum": 3356,
+      "pro_sum": 1736,
+      "gap_sum": 23569.899999999965,
+      "pct_with_core": 13.6,
+      "pct_with_PRO": 7.1,
+      "mean_gap_score": 0.9586
+    },
+    "2005-2009": {
+      "count": 8267,
+      "core_sum": 1197,
+      "pro_sum": 494,
+      "gap_sum": 7770.063500000003,
+      "pct_with_core": 14.5,
+      "pct_with_PRO": 6.0,
+      "mean_gap_score": 0.9399
+    },
+    "2000-2004": {
+      "count": 2929,
+      "core_sum": 372,
+      "pro_sum": 151,
+      "gap_sum": 2765.0293000000006,
+      "pct_with_core": 12.7,
+      "pct_with_PRO": 5.2,
+      "mean_gap_score": 0.944
+    },
+    "2015-2019": {
+      "count": 15876,
+      "core_sum": 2227,
+      "pro_sum": 989,
+      "gap_sum": 15157.011299999907,
+      "pct_with_core": 14.0,
+      "pct_with_PRO": 6.2,
+      "mean_gap_score": 0.9547
+    },
+    "2010-2014": {
+      "count": 12081,
+      "core_sum": 1765,
+      "pro_sum": 715,
+      "gap_sum": 11423.76419999996,
+      "pct_with_core": 14.6,
+      "pct_with_PRO": 5.9,
+      "mean_gap_score": 0.9456
+    },
+    "Unknown": {
+      "count": 309,
+      "core_sum": 6,
+      "pro_sum": 3,
+      "gap_sum": 304.0,
+      "pct_with_core": 1.9,
+      "pct_with_PRO": 1.0,
+      "mean_gap_score": 0.9838
+    },
+    "Pre-2000": {
+      "count": 1334,
+      "core_sum": 73,
+      "pro_sum": 28,
+      "gap_sum": 1297.0331,
+      "pct_with_core": 5.5,
+      "pct_with_PRO": 2.1,
+      "mean_gap_score": 0.9723
+    }
+  },
+  "by_sponsor_class": {
+    "INDUSTRY": {
+      "count": 12840,
+      "core_sum": 1925,
+      "pro_sum": 821,
+      "gap_sum": 12188.00359999995,
+      "pct_with_core": 15.0,
+      "pct_with_PRO": 6.4,
+      "mean_gap_score": 0.9492
+    },
+    "OTHER": {
+      "count": 48223,
+      "core_sum": 6658,
+      "pro_sum": 3101,
+      "gap_sum": 45940.33210000075,
+      "pct_with_core": 13.8,
+      "pct_with_PRO": 6.4,
+      "mean_gap_score": 0.9527
+    },
+    "NIH": {
+      "count": 1321,
+      "core_sum": 10,
+      "pro_sum": 4,
+      "gap_sum": 1315.3237,
+      "pct_with_core": 0.8,
+      "pct_with_PRO": 0.3,
+      "mean_gap_score": 0.9957
+    },
+    "FED": {
+      "count": 610,
+      "core_sum": 74,
+      "pro_sum": 45,
+      "gap_sum": 577.8106,
+      "pct_with_core": 12.1,
+      "pct_with_PRO": 7.4,
+      "mean_gap_score": 0.9472
+    },
+    "NETWORK": {
+      "count": 500,
+      "core_sum": 55,
+      "pro_sum": 23,
+      "gap_sum": 478.4787,
+      "pct_with_core": 11.0,
+      "pct_with_PRO": 4.6,
+      "mean_gap_score": 0.957
+    },
+    "OTHER_GOV": {
+      "count": 1824,
+      "core_sum": 268,
+      "pro_sum": 117,
+      "gap_sum": 1723.7935999999995,
+      "pct_with_core": 14.7,
+      "pct_with_PRO": 6.4,
+      "mean_gap_score": 0.9451
+    },
+    "INDIV": {
+      "count": 58,
+      "core_sum": 6,
+      "pro_sum": 5,
+      "gap_sum": 56.0591,
+      "pct_with_core": 10.3,
+      "pct_with_PRO": 8.6,
+      "mean_gap_score": 0.9665
+    },
+    "UNKNOWN": {
+      "count": 7,
+      "core_sum": 0,
+      "pro_sum": 0,
+      "gap_sum": 7.0,
+      "pct_with_core": 0.0,
+      "pct_with_PRO": 0.0,
+      "mean_gap_score": 1.0
+    }
+  }
+}
