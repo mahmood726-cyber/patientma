@@ -1,0 +1,32 @@
+{
+  "by_centricity": {
+    "high": {
+      "count": 1182,
+      "posted": 112,
+      "posting_rate": 9.5,
+      "median_enrollment": 360.0
+    },
+    "medium": {
+      "count": 4293,
+      "posted": 463,
+      "posting_rate": 10.8,
+      "median_enrollment": 217
+    },
+    "low": {
+      "count": 59908,
+      "posted": 7241,
+      "posting_rate": 12.1,
+      "median_enrollment": 82.0
+    }
+  },
+  "evidence_waste": {
+    "total_no_results_enrollment": 532282129,
+    "total_enrollment": 553911467,
+    "pct_wasted": 96.1
+  },
+  "logistic_model": {
+    "gap_score_coefficient": -0.7538,
+    "intercept": -0.806,
+    "iterations": 50
+  }
+}

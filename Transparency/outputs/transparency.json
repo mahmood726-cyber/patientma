@@ -1,0 +1,108 @@
+{
+  "patient_centered": {
+    "count": 8996,
+    "posted": 1062,
+    "posting_rate": 11.8
+  },
+  "surrogate_only": {
+    "count": 3950,
+    "posted": 653,
+    "posting_rate": 16.5
+  },
+  "unclassified": {
+    "count": 52437,
+    "posted": 6101,
+    "posting_rate": 11.6
+  },
+  "by_era": {
+    "2020-2025": {
+      "patient_centered": {
+        "count": 3356,
+        "posted": 124,
+        "posting_rate": 3.7
+      },
+      "surrogate_only": {
+        "count": 1328,
+        "posted": 89,
+        "posting_rate": 6.7
+      }
+    },
+    "2005-2009": {
+      "patient_centered": {
+        "count": 1197,
+        "posted": 273,
+        "posting_rate": 22.8
+      },
+      "surrogate_only": {
+        "count": 698,
+        "posted": 229,
+        "posting_rate": 32.8
+      }
+    },
+    "2000-2004": {
+      "patient_centered": {
+        "count": 372,
+        "posted": 45,
+        "posting_rate": 12.1
+      },
+      "surrogate_only": {
+        "count": 206,
+        "posted": 20,
+        "posting_rate": 9.7
+      }
+    },
+    "2015-2019": {
+      "patient_centered": {
+        "count": 2227,
+        "posted": 308,
+        "posting_rate": 13.8
+      },
+      "surrogate_only": {
+        "count": 897,
+        "posted": 120,
+        "posting_rate": 13.4
+      }
+    },
+    "2010-2014": {
+      "patient_centered": {
+        "count": 1765,
+        "posted": 308,
+        "posting_rate": 17.5
+      },
+      "surrogate_only": {
+        "count": 784,
+        "posted": 190,
+        "posting_rate": 24.2
+      }
+    },
+    "Unknown": {
+      "patient_centered": {
+        "count": 6,
+        "posted": 0,
+        "posting_rate": 0.0
+      },
+      "surrogate_only": {
+        "count": 6,
+        "posted": 0,
+        "posting_rate": 0.0
+      }
+    },
+    "Pre-2000": {
+      "patient_centered": {
+        "count": 73,
+        "posted": 4,
+        "posting_rate": 5.5
+      },
+      "surrogate_only": {
+        "count": 31,
+        "posted": 5,
+        "posting_rate": 16.1
+      }
+    }
+  },
+  "chi2_test": {
+    "chi2": 52.94,
+    "p": 0.0,
+    "cramers_v": 0.0642
+  }
+}
