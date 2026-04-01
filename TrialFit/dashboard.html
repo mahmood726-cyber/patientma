@@ -1,0 +1,1413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CardioTrialFit — Generalizability of Cardiovascular Trials</title>
+<style>
+/* ===== CSS Custom Properties ===== */
+:root {
+  /* Light mode (default) */
+  --bg-primary: #f4f6f9;
+  --bg-card: #ffffff;
+  --bg-header: #0b1d3a;
+  --text-primary: #1a2332;
+  --text-secondary: #4a5568;
+  --text-muted: #718096;
+  --text-on-header: #ffffff;
+  --border-color: #e2e8f0;
+  --shadow-card: 0 2px 8px rgba(11,29,58,0.08);
+  --shadow-card-hover: 0 4px 16px rgba(11,29,58,0.14);
+  --accent-navy: #0b1d3a;
+  --accent-teal: #0d9488;
+  --accent-teal-light: #14b8a6;
+  --accent-coral: #f97066;
+  --accent-coral-light: #fca5a1;
+  --accent-blue: #2563eb;
+  --accent-blue-light: #60a5fa;
+  --accent-amber: #d97706;
+  --chart-bg: #ffffff;
+  --chart-grid: #e2e8f0;
+  --chart-text: #4a5568;
+  --summary-card-1: #0b1d3a;
+  --summary-card-2: #0d9488;
+  --summary-card-3: #2563eb;
+  --summary-card-4: #d97706;
+  --btn-bg: #0b1d3a;
+  --btn-text: #ffffff;
+  --btn-hover: #1a3a6a;
+  --toggle-bg: #e2e8f0;
+  --toggle-knob: #0b1d3a;
+  --focus-ring: #2563eb;
+  --skip-bg: #2563eb;
+  --skip-text: #ffffff;
+  --radar-fill: rgba(13,148,136,0.25);
+  --radar-stroke: #0d9488;
+  --bar-primary: #0d9488;
+  --bar-secondary: #f97066;
+  --bar-tertiary: #2563eb;
+  --line-primary: #0d9488;
+  --line-dot: #0b1d3a;
+}
+
+body.tf-dark {
+  --bg-primary: #0f172a;
+  --bg-card: #1e293b;
+  --bg-header: #020617;
+  --text-primary: #e2e8f0;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --text-on-header: #f1f5f9;
+  --border-color: #334155;
+  --shadow-card: 0 2px 8px rgba(0,0,0,0.3);
+  --shadow-card-hover: 0 4px 16px rgba(0,0,0,0.4);
+  --chart-bg: #1e293b;
+  --chart-grid: #334155;
+  --chart-text: #94a3b8;
+  --toggle-bg: #334155;
+  --toggle-knob: #14b8a6;
+  --btn-bg: #14b8a6;
+  --btn-text: #020617;
+  --btn-hover: #0d9488;
+  --radar-fill: rgba(20,184,166,0.3);
+  --radar-stroke: #14b8a6;
+  --bar-primary: #14b8a6;
+  --bar-secondary: #fca5a1;
+  --bar-tertiary: #60a5fa;
+  --line-primary: #14b8a6;
+  --line-dot: #e2e8f0;
+}
+
+/* ===== Reset & Base ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* ===== Skip Nav ===== */
+#tf-skip-nav {
+  position: absolute;
+  top: -100%;
+  left: 16px;
+  z-index: 10000;
+  padding: 8px 16px;
+  background: var(--skip-bg);
+  color: var(--skip-text);
+  border-radius: 0 0 8px 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: top 0.2s;
+}
+
+#tf-skip-nav:focus {
+  top: 0;
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* ===== Focus Styles ===== */
+*:focus-visible {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+/* ===== Header ===== */
+#tf-header {
+  background: var(--bg-header);
+  color: var(--text-on-header);
+  padding: 24px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+#tf-header-title {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+}
+
+#tf-header-subtitle {
+  font-size: 14px;
+  opacity: 0.8;
+  margin-top: 2px;
+}
+
+#tf-header-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* ===== Theme Toggle ===== */
+#tf-theme-toggle {
+  position: relative;
+  width: 52px;
+  height: 28px;
+  background: var(--toggle-bg);
+  border: none;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: background 0.3s;
+  flex-shrink: 0;
+}
+
+#tf-theme-toggle::after {
+  content: '';
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 22px;
+  height: 22px;
+  background: var(--toggle-knob);
+  border-radius: 50%;
+  transition: transform 0.3s, background 0.3s;
+}
+
+body.tf-dark #tf-theme-toggle::after {
+  transform: translateX(24px);
+}
+
+#tf-theme-label {
+  font-size: 13px;
+  color: var(--text-on-header);
+  opacity: 0.9;
+}
+
+/* ===== Buttons ===== */
+.tf-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border: 2px solid transparent;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  text-decoration: none;
+}
+
+.tf-btn:hover {
+  background: var(--btn-hover);
+  transform: translateY(-1px);
+}
+
+.tf-btn:active {
+  transform: translateY(0);
+}
+
+#tf-header .tf-btn {
+  background: rgba(255,255,255,0.15);
+  color: var(--text-on-header);
+  border-color: rgba(255,255,255,0.3);
+}
+
+#tf-header .tf-btn:hover {
+  background: rgba(255,255,255,0.25);
+}
+
+/* ===== Main Container ===== */
+#tf-main {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 24px 24px 48px;
+}
+
+/* ===== Summary Cards ===== */
+#tf-summary-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 28px;
+}
+
+.tf-summary-card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  padding: 20px 24px;
+  box-shadow: var(--shadow-card);
+  border-left: 5px solid;
+  transition: box-shadow 0.2s, transform 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.tf-summary-card:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+
+.tf-summary-card:nth-child(1) { border-left-color: var(--summary-card-1); }
+.tf-summary-card:nth-child(2) { border-left-color: var(--summary-card-2); }
+.tf-summary-card:nth-child(3) { border-left-color: var(--summary-card-3); }
+.tf-summary-card:nth-child(4) { border-left-color: var(--summary-card-4); }
+
+.tf-summary-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 0 12px 0 60px;
+  opacity: 0.06;
+}
+
+.tf-summary-card:nth-child(1)::after { background: var(--summary-card-1); }
+.tf-summary-card:nth-child(2)::after { background: var(--summary-card-2); }
+.tf-summary-card:nth-child(3)::after { background: var(--summary-card-3); }
+.tf-summary-card:nth-child(4)::after { background: var(--summary-card-4); }
+
+.tf-card-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.tf-card-value {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--text-primary);
+}
+
+.tf-card-unit {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+/* ===== Chart Grid ===== */
+#tf-charts-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 28px;
+}
+
+.tf-chart-card {
+  background: var(--bg-card);
+  border-radius: 12px;
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+
+.tf-chart-card:hover {
+  box-shadow: var(--shadow-card-hover);
+}
+
+.tf-chart-card.tf-full-width {
+  grid-column: 1 / -1;
+}
+
+.tf-chart-header {
+  padding: 16px 20px 12px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.tf-chart-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.tf-chart-subtitle {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.tf-chart-body {
+  padding: 16px 20px 20px;
+}
+
+.tf-chart-body canvas {
+  width: 100% !important;
+  display: block;
+}
+
+/* ===== Footer ===== */
+#tf-footer {
+  text-align: center;
+  padding: 20px 24px;
+  font-size: 12px;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-color);
+  margin-top: 20px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1024px) {
+  #tf-summary-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  #tf-charts-grid {
+    grid-template-columns: 1fr;
+  }
+  .tf-chart-card.tf-full-width {
+    grid-column: 1;
+  }
+}
+
+@media (max-width: 640px) {
+  #tf-header {
+    padding: 16px 16px;
+  }
+  #tf-header-title {
+    font-size: 18px;
+  }
+  #tf-summary-row {
+    grid-template-columns: 1fr;
+  }
+  #tf-main {
+    padding: 16px 12px 32px;
+  }
+  .tf-card-value {
+    font-size: 26px;
+  }
+}
+
+/* ===== Tooltip ===== */
+#tf-tooltip {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  background: var(--bg-header);
+  color: var(--text-on-header);
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  pointer-events: none;
+  max-width: 280px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  white-space: nowrap;
+}
+
+/* ===== Legend ===== */
+.tf-legend {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 8px 20px 0;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.tf-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.tf-legend-swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+</style>
+</head>
+<body>
+
+<!-- Skip Navigation -->
+<a id="tf-skip-nav" href="#tf-main">Skip to main content</a>
+
+<!-- Header -->
+<header id="tf-header">
+  <div>
+    <div id="tf-header-title">CardioTrialFit</div>
+    <div id="tf-header-subtitle">Generalizability of Cardiovascular Trials &mdash; 65,383 studies from ClinicalTrials.gov</div>
+  </div>
+  <div id="tf-header-controls">
+    <span id="tf-theme-label">Light</span>
+    <button id="tf-theme-toggle" aria-label="Toggle dark mode" role="switch" aria-checked="false"></button>
+    <button id="tf-export-btn" class="tf-btn" aria-label="Export data as CSV">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Export CSV
+    </button>
+  </div>
+</header>
+
+<!-- Main Content -->
+<main id="tf-main" aria-label="Dashboard content">
+
+  <!-- Summary Cards -->
+  <div id="tf-summary-row" role="region" aria-label="Key metrics">
+    <div class="tf-summary-card" id="tf-card-trials">
+      <div class="tf-card-label">Total Trials Analyzed</div>
+      <div class="tf-card-value" id="tf-val-trials">--</div>
+      <div class="tf-card-unit">cardiovascular studies</div>
+    </div>
+    <div class="tf-summary-card" id="tf-card-gi">
+      <div class="tf-card-label">Median Generalizability Index</div>
+      <div class="tf-card-value" id="tf-val-gi">--</div>
+      <div class="tf-card-unit">out of 100</div>
+    </div>
+    <div class="tf-summary-card" id="tf-card-age75">
+      <div class="tf-card-label">Exclude Age &gt; 75</div>
+      <div class="tf-card-value" id="tf-val-age75">--</div>
+      <div class="tf-card-unit">of all trials</div>
+    </div>
+    <div class="tf-summary-card" id="tf-card-ckd">
+      <div class="tf-card-label">Exclude CKD</div>
+      <div class="tf-card-value" id="tf-val-ckd">--</div>
+      <div class="tf-card-unit">of all trials</div>
+    </div>
+  </div>
+
+  <!-- Charts Grid -->
+  <div id="tf-charts-grid">
+
+    <!-- Chart 1: Condition Comparison (Grouped Bar) -->
+    <div class="tf-chart-card" id="tf-chart-condition-card">
+      <div class="tf-chart-header">
+        <div class="tf-chart-title" id="tf-chart-condition-title">Condition Comparison</div>
+        <div class="tf-chart-subtitle">Mean GI and mean exclusion count by condition</div>
+      </div>
+      <div class="tf-legend" id="tf-legend-condition">
+        <div class="tf-legend-item"><span class="tf-legend-swatch" style="background:#0d9488"></span> Mean GI</div>
+        <div class="tf-legend-item"><span class="tf-legend-swatch" style="background:#f97066"></span> Mean Exclusions (scaled)</div>
+      </div>
+      <div class="tf-chart-body">
+        <canvas id="tf-canvas-condition" height="320" role="img" aria-label="Grouped bar chart comparing mean generalizability index and exclusion counts across cardiovascular conditions"></canvas>
+      </div>
+    </div>
+
+    <!-- Chart 2: Radar / Spider -->
+    <div class="tf-chart-card" id="tf-chart-radar-card">
+      <div class="tf-chart-header">
+        <div class="tf-chart-title" id="tf-chart-radar-title">Average Scores Across 5 Dimensions</div>
+        <div class="tf-chart-subtitle">Normalized to 0&ndash;1 scale (age/20, sex/10, comorbidity/40, functional/15, representation/15)</div>
+      </div>
+      <div class="tf-chart-body">
+        <canvas id="tf-canvas-radar" height="360" role="img" aria-label="Radar chart showing dimension scores: age, sex, comorbidity, functional status, and representation"></canvas>
+      </div>
+    </div>
+
+    <!-- Chart 3: Exclusion Impact (Horizontal Bar) -->
+    <div class="tf-chart-card tf-full-width" id="tf-chart-exclusion-card">
+      <div class="tf-chart-header">
+        <div class="tf-chart-title" id="tf-chart-exclusion-title">Most Impactful Exclusion Criteria</div>
+        <div class="tf-chart-subtitle">Impact score = prevalence weight x frequency; label shows % of trials</div>
+      </div>
+      <div class="tf-chart-body">
+        <canvas id="tf-canvas-exclusion" height="340" role="img" aria-label="Horizontal bar chart ranking exclusion criteria by their real-world impact score"></canvas>
+      </div>
+    </div>
+
+    <!-- Chart 4: Era Trend (Line) -->
+    <div class="tf-chart-card" id="tf-chart-era-card">
+      <div class="tf-chart-header">
+        <div class="tf-chart-title" id="tf-chart-era-title">Generalizability Trend by Era</div>
+        <div class="tf-chart-subtitle">Mean GI score across study start date eras</div>
+      </div>
+      <div class="tf-chart-body">
+        <canvas id="tf-canvas-era" height="300" role="img" aria-label="Line chart showing generalizability index trend from pre-2000 to 2020-2025"></canvas>
+      </div>
+    </div>
+
+    <!-- Chart 5: Phase Comparison (Bar) -->
+    <div class="tf-chart-card" id="tf-chart-phase-card">
+      <div class="tf-chart-header">
+        <div class="tf-chart-title" id="tf-chart-phase-title">Generalizability by Trial Phase</div>
+        <div class="tf-chart-subtitle">Mean GI by registered trial phase</div>
+      </div>
+      <div class="tf-chart-body">
+        <canvas id="tf-canvas-phase" height="300" role="img" aria-label="Bar chart showing mean generalizability index by trial phase"></canvas>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer id="tf-footer">
+    CardioTrialFit Dashboard &mdash; Data from ClinicalTrials.gov (AACT) &mdash; Part of the PatientMA project
+  </footer>
+
+</main>
+
+<!-- Tooltip -->
+<div id="tf-tooltip" aria-hidden="true"></div>
+
+<script>
+/* ========================================================================
+   CardioTrialFit Dashboard — Embedded Data & Rendering
+   ======================================================================== */
+
+// ---- Embedded summary data ----
+const SUMMARY = {
+  "total_trials": 65383,
+  "mean_gi": 80.3,
+  "median_gi": 82,
+  "pct_exclude_age75": 38.5,
+  "pct_exclude_ckd": 19.6,
+  "by_condition": {
+    "other": { "count": 41922, "mean_gi": 80.3, "median_gi": 82.0, "mean_excl": 1.26 },
+    "hypertension": { "count": 6392, "mean_gi": 80.7, "median_gi": 83.0, "mean_excl": 1.47 },
+    "acute_coronary_syndrome": { "count": 7752, "mean_gi": 79.9, "median_gi": 81.0, "mean_excl": 1.31 },
+    "atrial_fibrillation": { "count": 3231, "mean_gi": 81.6, "median_gi": 85, "mean_excl": 1.13 },
+    "heart_failure": { "count": 6086, "mean_gi": 79.3, "median_gi": 80.0, "mean_excl": 1.29 }
+  },
+  "by_phase": {
+    "": { "count": 20762, "mean_gi": 83.1, "median_gi": 85.0, "mean_excl": 0.74 },
+    "PHASE2": { "count": 5658, "mean_gi": 76.2, "median_gi": 75.0, "mean_excl": 1.93 },
+    "NA": { "count": 24818, "mean_gi": 80.3, "median_gi": 81.0, "mean_excl": 1.29 },
+    "PHASE3": { "count": 4530, "mean_gi": 78.0, "median_gi": 78.0, "mean_excl": 1.8 },
+    "PHASE1": { "count": 4038, "mean_gi": 76.9, "median_gi": 75.0, "mean_excl": 1.73 },
+    "PHASE4": { "count": 5045, "mean_gi": 77.9, "median_gi": 78, "mean_excl": 1.86 },
+    "EARLY_PHASE1": { "count": 532, "mean_gi": 77.8, "median_gi": 76.0, "mean_excl": 1.83 }
+  },
+  "by_era": {
+    "2020-2025": { "count": 24587, "mean_gi": 80.6, "median_gi": 82, "mean_excl": 1.36 },
+    "2005-2009": { "count": 8267, "mean_gi": 79.7, "median_gi": 81, "mean_excl": 1.25 },
+    "2000-2004": { "count": 2929, "mean_gi": 80.0, "median_gi": 83, "mean_excl": 1.07 },
+    "2015-2019": { "count": 15876, "mean_gi": 80.2, "median_gi": 82.0, "mean_excl": 1.28 },
+    "2010-2014": { "count": 12081, "mean_gi": 79.8, "median_gi": 81, "mean_excl": 1.29 },
+    "Unknown": { "count": 309, "mean_gi": 80.2, "median_gi": 85, "mean_excl": 1.04 },
+    "Pre-2000": { "count": 1334, "mean_gi": 82.9, "median_gi": 85.0, "mean_excl": 0.4 }
+  },
+  "by_sponsor_class": {
+    "INDUSTRY": { "count": 12840, "mean_gi": 79.3, "median_gi": 80.0, "mean_excl": 1.53 },
+    "OTHER": { "count": 48223, "mean_gi": 80.5, "median_gi": 82, "mean_excl": 1.23 },
+    "NIH": { "count": 1321, "mean_gi": 81.7, "median_gi": 85, "mean_excl": 0.83 },
+    "FED": { "count": 610, "mean_gi": 79.7, "median_gi": 82.0, "mean_excl": 1.4 },
+    "NETWORK": { "count": 500, "mean_gi": 78.7, "median_gi": 78.0, "mean_excl": 1.06 },
+    "OTHER_GOV": { "count": 1824, "mean_gi": 81.0, "median_gi": 85.0, "mean_excl": 1.13 },
+    "INDIV": { "count": 58, "mean_gi": 76.4, "median_gi": 75.0, "mean_excl": 1.97 },
+    "UNKNOWN": { "count": 7, "mean_gi": 82.6, "median_gi": 85, "mean_excl": 0.86 }
+  },
+  "exclusion_ranking": [
+    { "exclusion": "ckd", "count": 12791, "pct_of_trials": 19.6, "real_world_weight": 8, "impact_score": 1.565 },
+    { "exclusion": "diabetes", "count": 7715, "pct_of_trials": 11.8, "real_world_weight": 7, "impact_score": 0.826 },
+    { "exclusion": "cancer", "count": 12746, "pct_of_trials": 19.5, "real_world_weight": 4, "impact_score": 0.78 },
+    { "exclusion": "cognitive", "count": 5831, "pct_of_trials": 8.9, "real_world_weight": 5, "impact_score": 0.446 },
+    { "exclusion": "pregnancy", "count": 25299, "pct_of_trials": 38.7, "real_world_weight": 1, "impact_score": 0.387 },
+    { "exclusion": "bleeding", "count": 5939, "pct_of_trials": 9.1, "real_world_weight": 4, "impact_score": 0.363 },
+    { "exclusion": "liver", "count": 5463, "pct_of_trials": 8.4, "real_world_weight": 3, "impact_score": 0.251 },
+    { "exclusion": "copd", "count": 3553, "pct_of_trials": 5.4, "real_world_weight": 4, "impact_score": 0.217 },
+    { "exclusion": "frailty", "count": 1458, "pct_of_trials": 2.2, "real_world_weight": 6, "impact_score": 0.134 },
+    { "exclusion": "anemia", "count": 1962, "pct_of_trials": 3.0, "real_world_weight": 3, "impact_score": 0.09 },
+    { "exclusion": "obesity", "count": 981, "pct_of_trials": 1.5, "real_world_weight": 5, "impact_score": 0.075 }
+  ],
+  "dimension_averages": {
+    "age": 9.4,
+    "sex": 10.0,
+    "comorbidity": 36.2,
+    "functional": 14.7,
+    "representation": 10.0
+  }
+};
+
+/* ===== Utility: CSS variable reader ===== */
+function cssVar(name) {
+  return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+}
+
+/* ===== Utility: Device pixel ratio scaling ===== */
+function setupHiDPI(canvas, w, h) {
+  var dpr = window.devicePixelRatio || 1;
+  canvas.width = w * dpr;
+  canvas.height = h * dpr;
+  canvas.style.width = w + 'px';
+  canvas.style.height = h + 'px';
+  var ctx = canvas.getContext('2d');
+  ctx.scale(dpr, dpr);
+  return ctx;
+}
+
+/* ===== Tooltip ===== */
+var tooltipEl = document.getElementById('tf-tooltip');
+
+function showTooltip(e, text) {
+  tooltipEl.textContent = text;
+  tooltipEl.style.display = 'block';
+  var x = e.clientX + 12;
+  var y = e.clientY - 30;
+  if (x + 200 > window.innerWidth) x = e.clientX - 200;
+  if (y < 8) y = e.clientY + 18;
+  tooltipEl.style.left = x + 'px';
+  tooltipEl.style.top = y + 'px';
+}
+
+function hideTooltip() {
+  tooltipEl.style.display = 'none';
+}
+
+/* ===== Utility: Number formatting ===== */
+function fmtNum(n) {
+  if (n == null) return '--';
+  return n.toLocaleString('en-US');
+}
+
+/* ===== Utility: Nice label for condition keys ===== */
+function niceCondition(key) {
+  var map = {
+    'hypertension': 'Hypertension',
+    'acute_coronary_syndrome': 'Acute Coronary Syndrome',
+    'atrial_fibrillation': 'Atrial Fibrillation',
+    'heart_failure': 'Heart Failure'
+  };
+  return map[key] || key.charAt(0).toUpperCase() + key.slice(1).replace(/_/g, ' ');
+}
+
+/* ===== Utility: Nice label for phase keys ===== */
+function nicePhase(key) {
+  var map = {
+    '': 'Not Specified',
+    'NA': 'N/A',
+    'EARLY_PHASE1': 'Early Phase 1',
+    'PHASE1': 'Phase 1',
+    'PHASE2': 'Phase 2',
+    'PHASE3': 'Phase 3',
+    'PHASE4': 'Phase 4'
+  };
+  return map[key] !== undefined ? map[key] : key;
+}
+
+/* ===== Utility: Nice label for exclusion keys ===== */
+function niceExclusion(key) {
+  var map = {
+    'ckd': 'Chronic Kidney Disease',
+    'diabetes': 'Diabetes',
+    'cancer': 'Cancer',
+    'cognitive': 'Cognitive Impairment',
+    'pregnancy': 'Pregnancy',
+    'bleeding': 'Bleeding Risk',
+    'liver': 'Liver Disease',
+    'copd': 'COPD',
+    'frailty': 'Frailty',
+    'anemia': 'Anemia',
+    'obesity': 'Obesity'
+  };
+  return map[key] || key.charAt(0).toUpperCase() + key.slice(1);
+}
+
+/* ===== Populate Summary Cards ===== */
+function populateCards() {
+  document.getElementById('tf-val-trials').textContent = fmtNum(SUMMARY.total_trials);
+  document.getElementById('tf-val-gi').textContent = SUMMARY.median_gi + '/100';
+  document.getElementById('tf-val-age75').textContent = SUMMARY.pct_exclude_age75 + '%';
+  document.getElementById('tf-val-ckd').textContent = SUMMARY.pct_exclude_ckd + '%';
+}
+
+/* ===== Chart Drawing Helpers ===== */
+function drawRoundedRect(ctx, x, y, w, h, r) {
+  if (r > h / 2) r = h / 2;
+  if (r > w / 2) r = w / 2;
+  ctx.beginPath();
+  ctx.moveTo(x + r, y);
+  ctx.lineTo(x + w - r, y);
+  ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+  ctx.lineTo(x + w, y + h - r);
+  ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+  ctx.lineTo(x + r, y + h);
+  ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+  ctx.lineTo(x, y + r);
+  ctx.quadraticCurveTo(x, y, x + r, y);
+  ctx.closePath();
+}
+
+/* ===== Chart 1: Condition Comparison (Grouped Bar) ===== */
+var conditionHitZones = [];
+
+function drawConditionChart() {
+  var canvas = document.getElementById('tf-canvas-condition');
+  var rect = canvas.parentElement.getBoundingClientRect();
+  var W = Math.floor(rect.width - 40);
+  var H = 320;
+  var ctx = setupHiDPI(canvas, W, H);
+
+  conditionHitZones = [];
+
+  // Prepare data — exclude 'other'
+  var conditions = Object.keys(SUMMARY.by_condition).filter(function(k) { return k !== 'other'; });
+  var labels = conditions.map(niceCondition);
+  var giVals = conditions.map(function(k) { return SUMMARY.by_condition[k].mean_gi; });
+  var exclVals = conditions.map(function(k) { return SUMMARY.by_condition[k].mean_excl; });
+
+  // Chart area
+  var padL = 55, padR = 20, padT = 20, padB = 70;
+  var chartW = W - padL - padR;
+  var chartH = H - padT - padB;
+
+  // Y axis: 0 to 100 for GI
+  var yMax = 100;
+  var yMin = 0;
+
+  // Scale factor for exclusions (max ~2) mapped to 0-100 range
+  var exclScale = 50; // multiply excl by 50 so 2 -> 100
+
+  // Grid lines
+  ctx.strokeStyle = cssVar('--chart-grid');
+  ctx.lineWidth = 1;
+  ctx.fillStyle = cssVar('--chart-text');
+  ctx.font = '11px -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.textAlign = 'right';
+
+  for (var i = 0; i <= 5; i++) {
+    var yVal = (yMax / 5) * i;
+    var yPx = padT + chartH - (yVal / yMax) * chartH;
+    ctx.beginPath();
+    ctx.moveTo(padL, yPx);
+    ctx.lineTo(W - padR, yPx);
+    ctx.stroke();
+    ctx.fillText(yVal.toFixed(0), padL - 8, yPx + 4);
+  }
+
+  // Bars
+  var groupW = chartW / labels.length;
+  var barW = Math.min(groupW * 0.32, 45);
+  var gap = 6;
+
+  var colGI = cssVar('--bar-primary');
+  var colExcl = cssVar('--bar-secondary');
+
+  for (var j = 0; j < labels.length; j++) {
+    var gx = padL + groupW * j + groupW / 2;
+
+    // GI bar
+    var giH = (giVals[j] / yMax) * chartH;
+    var giX = gx - barW - gap / 2;
+    var giY = padT + chartH - giH;
+    ctx.fillStyle = colGI;
+    drawRoundedRect(ctx, giX, giY, barW, giH, 4);
+    ctx.fill();
+    conditionHitZones.push({ x: giX, y: giY, w: barW, h: giH, label: labels[j] + ' — Mean GI: ' + giVals[j].toFixed(1) });
+
+    // GI value label
+    ctx.fillStyle = cssVar('--chart-text');
+    ctx.font = 'bold 11px -apple-system, BlinkMacSystemFont, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText(giVals[j].toFixed(1), giX + barW / 2, giY - 5);
+
+    // Exclusion bar (scaled)
+    var exH = (exclVals[j] * exclScale / yMax) * chartH;
+    var exX = gx + gap / 2;
+    var exY = padT + chartH - exH;
+    ctx.fillStyle = colExcl;
+    drawRoundedRect(ctx, exX, exY, barW, exH, 4);
+    ctx.fill();
+    conditionHitZones.push({ x: exX, y: exY, w: barW, h: exH, label: labels[j] + ' — Mean Exclusions: ' + exclVals[j].toFixed(2) });
+
+    // Excl value label
+    ctx.fillStyle = cssVar('--chart-text');
+    ctx.font = '11px -apple-system, BlinkMacSystemFont, sans-serif';
+    ctx.fillText(exclVals[j].toFixed(2), exX + barW / 2, exY - 5);
+
+    // X-axis label
+    ctx.fillStyle = cssVar('--chart-text');
+    ctx.font = '11px -apple-system, BlinkMacSystemFont, sans-serif';
+    ctx.textAlign = 'center';
+
+    // Wrap long labels
+    var parts = labels[j].split(' ');
+    if (parts.length <= 2) {
+      ctx.fillText(labels[j], gx, padT + chartH + 18);
+    } else {
+      var line1 = parts.slice(0, Math.ceil(parts.length / 2)).join(' ');
+      var line2 = parts.slice(Math.ceil(parts.length / 2)).join(' ');
+      ctx.fillText(line1, gx, padT + chartH + 16);
+      ctx.fillText(line2, gx, padT + chartH + 30);
+    }
+  }
+
+  // Y-axis label
+  ctx.save();
+  ctx.fillStyle = cssVar('--chart-text');
+  ctx.font = '12px -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.translate(14, padT + chartH / 2);
+  ctx.rotate(-Math.PI / 2);
+  ctx.fillText('Score', 0, 0);
+  ctx.restore();
+}
+
+/* ===== Chart 2: Radar / Spider ===== */
+function drawRadarChart() {
+  var canvas = document.getElementById('tf-canvas-radar');
+  var rect = canvas.parentElement.getBoundingClientRect();
+  var W = Math.floor(rect.width - 40);
+  var H = 360;
+  var ctx = setupHiDPI(canvas, W, H);
+
+  var dims = SUMMARY.dimension_averages;
+  var labels = ['Age', 'Sex', 'Comorbidity', 'Functional', 'Representation'];
+  var maxVals = [20, 10, 40, 15, 15];
+  var rawVals = [dims.age, dims.sex, dims.comorbidity, dims.functional, dims.representation];
+  var normVals = rawVals.map(function(v, i) { return v / maxVals[i]; });
+
+  var cx = W / 2;
+  var cy = H / 2 + 5;
+  var radius = Math.min(W, H) / 2 - 55;
+  var n = 5;
+  var angleStep = (2 * Math.PI) / n;
+  var startAngle = -Math.PI / 2; // top
+
+  // Draw concentric rings
+  ctx.strokeStyle = cssVar('--chart-grid');
+  ctx.lineWidth = 1;
+  for (var ring = 1; ring <= 5; ring++) {
+    var r = (ring / 5) * radius;
+    ctx.beginPath();
+    for (var k = 0; k < n; k++) {
+      var angle = startAngle + k * angleStep;
+      var px = cx + r * Math.cos(angle);
+      var py = cy + r * Math.sin(angle);
+      if (k === 0) ctx.moveTo(px, py);
+      else ctx.lineTo(px, py);
+    }
+    ctx.closePath();
+    ctx.stroke();
+  }
+
+  // Draw axis lines
+  ctx.strokeStyle = cssVar('--chart-grid');
+  for (var k = 0; k < n; k++) {
+    var angle = startAngle + k * angleStep;
+    ctx.beginPath();
+    ctx.moveTo(cx, cy);
+    ctx.lineTo(cx + radius * Math.cos(angle), cy + radius * Math.sin(angle));
+    ctx.stroke();
+  }
+
+  // Draw data polygon
+  ctx.beginPath();
+  for (var k = 0; k < n; k++) {
+    var angle = startAngle + k * angleStep;
+    var val = normVals[k];
+    var px = cx + val * radius * Math.cos(angle);
+    var py = cy + val * radius * Math.sin(angle);
+    if (k === 0) ctx.moveTo(px, py);
+    else ctx.lineTo(px, py);
+  }
+  ctx.closePath();
+  ctx.fillStyle = cssVar('--radar-fill');
+  ctx.fill();
+  ctx.strokeStyle = cssVar('--radar-stroke');
+  ctx.lineWidth = 2.5;
+  ctx.stroke();
+
+  // Draw data points and labels
+  ctx.fillStyle = cssVar('--radar-stroke');
+  ctx.font = 'bold 12px -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.textAlign = 'center';
+
+  for (var k = 0; k < n; k++) {
+    var angle = startAngle + k * angleStep;
+    var val = normVals[k];
+    var px = cx + val * radius * Math.cos(angle);
+    var py = cy + val * radius * Math.sin(angle);
+
+    // Data dot
+    ctx.beginPath();
+    ctx.arc(px, py, 5, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Axis label
+    var lx = cx + (radius + 28) * Math.cos(angle);
+    var ly = cy + (radius + 28) * Math.sin(angle);
+    ctx.fillStyle = cssVar('--chart-text');
+    ctx.font = '12px -apple-system, BlinkMacSystemFont, sans-serif';
+
+    // Adjust alignment based on position
+    if (Math.abs(Math.cos(angle)) < 0.1) {
+      ctx.textAlign = 'center';
+    } else if (Math.cos(angle) > 0) {
+      ctx.textAlign = 'left';
+      lx -= 10;
+    } else {
+      ctx.textAlign = 'right';
+      lx += 10;
+    }
+    if (Math.sin(angle) < -0.5) ly -= 4;
+    if (Math.sin(angle) > 0.5) ly += 8;
+
+    ctx.fillText(labels[k], lx, ly);
+
+    // Value label
+    ctx.font = 'bold 11px -apple-system, BlinkMacSystemFont, sans-serif';
+    ctx.fillStyle = cssVar('--radar-stroke');
+    var vx = cx + (val * radius + 16) * Math.cos(angle);
+    var vy = cy + (val * radius + 16) * Math.sin(angle);
+    ctx.textAlign = 'center';
+    ctx.fillText((normVals[k] * 100).toFixed(0) + '%', vx, vy);
+    ctx.fillStyle = cssVar('--radar-stroke');
+  }
+
+  // Ring labels (0.2, 0.4, ... 1.0)
+  ctx.fillStyle = cssVar('--text-muted');
+  ctx.font = '10px -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.textAlign = 'left';
+  for (var ring = 1; ring <= 5; ring++) {
+    var r = (ring / 5) * radius;
+    ctx.fillText((ring * 20) + '%', cx + 4, cy - r - 2);
+  }
+}
+
+/* ===== Chart 3: Exclusion Impact (Horizontal Bar) ===== */
+var exclusionHitZones = [];
+
+function drawExclusionChart() {
+  var canvas = document.getElementById('tf-canvas-exclusion');
+  var rect = canvas.parentElement.getBoundingClientRect();
+  var W = Math.floor(rect.width - 40);
+  var H = 340;
+  var ctx = setupHiDPI(canvas, W, H);
+
+  exclusionHitZones = [];
+
+  var data = SUMMARY.exclusion_ranking.slice(); // already sorted by impact_score desc
+  var labels = data.map(function(d) { return niceExclusion(d.exclusion); });
+  var scores = data.map(function(d) { return d.impact_score; });
+  var pcts = data.map(function(d) { return d.pct_of_trials; });
+  var weights = data.map(function(d) { return d.real_world_weight; });
+
+  var padL = 160, padR = 80, padT = 10, padB = 30;
+  var chartW = W - padL - padR;
+  var chartH = H - padT - padB;
+  var maxScore = Math.max.apply(null, scores);
+  var maxWeight = Math.max.apply(null, weights);
+
+  var barH = Math.min((chartH / data.length) * 0.7, 24);
+  var groupH = chartH / data.length;
+
+  for (var i = 0; i < data.length; i++) {
+    var y = padT + groupH * i + (groupH - barH) / 2;
+    var barW = (scores[i] / maxScore) * chartW;
+
+    // Color intensity by weight (higher weight = deeper teal)
+    var alpha = 0.35 + (weights[i] / maxWeight) * 0.65;
+    ctx.fillStyle = 'rgba(13, 148, 136, ' + alpha.toFixed(2) + ')';
+    drawRoundedRect(ctx, padL, y, barW, barH, 4);
+    ctx.fill();
+
+    exclusionHitZones.push({
+      x: padL, y: y, w: barW, h: barH,
+      label: labels[i] + ': impact=' + scores[i].toFixed(3) + ', ' + pcts[i] + '% of trials, weight=' + weights[i]
+    });
+
+    // Label on left
+    ctx.fillStyle = cssVar('--chart-text');
+    ctx.font = '12px -apple-system, BlinkMacSystemFont, sans-serif';
+    ctx.textAlign = 'right';
+    ctx.fillText(labels[i], padL - 10, y + barH / 2 + 4);
+
+    // Score + pct on right
+    ctx.textAlign = 'left';
+    ctx.font = 'bold 11px -apple-system, BlinkMacSystemFont, sans-serif';
+    ctx.fillStyle = cssVar('--text-primary');
+    ctx.fillText(scores[i].toFixed(3), padL + barW + 8, y + barH / 2 + 1);
+    ctx.font = '10px -apple-system, BlinkMacSystemFont, sans-serif';
+    ctx.fillStyle = cssVar('--text-muted');
+    ctx.fillText('(' + pcts[i] + '%)', padL + barW + 52, y + barH / 2 + 1);
+  }
+
+  // X-axis label
+  ctx.fillStyle = cssVar('--chart-text');
+  ctx.font = '12px -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('Impact Score (prevalence weight \u00D7 frequency)', padL + chartW / 2, H - 6);
+}
+
+/* ===== Chart 4: Era Trend (Line) ===== */
+var eraHitZones = [];
+
+function drawEraChart() {
+  var canvas = document.getElementById('tf-canvas-era');
+  var rect = canvas.parentElement.getBoundingClientRect();
+  var W = Math.floor(rect.width - 40);
+  var H = 300;
+  var ctx = setupHiDPI(canvas, W, H);
+
+  eraHitZones = [];
+
+  // Sort eras chronologically
+  var eraOrder = ['Pre-2000', '2000-2004', '2005-2009', '2010-2014', '2015-2019', '2020-2025'];
+  var eraData = eraOrder.map(function(e) { return SUMMARY.by_era[e]; });
+  var giVals = eraData.map(function(d) { return d.mean_gi; });
+  var counts = eraData.map(function(d) { return d.count; });
+
+  var padL = 55, padR = 25, padT = 25, padB = 50;
+  var chartW = W - padL - padR;
+  var chartH = H - padT - padB;
+
+  // Y range: 70 to 85 for better visibility
+  var yMin = 70;
+  var yMax = 85;
+
+  // Grid lines
+  ctx.strokeStyle = cssVar('--chart-grid');
+  ctx.lineWidth = 1;
+  ctx.fillStyle = cssVar('--chart-text');
+  ctx.font = '11px -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.textAlign = 'right';
+
+  for (var i = 0; i <= 5; i++) {
+    var yVal = yMin + ((yMax - yMin) / 5) * i;
+    var yPx = padT + chartH - ((yVal - yMin) / (yMax - yMin)) * chartH;
+    ctx.beginPath();
+    ctx.moveTo(padL, yPx);
+    ctx.lineTo(W - padR, yPx);
+    ctx.stroke();
+    ctx.fillText(yVal.toFixed(0), padL - 8, yPx + 4);
+  }
+
+  // Fill area under line
+  var points = [];
+  for (var j = 0; j < eraOrder.length; j++) {
+    var x = padL + (j / (eraOrder.length - 1)) * chartW;
+    var y = padT + chartH - ((giVals[j] - yMin) / (yMax - yMin)) * chartH;
+    points.push({ x: x, y: y });
+  }
+
+  ctx.beginPath();
+  ctx.moveTo(points[0].x, padT + chartH);
+  for (var j = 0; j < points.length; j++) {
+    ctx.lineTo(points[j].x, points[j].y);
+  }
+  ctx.lineTo(points[points.length - 1].x, padT + chartH);
+  ctx.closePath();
+  ctx.fillStyle = cssVar('--radar-fill');
+  ctx.fill();
+
+  // Line
+  ctx.beginPath();
+  for (var j = 0; j < points.length; j++) {
+    if (j === 0) ctx.moveTo(points[j].x, points[j].y);
+    else ctx.lineTo(points[j].x, points[j].y);
+  }
+  ctx.strokeStyle = cssVar('--line-primary');
+  ctx.lineWidth = 3;
+  ctx.lineJoin = 'round';
+  ctx.stroke();
+
+  // Data points
+  for (var j = 0; j < points.length; j++) {
+    ctx.beginPath();
+    ctx.arc(points[j].x, points[j].y, 6, 0, Math.PI * 2);
+    ctx.fillStyle = cssVar('--line-dot');
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(points[j].x, points[j].y, 3, 0, Math.PI * 2);
+    ctx.fillStyle = cssVar('--line-primary');
+    ctx.fill();
+
+    eraHitZones.push({
+      x: points[j].x - 10, y: points[j].y - 10, w: 20, h: 20,
+      label: eraOrder[j] + ': GI=' + giVals[j].toFixed(1) + ', n=' + fmtNum(counts[j])
+    });
+
+    // Value above point
+    ctx.fillStyle = cssVar('--chart-text');
+    ctx.font = 'bold 11px -apple-system, BlinkMacSystemFont, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText(giVals[j].toFixed(1), points[j].x, points[j].y - 12);
+  }
+
+  // X-axis labels
+  ctx.fillStyle = cssVar('--chart-text');
+  ctx.font = '11px -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.textAlign = 'center';
+  for (var j = 0; j < eraOrder.length; j++) {
+    var x = padL + (j / (eraOrder.length - 1)) * chartW;
+    ctx.fillText(eraOrder[j], x, padT + chartH + 20);
+    // Count label below era
+    ctx.font = '10px -apple-system, BlinkMacSystemFont, sans-serif';
+    ctx.fillStyle = cssVar('--text-muted');
+    ctx.fillText('n=' + fmtNum(counts[j]), x, padT + chartH + 34);
+    ctx.fillStyle = cssVar('--chart-text');
+    ctx.font = '11px -apple-system, BlinkMacSystemFont, sans-serif';
+  }
+
+  // Y-axis label
+  ctx.save();
+  ctx.fillStyle = cssVar('--chart-text');
+  ctx.font = '12px -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.translate(14, padT + chartH / 2);
+  ctx.rotate(-Math.PI / 2);
+  ctx.fillText('Mean GI', 0, 0);
+  ctx.restore();
+}
+
+/* ===== Chart 5: Phase Comparison (Bar) ===== */
+var phaseHitZones = [];
+
+function drawPhaseChart() {
+  var canvas = document.getElementById('tf-canvas-phase');
+  var rect = canvas.parentElement.getBoundingClientRect();
+  var W = Math.floor(rect.width - 40);
+  var H = 300;
+  var ctx = setupHiDPI(canvas, W, H);
+
+  phaseHitZones = [];
+
+  // Sorted phases
+  var phaseOrder = ['EARLY_PHASE1', 'PHASE1', 'PHASE2', 'PHASE3', 'PHASE4'];
+  var labels = phaseOrder.map(nicePhase);
+  var giVals = phaseOrder.map(function(p) { return SUMMARY.by_phase[p].mean_gi; });
+  var counts = phaseOrder.map(function(p) { return SUMMARY.by_phase[p].count; });
+
+  var padL = 55, padR = 20, padT = 20, padB = 55;
+  var chartW = W - padL - padR;
+  var chartH = H - padT - padB;
+
+  // Y: 70 to 85
+  var yMin = 70;
+  var yMax = 85;
+
+  // Grid
+  ctx.strokeStyle = cssVar('--chart-grid');
+  ctx.lineWidth = 1;
+  ctx.fillStyle = cssVar('--chart-text');
+  ctx.font = '11px -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.textAlign = 'right';
+
+  for (var i = 0; i <= 5; i++) {
+    var yVal = yMin + ((yMax - yMin) / 5) * i;
+    var yPx = padT + chartH - ((yVal - yMin) / (yMax - yMin)) * chartH;
+    ctx.beginPath();
+    ctx.moveTo(padL, yPx);
+    ctx.lineTo(W - padR, yPx);
+    ctx.stroke();
+    ctx.fillText(yVal.toFixed(0), padL - 8, yPx + 4);
+  }
+
+  // Bars
+  var groupW = chartW / labels.length;
+  var barW = Math.min(groupW * 0.6, 55);
+
+  // Color gradient by phase
+  var colors = ['#14b8a6', '#0d9488', '#0f766e', '#115e59', '#134e4a'];
+
+  for (var j = 0; j < labels.length; j++) {
+    var gx = padL + groupW * j + groupW / 2;
+    var barH = ((giVals[j] - yMin) / (yMax - yMin)) * chartH;
+    var bx = gx - barW / 2;
+    var by = padT + chartH - barH;
+
+    ctx.fillStyle = colors[j];
+    drawRoundedRect(ctx, bx, by, barW, barH, 4);
+    ctx.fill();
+
+    phaseHitZones.push({
+      x: bx, y: by, w: barW, h: barH,
+      label: labels[j] + ': GI=' + giVals[j].toFixed(1) + ', n=' + fmtNum(counts[j])
+    });
+
+    // Value above bar
+    ctx.fillStyle = cssVar('--chart-text');
+    ctx.font = 'bold 11px -apple-system, BlinkMacSystemFont, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText(giVals[j].toFixed(1), gx, by - 6);
+
+    // X-axis label
+    ctx.font = '11px -apple-system, BlinkMacSystemFont, sans-serif';
+    ctx.fillText(labels[j], gx, padT + chartH + 18);
+    // Count
+    ctx.font = '10px -apple-system, BlinkMacSystemFont, sans-serif';
+    ctx.fillStyle = cssVar('--text-muted');
+    ctx.fillText('n=' + fmtNum(counts[j]), gx, padT + chartH + 32);
+    ctx.fillStyle = cssVar('--chart-text');
+  }
+
+  // Y-axis label
+  ctx.save();
+  ctx.fillStyle = cssVar('--chart-text');
+  ctx.font = '12px -apple-system, BlinkMacSystemFont, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.translate(14, padT + chartH / 2);
+  ctx.rotate(-Math.PI / 2);
+  ctx.fillText('Mean GI', 0, 0);
+  ctx.restore();
+}
+
+/* ===== Canvas Hover — Tooltip ===== */
+function addCanvasHover(canvasId, getZones) {
+  var canvas = document.getElementById(canvasId);
+  canvas.addEventListener('mousemove', function(e) {
+    var r = canvas.getBoundingClientRect();
+    var scaleX = parseFloat(canvas.style.width) / r.width;
+    var scaleY = parseFloat(canvas.style.height) / r.height;
+    var mx = (e.clientX - r.left) * scaleX;
+    var my = (e.clientY - r.top) * scaleY;
+
+    var zones = getZones();
+    var found = false;
+    for (var i = 0; i < zones.length; i++) {
+      var z = zones[i];
+      if (mx >= z.x && mx <= z.x + z.w && my >= z.y && my <= z.y + z.h) {
+        showTooltip(e, z.label);
+        canvas.style.cursor = 'pointer';
+        found = true;
+        break;
+      }
+    }
+    if (!found) {
+      hideTooltip();
+      canvas.style.cursor = 'default';
+    }
+  });
+  canvas.addEventListener('mouseleave', function() {
+    hideTooltip();
+    canvas.style.cursor = 'default';
+  });
+}
+
+/* ===== Redraw all charts ===== */
+function drawAllCharts() {
+  drawConditionChart();
+  drawRadarChart();
+  drawExclusionChart();
+  drawEraChart();
+  drawPhaseChart();
+}
+
+/* ===== Theme Toggle ===== */
+var THEME_KEY = 'patientma-trialfit-theme';
+
+function applyTheme(dark) {
+  if (dark) {
+    document.body.classList.add('tf-dark');
+    document.getElementById('tf-theme-label').textContent = 'Dark';
+    document.getElementById('tf-theme-toggle').setAttribute('aria-checked', 'true');
+  } else {
+    document.body.classList.remove('tf-dark');
+    document.getElementById('tf-theme-label').textContent = 'Light';
+    document.getElementById('tf-theme-toggle').setAttribute('aria-checked', 'false');
+  }
+  // Redraw charts after theme change
+  setTimeout(drawAllCharts, 50);
+}
+
+function initTheme() {
+  var saved = localStorage.getItem(THEME_KEY);
+  if (saved === 'dark') {
+    applyTheme(true);
+  }
+}
+
+document.getElementById('tf-theme-toggle').addEventListener('click', function() {
+  var isDark = document.body.classList.contains('tf-dark');
+  var newDark = !isDark;
+  applyTheme(newDark);
+  localStorage.setItem(THEME_KEY, newDark ? 'dark' : 'light');
+});
+
+/* ===== Export CSV ===== */
+function buildCSV() {
+  var lines = [];
+
+  // Section 1: Summary
+  lines.push('Section,Key,Value');
+  lines.push('Summary,Total Trials,' + SUMMARY.total_trials);
+  lines.push('Summary,Mean GI,' + SUMMARY.mean_gi);
+  lines.push('Summary,Median GI,' + SUMMARY.median_gi);
+  lines.push('Summary,Pct Exclude Age 75,' + SUMMARY.pct_exclude_age75);
+  lines.push('Summary,Pct Exclude CKD,' + SUMMARY.pct_exclude_ckd);
+  lines.push('');
+
+  // Section 2: Dimension Averages
+  lines.push('Dimension,Raw Score,Max,Normalized');
+  var dimMax = { age: 20, sex: 10, comorbidity: 40, functional: 15, representation: 15 };
+  Object.keys(SUMMARY.dimension_averages).forEach(function(k) {
+    var v = SUMMARY.dimension_averages[k];
+    var mx = dimMax[k];
+    lines.push(k + ',' + v + ',' + mx + ',' + (v / mx).toFixed(3));
+  });
+  lines.push('');
+
+  // Section 3: By Condition
+  lines.push('Condition,Count,Mean GI,Median GI,Mean Exclusions');
+  Object.keys(SUMMARY.by_condition).forEach(function(k) {
+    var d = SUMMARY.by_condition[k];
+    lines.push(niceCondition(k) + ',' + d.count + ',' + d.mean_gi + ',' + d.median_gi + ',' + d.mean_excl);
+  });
+  lines.push('');
+
+  // Section 4: By Era
+  lines.push('Era,Count,Mean GI,Median GI,Mean Exclusions');
+  var eraOrder = ['Pre-2000', '2000-2004', '2005-2009', '2010-2014', '2015-2019', '2020-2025'];
+  eraOrder.forEach(function(e) {
+    var d = SUMMARY.by_era[e];
+    lines.push(e + ',' + d.count + ',' + d.mean_gi + ',' + d.median_gi + ',' + d.mean_excl);
+  });
+  lines.push('');
+
+  // Section 5: By Phase
+  lines.push('Phase,Count,Mean GI,Median GI,Mean Exclusions');
+  var phaseOrder = ['EARLY_PHASE1', 'PHASE1', 'PHASE2', 'PHASE3', 'PHASE4'];
+  phaseOrder.forEach(function(p) {
+    var d = SUMMARY.by_phase[p];
+    lines.push(nicePhase(p) + ',' + d.count + ',' + d.mean_gi + ',' + d.median_gi + ',' + d.mean_excl);
+  });
+  lines.push('');
+
+  // Section 6: Exclusion Ranking
+  lines.push('Exclusion,Count,Pct of Trials,Real-World Weight,Impact Score');
+  SUMMARY.exclusion_ranking.forEach(function(d) {
+    lines.push(niceExclusion(d.exclusion) + ',' + d.count + ',' + d.pct_of_trials + ',' + d.real_world_weight + ',' + d.impact_score);
+  });
+
+  return lines.join('\n');
+}
+
+document.getElementById('tf-export-btn').addEventListener('click', function() {
+  var csv = buildCSV();
+  var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+  var url = URL.createObjectURL(blob);
+  var a = document.createElement('a');
+  a.href = url;
+  a.download = 'cardiotrialfit_summary.csv';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+});
+
+/* ===== Resize handler ===== */
+var resizeTimer = null;
+window.addEventListener('resize', function() {
+  clearTimeout(resizeTimer);
+  resizeTimer = setTimeout(drawAllCharts, 150);
+});
+
+/* ===== Initialize ===== */
+function init() {
+  populateCards();
+  initTheme();
+  drawAllCharts();
+
+  addCanvasHover('tf-canvas-condition', function() { return conditionHitZones; });
+  addCanvasHover('tf-canvas-exclusion', function() { return exclusionHitZones; });
+  addCanvasHover('tf-canvas-era', function() { return eraHitZones; });
+  addCanvasHover('tf-canvas-phase', function() { return phaseHitZones; });
+}
+
+// Use setTimeout to ensure DOM is ready
+setTimeout(init, 0);
+</script>
+</body>
+</html>

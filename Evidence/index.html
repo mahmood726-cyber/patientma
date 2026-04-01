@@ -1,0 +1,2121 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CardioEvidence — Find Evidence That Fits You</title>
+<style>
+/* ============================================================
+   CSS CUSTOM PROPERTIES
+   ============================================================ */
+:root {
+    /* Light theme */
+    --bg-primary: #f5f7fa;
+    --bg-secondary: #ffffff;
+    --bg-card: #ffffff;
+    --bg-input: #ffffff;
+    --bg-disclaimer: #fff8e1;
+    --text-primary: #1a2332;
+    --text-secondary: #4a5568;
+    --text-muted: #718096;
+    --border-color: #e2e8f0;
+    --border-input: #cbd5e0;
+    --accent-blue: #2563eb;
+    --accent-blue-hover: #1d4ed8;
+    --accent-blue-light: #dbeafe;
+    --accent-green: #16a34a;
+    --accent-green-light: #dcfce7;
+    --accent-green-bg: #f0fdf4;
+    --accent-amber: #d97706;
+    --accent-amber-light: #fef3c7;
+    --accent-amber-bg: #fffbeb;
+    --accent-red: #dc2626;
+    --accent-red-light: #fee2e2;
+    --accent-red-bg: #fef2f2;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.07);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    --transition: 0.2s ease;
+}
+
+[data-theme="dark"] {
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-card: #1e293b;
+    --bg-input: #334155;
+    --bg-disclaimer: #422006;
+    --text-primary: #f1f5f9;
+    --text-secondary: #cbd5e0;
+    --text-muted: #94a3b8;
+    --border-color: #334155;
+    --border-input: #475569;
+    --accent-blue: #3b82f6;
+    --accent-blue-hover: #60a5fa;
+    --accent-blue-light: #1e3a5f;
+    --accent-green: #22c55e;
+    --accent-green-light: #14532d;
+    --accent-green-bg: #052e16;
+    --accent-amber: #f59e0b;
+    --accent-amber-light: #78350f;
+    --accent-amber-bg: #451a03;
+    --accent-red: #ef4444;
+    --accent-red-light: #7f1d1d;
+    --accent-red-bg: #450a0a;
+    --shadow-sm: 0 1px 2px rgba(0,0,0,0.2);
+    --shadow-md: 0 4px 6px rgba(0,0,0,0.3);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 18px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+    transition: background var(--transition), color var(--transition);
+}
+
+/* ============================================================
+   SKIP NAV
+   ============================================================ */
+.ce-skip-nav {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    background: var(--accent-blue);
+    color: #fff;
+    padding: 0.5rem 1rem;
+    z-index: 10000;
+    font-size: 0.9rem;
+    border-radius: 0 0 var(--radius-sm) 0;
+    text-decoration: none;
+}
+
+.ce-skip-nav:focus {
+    top: 0;
+    outline: 3px solid var(--accent-blue);
+    outline-offset: 2px;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.ce-header {
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.ce-header-left {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.ce-logo {
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, var(--accent-blue), #06b6d4);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.ce-logo svg {
+    width: 26px;
+    height: 26px;
+    fill: #fff;
+}
+
+.ce-title-group h1 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text-primary);
+}
+
+.ce-title-group p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.ce-header-right {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* ============================================================
+   THEME TOGGLE
+   ============================================================ */
+.ce-theme-toggle {
+    background: var(--bg-input);
+    border: 1px solid var(--border-input);
+    border-radius: 20px;
+    padding: 0.35rem 0.75rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    transition: background var(--transition);
+}
+
+.ce-theme-toggle:hover {
+    background: var(--accent-blue-light);
+}
+
+.ce-theme-toggle:focus-visible {
+    outline: 3px solid var(--accent-blue);
+    outline-offset: 2px;
+}
+
+.ce-theme-toggle svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+}
+
+/* ============================================================
+   DISCLAIMER BANNER
+   ============================================================ */
+.ce-disclaimer {
+    background: var(--bg-disclaimer);
+    border: 1px solid var(--accent-amber);
+    border-radius: var(--radius-md);
+    padding: 0.75rem 1.25rem;
+    margin: 1rem 1.5rem 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--text-primary);
+}
+
+.ce-disclaimer-icon {
+    font-size: 1.3rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+    color: var(--accent-amber);
+}
+
+.ce-disclaimer strong {
+    color: var(--accent-amber);
+}
+
+/* ============================================================
+   MAIN LAYOUT
+   ============================================================ */
+.ce-main {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    max-width: 1600px;
+    margin: 0 auto;
+    min-height: calc(100vh - 200px);
+}
+
+@media (max-width: 900px) {
+    .ce-main {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+        gap: 1rem;
+    }
+}
+
+/* ============================================================
+   INPUT PANEL
+   ============================================================ */
+.ce-input-panel {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-md);
+    align-self: start;
+    position: sticky;
+    top: 1rem;
+}
+
+@media (max-width: 900px) {
+    .ce-input-panel {
+        position: static;
+    }
+}
+
+.ce-input-panel h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.ce-input-panel h2 svg {
+    width: 22px;
+    height: 22px;
+    fill: var(--accent-blue);
+}
+
+/* Form fields */
+.ce-field {
+    margin-bottom: 1rem;
+}
+
+.ce-field label,
+.ce-field legend {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 0.3rem;
+}
+
+.ce-field fieldset {
+    border: none;
+    padding: 0;
+}
+
+.ce-field select,
+.ce-field input[type="number"],
+.ce-field input[type="text"] {
+    width: 100%;
+    padding: 0.6rem 0.75rem;
+    border: 1px solid var(--border-input);
+    border-radius: var(--radius-sm);
+    background: var(--bg-input);
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    font-family: inherit;
+    transition: border-color var(--transition), box-shadow var(--transition);
+}
+
+.ce-field select:focus,
+.ce-field input[type="number"]:focus,
+.ce-field input[type="text"]:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+/* Checkbox and radio groups */
+.ce-checkbox-group,
+.ce-radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.75rem;
+}
+
+.ce-checkbox-label,
+.ce-radio-label {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--radius-sm);
+    transition: background var(--transition);
+}
+
+.ce-checkbox-label:hover,
+.ce-radio-label:hover {
+    background: var(--accent-blue-light);
+}
+
+.ce-checkbox-label input,
+.ce-radio-label input {
+    accent-color: var(--accent-blue);
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+/* Buttons */
+.ce-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    padding: 0.65rem 1.25rem;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background var(--transition), transform 0.1s ease, box-shadow var(--transition);
+}
+
+.ce-btn:focus-visible {
+    outline: 3px solid var(--accent-blue);
+    outline-offset: 2px;
+}
+
+.ce-btn:active {
+    transform: scale(0.97);
+}
+
+.ce-btn-primary {
+    background: var(--accent-blue);
+    color: #fff;
+    width: 100%;
+}
+
+.ce-btn-primary:hover {
+    background: var(--accent-blue-hover);
+    box-shadow: var(--shadow-md);
+}
+
+.ce-btn-primary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.ce-btn-secondary {
+    background: var(--bg-input);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-input);
+}
+
+.ce-btn-secondary:hover {
+    background: var(--accent-blue-light);
+    color: var(--accent-blue);
+}
+
+.ce-btn-group {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+}
+
+.ce-btn-group .ce-btn-secondary {
+    flex: 1;
+    font-size: 0.8rem;
+    padding: 0.5rem 0.75rem;
+}
+
+.ce-btn svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+}
+
+.ce-search-divider {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin: 1rem 0;
+}
+
+/* ============================================================
+   RESULTS PANEL
+   ============================================================ */
+.ce-results-panel {
+    min-width: 0;
+}
+
+/* Results header */
+.ce-results-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.ce-results-count {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.ce-results-count span {
+    color: var(--accent-blue);
+}
+
+.ce-sort-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.ce-sort-controls label {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+
+.ce-sort-controls select {
+    padding: 0.35rem 0.6rem;
+    border: 1px solid var(--border-input);
+    border-radius: var(--radius-sm);
+    background: var(--bg-input);
+    color: var(--text-primary);
+    font-size: 0.8rem;
+    font-family: inherit;
+}
+
+.ce-sort-controls select:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+}
+
+/* Loading spinner */
+.ce-loading {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem;
+    gap: 1rem;
+}
+
+.ce-loading.active {
+    display: flex;
+}
+
+.ce-spinner {
+    width: 48px;
+    height: 48px;
+    border: 4px solid var(--border-color);
+    border-top-color: var(--accent-blue);
+    border-radius: 50%;
+    animation: ce-spin 0.8s linear infinite;
+}
+
+@keyframes ce-spin {
+    to { transform: rotate(360deg); }
+}
+
+.ce-loading p {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+/* Empty / error state */
+.ce-empty-state {
+    background: var(--bg-secondary);
+    border: 2px dashed var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 3rem 2rem;
+    text-align: center;
+}
+
+.ce-empty-state svg {
+    width: 64px;
+    height: 64px;
+    fill: var(--text-muted);
+    margin-bottom: 1rem;
+    opacity: 0.5;
+}
+
+.ce-empty-state h3 {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.ce-empty-state p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.ce-error-state {
+    background: var(--accent-red-bg);
+    border: 1px solid var(--accent-red);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.ce-error-state h3 {
+    color: var(--accent-red);
+    margin-bottom: 0.5rem;
+}
+
+.ce-error-state p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* ============================================================
+   TRIAL CARDS
+   ============================================================ */
+.ce-trial-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.ce-trial-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem 1.5rem;
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.ce-trial-card:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-1px);
+}
+
+.ce-trial-card-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.ce-trial-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--accent-blue);
+    text-decoration: none;
+    line-height: 1.4;
+    flex: 1;
+}
+
+.ce-trial-title:hover {
+    text-decoration: underline;
+}
+
+.ce-trial-title:focus-visible {
+    outline: 3px solid var(--accent-blue);
+    outline-offset: 2px;
+    border-radius: 2px;
+}
+
+/* Eligibility badges */
+.ce-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.25rem 0.65rem;
+    border-radius: 20px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    white-space: nowrap;
+    flex-shrink: 0;
+    cursor: help;
+    position: relative;
+}
+
+.ce-badge-green {
+    background: var(--accent-green-bg);
+    color: var(--accent-green);
+    border: 1px solid var(--accent-green);
+}
+
+.ce-badge-amber {
+    background: var(--accent-amber-bg);
+    color: var(--accent-amber);
+    border: 1px solid var(--accent-amber);
+}
+
+.ce-badge-red {
+    background: var(--accent-red-bg);
+    color: var(--accent-red);
+    border: 1px solid var(--accent-red);
+}
+
+/* Badge tooltip */
+.ce-badge .ce-tooltip {
+    display: none;
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    background: var(--text-primary);
+    color: var(--bg-primary);
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    font-weight: 400;
+    white-space: normal;
+    max-width: 260px;
+    min-width: 180px;
+    z-index: 100;
+    box-shadow: var(--shadow-lg);
+    line-height: 1.4;
+}
+
+.ce-badge:hover .ce-tooltip,
+.ce-badge:focus .ce-tooltip {
+    display: block;
+}
+
+/* Trial meta row */
+.ce-trial-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1rem;
+    margin-bottom: 0.75rem;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+}
+
+.ce-trial-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.ce-trial-meta-item strong {
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+/* Trial details */
+.ce-trial-interventions,
+.ce-trial-outcomes {
+    margin-bottom: 0.5rem;
+}
+
+.ce-trial-interventions h4,
+.ce-trial-outcomes h4 {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    margin-bottom: 0.25rem;
+}
+
+.ce-trial-interventions ul,
+.ce-trial-outcomes ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+}
+
+.ce-trial-interventions li,
+.ce-trial-outcomes li {
+    background: var(--accent-blue-light);
+    color: var(--accent-blue);
+    padding: 0.2rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ce-trial-outcomes li {
+    background: var(--accent-green-light);
+    color: var(--accent-green);
+}
+
+.ce-trial-summary {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border-color);
+}
+
+/* ============================================================
+   FOREST-STYLE BAR CHART
+   ============================================================ */
+.ce-chart-section {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.ce-chart-section h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+}
+
+.ce-chart-section p.ce-chart-note {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+    font-style: italic;
+}
+
+#ce-enrollment-canvas {
+    width: 100%;
+    max-height: 400px;
+    display: block;
+}
+
+/* ============================================================
+   PROFILE MODAL
+   ============================================================ */
+.ce-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 5000;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.ce-modal-overlay.active {
+    display: flex;
+}
+
+.ce-modal {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    max-width: 440px;
+    width: 100%;
+    box-shadow: var(--shadow-lg);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.ce-modal h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+.ce-modal-close {
+    float: right;
+    background: none;
+    border: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+    color: var(--text-muted);
+    padding: 0.25rem;
+    line-height: 1;
+}
+
+.ce-modal-close:hover {
+    color: var(--text-primary);
+}
+
+.ce-modal-close:focus-visible {
+    outline: 3px solid var(--accent-blue);
+    outline-offset: 2px;
+}
+
+.ce-profile-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 1rem;
+}
+
+.ce-profile-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.6rem 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    margin-bottom: 0.4rem;
+    background: var(--bg-input);
+    gap: 0.5rem;
+}
+
+.ce-profile-list li span {
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.ce-profile-list li .ce-profile-actions {
+    display: flex;
+    gap: 0.3rem;
+}
+
+.ce-profile-list li button {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    border: 1px solid var(--border-input);
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    cursor: pointer;
+}
+
+.ce-profile-list li button:hover {
+    background: var(--accent-blue-light);
+    color: var(--accent-blue);
+}
+
+.ce-profile-list li button.ce-delete-btn:hover {
+    background: var(--accent-red-light);
+    color: var(--accent-red);
+}
+
+.ce-save-profile-row {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.ce-save-profile-row input {
+    flex: 1;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--border-input);
+    border-radius: var(--radius-sm);
+    background: var(--bg-input);
+    color: var(--text-primary);
+    font-size: 0.85rem;
+    font-family: inherit;
+}
+
+.ce-save-profile-row input:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.ce-no-profiles {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    text-align: center;
+    padding: 1rem;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.ce-footer {
+    text-align: center;
+    padding: 1.5rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border-color);
+    margin-top: 2rem;
+}
+
+.ce-footer a {
+    color: var(--accent-blue);
+    text-decoration: none;
+}
+
+.ce-footer a:hover {
+    text-decoration: underline;
+}
+
+/* ============================================================
+   UTILITIES
+   ============================================================ */
+.ce-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.ce-hidden {
+    display: none !important;
+}
+</style>
+</head>
+<body>
+
+<!-- Skip navigation -->
+<a href="#ce-main-content" class="ce-skip-nav">Skip to main content</a>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="ce-header" role="banner">
+    <div class="ce-header-left">
+        <div class="ce-logo" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93 0-.62.08-1.22.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+        </div>
+        <div class="ce-title-group">
+            <h1>CardioEvidence</h1>
+            <p>Find Evidence That Fits You</p>
+        </div>
+    </div>
+    <div class="ce-header-right">
+        <button id="ce-theme-btn" class="ce-theme-toggle" type="button" aria-label="Toggle dark mode">
+            <svg id="ce-theme-icon-light" viewBox="0 0 24 24"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zM2 13h2c.55 0 1-.45 1-1s-.45-1-1-1H2c-.55 0-1 .45-1 1s.45 1 1 1zm18 0h2c.55 0 1-.45 1-1s-.45-1-1-1h-2c-.55 0-1 .45-1 1s.45 1 1 1zM11 2v2c0 .55.45 1 1 1s1-.45 1-1V2c0-.55-.45-1-1-1s-1 .45-1 1zm0 18v2c0 .55.45 1 1 1s1-.45 1-1v-2c0-.55-.45-1-1-1s-1 .45-1 1zM5.99 4.58a.996.996 0 00-1.41 0 .996.996 0 000 1.41l1.06 1.06c.39.39 1.03.39 1.41 0s.39-1.03 0-1.41L5.99 4.58zm12.37 12.37a.996.996 0 00-1.41 0 .996.996 0 000 1.41l1.06 1.06c.39.39 1.03.39 1.41 0a.996.996 0 000-1.41l-1.06-1.06zm1.06-10.96a.996.996 0 000-1.41.996.996 0 00-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06zM7.05 18.36a.996.996 0 000-1.41.996.996 0 00-1.41 0l-1.06 1.06c-.39.39-.39 1.03 0 1.41s1.03.39 1.41 0l1.06-1.06z"/></svg>
+            <svg id="ce-theme-icon-dark" class="ce-hidden" viewBox="0 0 24 24"><path d="M12 3a9 9 0 109 9c0-.46-.04-.92-.1-1.36a5.389 5.389 0 01-4.4 2.26 5.403 5.403 0 01-3.14-9.8c-.44-.06-.9-.1-1.36-.1z"/></svg>
+            <span id="ce-theme-label">Dark</span>
+        </button>
+    </div>
+</header>
+
+<!-- ============================================================
+     DISCLAIMER
+     ============================================================ -->
+<div class="ce-disclaimer" role="alert" aria-live="polite">
+    <span class="ce-disclaimer-icon" aria-hidden="true">&#9888;</span>
+    <div>
+        <strong>Important Disclaimer:</strong> This tool provides an evidence summary based on ClinicalTrials.gov data. It is <strong>NOT</strong> medical advice and should <strong>NOT</strong> be used to make treatment decisions. Always consult your healthcare provider.
+    </div>
+</div>
+
+<!-- ============================================================
+     MAIN CONTENT
+     ============================================================ -->
+<main id="ce-main-content" class="ce-main" role="main">
+
+    <!-- ========== INPUT PANEL ========== -->
+    <aside class="ce-input-panel" aria-label="Patient profile input">
+        <h2>
+            <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+            Your Profile
+        </h2>
+
+        <!-- Primary Condition -->
+        <div class="ce-field">
+            <label for="ce-condition">Primary Condition</label>
+            <select id="ce-condition">
+                <option value="">-- Select condition --</option>
+                <option value="Heart Failure">Heart Failure</option>
+                <option value="ACS/Coronary Artery Disease">ACS / Coronary Artery Disease</option>
+                <option value="Atrial Fibrillation">Atrial Fibrillation</option>
+                <option value="Hypertension">Hypertension</option>
+            </select>
+        </div>
+
+        <!-- Age -->
+        <div class="ce-field">
+            <label for="ce-age">Age</label>
+            <input type="number" id="ce-age" min="18" max="100" placeholder="e.g. 65" aria-describedby="ce-age-desc">
+            <span id="ce-age-desc" class="ce-sr-only">Enter your age between 18 and 100</span>
+        </div>
+
+        <!-- Sex -->
+        <div class="ce-field">
+            <fieldset>
+                <legend>Sex</legend>
+                <div class="ce-radio-group">
+                    <label class="ce-radio-label">
+                        <input type="radio" name="ce-sex" value="Male"> Male
+                    </label>
+                    <label class="ce-radio-label">
+                        <input type="radio" name="ce-sex" value="Female"> Female
+                    </label>
+                </div>
+            </fieldset>
+        </div>
+
+        <!-- Comorbidities -->
+        <div class="ce-field">
+            <fieldset>
+                <legend>Comorbidities</legend>
+                <div class="ce-checkbox-group" id="ce-comorbidities">
+                    <label class="ce-checkbox-label"><input type="checkbox" value="ckd"> CKD</label>
+                    <label class="ce-checkbox-label"><input type="checkbox" value="diabetes"> Diabetes</label>
+                    <label class="ce-checkbox-label"><input type="checkbox" value="obesity"> Obesity</label>
+                    <label class="ce-checkbox-label"><input type="checkbox" value="copd"> COPD</label>
+                    <label class="ce-checkbox-label"><input type="checkbox" value="prior_stroke"> Prior Stroke</label>
+                    <label class="ce-checkbox-label"><input type="checkbox" value="cancer"> Cancer</label>
+                </div>
+            </fieldset>
+        </div>
+
+        <!-- Current Medications -->
+        <div class="ce-field">
+            <fieldset>
+                <legend>Current Medications (optional)</legend>
+                <div class="ce-checkbox-group" id="ce-medications">
+                    <label class="ce-checkbox-label"><input type="checkbox" value="beta_blocker"> Beta-blocker</label>
+                    <label class="ce-checkbox-label"><input type="checkbox" value="acei_arb"> ACEi/ARB</label>
+                    <label class="ce-checkbox-label"><input type="checkbox" value="anticoagulant"> Anticoagulant</label>
+                    <label class="ce-checkbox-label"><input type="checkbox" value="statin"> Statin</label>
+                    <label class="ce-checkbox-label"><input type="checkbox" value="diuretic"> Diuretic</label>
+                    <label class="ce-checkbox-label"><input type="checkbox" value="sglt2i"> SGLT2 inhibitor</label>
+                </div>
+            </fieldset>
+        </div>
+
+        <!-- Intervention of Interest -->
+        <div class="ce-field">
+            <label for="ce-intervention">Intervention of Interest (optional)</label>
+            <input type="text" id="ce-intervention" placeholder="e.g. dapagliflozin">
+        </div>
+
+        <hr class="ce-search-divider">
+
+        <!-- Search button -->
+        <button id="ce-search-btn" class="ce-btn ce-btn-primary" type="button">
+            <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+            Search Evidence
+        </button>
+
+        <!-- Profile save/load -->
+        <div class="ce-btn-group">
+            <button id="ce-save-profile-btn" class="ce-btn ce-btn-secondary" type="button" aria-label="Save current profile">
+                <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:currentColor"><path d="M17 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14c1.1 0 2-.9 2-2V7l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10H5V5h10v4z"/></svg>
+                Save Profile
+            </button>
+            <button id="ce-load-profile-btn" class="ce-btn ce-btn-secondary" type="button" aria-label="Load a saved profile">
+                <svg viewBox="0 0 24 24" style="width:16px;height:16px;fill:currentColor"><path d="M20 6h-8l-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm0 12H4V8h16v10z"/></svg>
+                Load Profile
+            </button>
+        </div>
+    </aside>
+
+    <!-- ========== RESULTS PANEL ========== -->
+    <section class="ce-results-panel" aria-label="Search results" aria-live="polite">
+
+        <!-- Disclaimer repeated at top of results -->
+        <div class="ce-disclaimer" style="margin:0 0 1rem 0;" role="note">
+            <span class="ce-disclaimer-icon" aria-hidden="true">&#9888;</span>
+            <div>
+                <strong>Reminder:</strong> This tool provides an evidence summary based on ClinicalTrials.gov data. It is <strong>NOT</strong> medical advice. Always consult your healthcare provider.
+            </div>
+        </div>
+
+        <!-- Results header (hidden until search) -->
+        <div id="ce-results-header" class="ce-results-header ce-hidden">
+            <div class="ce-results-count" id="ce-results-count"></div>
+            <div class="ce-sort-controls">
+                <label for="ce-sort-select">Sort by:</label>
+                <select id="ce-sort-select">
+                    <option value="enrollment">Enrollment (largest first)</option>
+                    <option value="phase">Phase (highest first)</option>
+                    <option value="relevance">Relevance</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Loading spinner -->
+        <div id="ce-loading" class="ce-loading" role="status" aria-label="Searching for trials">
+            <div class="ce-spinner" aria-hidden="true"></div>
+            <p>Searching ClinicalTrials.gov for matching evidence...</p>
+        </div>
+
+        <!-- Chart section (hidden until results) -->
+        <div id="ce-chart-section" class="ce-chart-section ce-hidden">
+            <h3>Enrollment Comparison</h3>
+            <canvas id="ce-enrollment-canvas" aria-label="Bar chart comparing trial enrollment sizes"></canvas>
+            <p class="ce-chart-note">Bars represent total enrollment per trial. Larger trials generally provide stronger evidence.</p>
+        </div>
+
+        <!-- Trial list container -->
+        <div id="ce-trial-list" class="ce-trial-list"></div>
+
+        <!-- Empty state (default) -->
+        <div id="ce-empty-state" class="ce-empty-state">
+            <svg viewBox="0 0 24 24"><path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+            <h3>Select your profile and search</h3>
+            <p>Choose a cardiovascular condition, enter your details, and click "Search Evidence" to find relevant completed clinical trials from ClinicalTrials.gov.</p>
+        </div>
+
+    </section>
+</main>
+
+<!-- ============================================================
+     PROFILE MODAL
+     ============================================================ -->
+<div id="ce-modal-overlay" class="ce-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="ce-modal-title">
+    <div class="ce-modal">
+        <button class="ce-modal-close" id="ce-modal-close" type="button" aria-label="Close dialog">&times;</button>
+        <h3 id="ce-modal-title">Saved Profiles</h3>
+        <div id="ce-modal-body">
+            <!-- dynamically populated -->
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================
+     SAVE PROFILE MODAL
+     ============================================================ -->
+<div id="ce-save-modal-overlay" class="ce-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="ce-save-modal-title">
+    <div class="ce-modal">
+        <button class="ce-modal-close" id="ce-save-modal-close" type="button" aria-label="Close dialog">&times;</button>
+        <h3 id="ce-save-modal-title">Save Current Profile</h3>
+        <div class="ce-save-profile-row">
+            <input type="text" id="ce-profile-name-input" placeholder="Profile name (e.g. Dad - HF)" aria-label="Profile name">
+            <button id="ce-confirm-save-btn" class="ce-btn ce-btn-primary" style="width:auto;padding:0.5rem 1rem" type="button">Save</button>
+        </div>
+    </div>
+</div>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="ce-footer" role="contentinfo">
+    <p>Data source: <a href="https://clinicaltrials.gov" target="_blank" rel="noopener noreferrer">ClinicalTrials.gov</a> (U.S. National Library of Medicine). This tool queries the public API v2 in real time.</p>
+    <p style="margin-top:0.25rem">CardioEvidence is an educational/research tool. It does not constitute medical advice.</p>
+</footer>
+
+<!-- ============================================================
+     APPLICATION SCRIPT
+     ============================================================ -->
+<script>
+(function() {
+    'use strict';
+
+    /* ==========================================================
+       CONSTANTS
+       ========================================================== */
+    var STORAGE_KEY_PROFILES = 'patientma-evidence-profiles';
+    var STORAGE_KEY_THEME = 'patientma-evidence-theme';
+    var API_BASE = 'https://clinicaltrials.gov/api/v2/studies';
+    var API_TIMEOUT = 20000; // 20 seconds
+
+    var CONDITION_MAP = {
+        "Heart Failure": "heart failure",
+        "ACS/Coronary Artery Disease": "coronary artery disease OR acute coronary syndrome",
+        "Atrial Fibrillation": "atrial fibrillation",
+        "Hypertension": "hypertension"
+    };
+
+    var COMORBIDITY_KEYWORDS = {
+        "ckd": ["renal", "egfr", "kidney", "dialysis", "creatinine"],
+        "diabetes": ["diabetes", "diabetic"],
+        "obesity": ["bmi", "obes"],
+        "copd": ["copd", "pulmonary", "lung disease"],
+        "prior_stroke": ["stroke", "cerebrovascular"],
+        "cancer": ["cancer", "malignancy", "neoplasm"]
+    };
+
+    var COMORBIDITY_LABELS = {
+        "ckd": "CKD / Renal",
+        "diabetes": "Diabetes",
+        "obesity": "Obesity",
+        "copd": "COPD",
+        "prior_stroke": "Prior Stroke",
+        "cancer": "Cancer"
+    };
+
+    /* ==========================================================
+       DOM REFERENCES
+       ========================================================== */
+    var elCondition = document.getElementById('ce-condition');
+    var elAge = document.getElementById('ce-age');
+    var elIntervention = document.getElementById('ce-intervention');
+    var elSearchBtn = document.getElementById('ce-search-btn');
+    var elSaveProfileBtn = document.getElementById('ce-save-profile-btn');
+    var elLoadProfileBtn = document.getElementById('ce-load-profile-btn');
+    var elThemeBtn = document.getElementById('ce-theme-btn');
+    var elThemeIconLight = document.getElementById('ce-theme-icon-light');
+    var elThemeIconDark = document.getElementById('ce-theme-icon-dark');
+    var elThemeLabel = document.getElementById('ce-theme-label');
+    var elLoading = document.getElementById('ce-loading');
+    var elTrialList = document.getElementById('ce-trial-list');
+    var elEmptyState = document.getElementById('ce-empty-state');
+    var elResultsHeader = document.getElementById('ce-results-header');
+    var elResultsCount = document.getElementById('ce-results-count');
+    var elSortSelect = document.getElementById('ce-sort-select');
+    var elChartSection = document.getElementById('ce-chart-section');
+    var elCanvas = document.getElementById('ce-enrollment-canvas');
+
+    // Modals
+    var elModalOverlay = document.getElementById('ce-modal-overlay');
+    var elModalClose = document.getElementById('ce-modal-close');
+    var elModalBody = document.getElementById('ce-modal-body');
+    var elSaveModalOverlay = document.getElementById('ce-save-modal-overlay');
+    var elSaveModalClose = document.getElementById('ce-save-modal-close');
+    var elProfileNameInput = document.getElementById('ce-profile-name-input');
+    var elConfirmSaveBtn = document.getElementById('ce-confirm-save-btn');
+
+    /* ==========================================================
+       STATE
+       ========================================================== */
+    var currentTrials = [];
+    var isSearching = false;
+
+    /* ==========================================================
+       THEME
+       ========================================================== */
+    function initTheme() {
+        var saved = null;
+        try { saved = localStorage.getItem(STORAGE_KEY_THEME); } catch(e) {}
+        if (saved === 'dark') {
+            applyTheme('dark');
+        } else {
+            applyTheme('light');
+        }
+    }
+
+    function applyTheme(theme) {
+        document.documentElement.setAttribute('data-theme', theme);
+        if (theme === 'dark') {
+            elThemeIconLight.classList.add('ce-hidden');
+            elThemeIconDark.classList.remove('ce-hidden');
+            elThemeLabel.textContent = 'Light';
+        } else {
+            elThemeIconLight.classList.remove('ce-hidden');
+            elThemeIconDark.classList.add('ce-hidden');
+            elThemeLabel.textContent = 'Dark';
+        }
+        try { localStorage.setItem(STORAGE_KEY_THEME, theme); } catch(e) {}
+    }
+
+    function toggleTheme() {
+        var current = document.documentElement.getAttribute('data-theme');
+        applyTheme(current === 'dark' ? 'light' : 'dark');
+    }
+
+    /* ==========================================================
+       PROFILE MANAGEMENT
+       ========================================================== */
+    function getProfiles() {
+        try {
+            var raw = localStorage.getItem(STORAGE_KEY_PROFILES);
+            if (raw) return JSON.parse(raw);
+        } catch(e) {}
+        return [];
+    }
+
+    function saveProfiles(profiles) {
+        try {
+            localStorage.setItem(STORAGE_KEY_PROFILES, JSON.stringify(profiles));
+        } catch(e) {}
+    }
+
+    function gatherProfile() {
+        var sexRadios = document.querySelectorAll('input[name="ce-sex"]');
+        var sex = '';
+        for (var i = 0; i < sexRadios.length; i++) {
+            if (sexRadios[i].checked) { sex = sexRadios[i].value; break; }
+        }
+
+        var comorbidities = [];
+        var comorbs = document.querySelectorAll('#ce-comorbidities input[type="checkbox"]');
+        for (var j = 0; j < comorbs.length; j++) {
+            if (comorbs[j].checked) comorbidities.push(comorbs[j].value);
+        }
+
+        var medications = [];
+        var meds = document.querySelectorAll('#ce-medications input[type="checkbox"]');
+        for (var k = 0; k < meds.length; k++) {
+            if (meds[k].checked) medications.push(meds[k].value);
+        }
+
+        return {
+            condition: elCondition.value,
+            age: elAge.value,
+            sex: sex,
+            comorbidities: comorbidities,
+            medications: medications,
+            intervention: elIntervention.value
+        };
+    }
+
+    function applyProfile(profile) {
+        elCondition.value = profile.condition || '';
+        elAge.value = profile.age || '';
+        elIntervention.value = profile.intervention || '';
+
+        // Sex
+        var sexRadios = document.querySelectorAll('input[name="ce-sex"]');
+        for (var i = 0; i < sexRadios.length; i++) {
+            sexRadios[i].checked = sexRadios[i].value === profile.sex;
+        }
+
+        // Comorbidities
+        var comorbs = document.querySelectorAll('#ce-comorbidities input[type="checkbox"]');
+        for (var j = 0; j < comorbs.length; j++) {
+            comorbs[j].checked = (profile.comorbidities || []).indexOf(comorbs[j].value) !== -1;
+        }
+
+        // Medications
+        var meds = document.querySelectorAll('#ce-medications input[type="checkbox"]');
+        for (var k = 0; k < meds.length; k++) {
+            meds[k].checked = (profile.medications || []).indexOf(meds[k].value) !== -1;
+        }
+    }
+
+    /* ==========================================================
+       MODAL MANAGEMENT
+       ========================================================== */
+    var activeModalKeyHandler = null;
+
+    function openModal(overlay) {
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        activeModalKeyHandler = function(e) {
+            if (e.key === 'Escape') closeAllModals();
+        };
+        document.addEventListener('keydown', activeModalKeyHandler);
+        // Focus first interactive element
+        var focusTarget = overlay.querySelector('button, input, [tabindex]');
+        if (focusTarget) setTimeout(function() { focusTarget.focus(); }, 50);
+    }
+
+    function closeAllModals() {
+        elModalOverlay.classList.remove('active');
+        elSaveModalOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+        if (activeModalKeyHandler) {
+            document.removeEventListener('keydown', activeModalKeyHandler);
+            activeModalKeyHandler = null;
+        }
+    }
+
+    function showLoadModal() {
+        var profiles = getProfiles();
+        var html = '';
+        if (profiles.length === 0) {
+            html = '<p class="ce-no-profiles">No saved profiles yet. Fill in your details and click "Save Profile".</p>';
+        } else {
+            html = '<ul class="ce-profile-list">';
+            for (var i = 0; i < profiles.length; i++) {
+                var p = profiles[i];
+                var safeLabel = escapeHtml(p.name || 'Profile ' + (i + 1));
+                html += '<li>';
+                html += '<span title="' + safeLabel + '">' + safeLabel + '</span>';
+                html += '<div class="ce-profile-actions">';
+                html += '<button data-load-idx="' + i + '" aria-label="Load ' + safeLabel + '">Load</button>';
+                html += '<button data-delete-idx="' + i + '" class="ce-delete-btn" aria-label="Delete ' + safeLabel + '">Delete</button>';
+                html += '</div>';
+                html += '</li>';
+            }
+            html += '</ul>';
+        }
+        elModalBody.innerHTML = html;
+
+        // Attach handlers
+        var loadBtns = elModalBody.querySelectorAll('[data-load-idx]');
+        for (var j = 0; j < loadBtns.length; j++) {
+            loadBtns[j].addEventListener('click', function() {
+                var idx = parseInt(this.getAttribute('data-load-idx'), 10);
+                var profs = getProfiles();
+                if (profs[idx]) {
+                    applyProfile(profs[idx].data);
+                    closeAllModals();
+                }
+            });
+        }
+        var delBtns = elModalBody.querySelectorAll('[data-delete-idx]');
+        for (var k = 0; k < delBtns.length; k++) {
+            delBtns[k].addEventListener('click', function() {
+                var idx = parseInt(this.getAttribute('data-delete-idx'), 10);
+                var profs = getProfiles();
+                profs.splice(idx, 1);
+                saveProfiles(profs);
+                showLoadModal(); // re-render
+            });
+        }
+
+        openModal(elModalOverlay);
+    }
+
+    function showSaveModal() {
+        elProfileNameInput.value = '';
+        openModal(elSaveModalOverlay);
+        setTimeout(function() { elProfileNameInput.focus(); }, 100);
+    }
+
+    function confirmSave() {
+        var name = elProfileNameInput.value.trim();
+        if (!name) {
+            elProfileNameInput.focus();
+            return;
+        }
+        var profiles = getProfiles();
+        profiles.push({
+            name: name,
+            data: gatherProfile(),
+            savedAt: new Date().toISOString()
+        });
+        saveProfiles(profiles);
+        closeAllModals();
+    }
+
+    /* ==========================================================
+       HTML UTILITIES
+       ========================================================== */
+    function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/&/g, '&amp;')
+                  .replace(/</g, '&lt;')
+                  .replace(/>/g, '&gt;')
+                  .replace(/"/g, '&quot;')
+                  .replace(/'/g, '&#039;');
+    }
+
+    function truncateText(text, maxLen) {
+        if (!text) return '';
+        if (text.length <= maxLen) return text;
+        return text.substring(0, maxLen).replace(/\s+\S*$/, '') + '...';
+    }
+
+    function formatNumber(n) {
+        if (n === null || n === undefined) return 'N/A';
+        return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    }
+
+    /* ==========================================================
+       API FETCH
+       ========================================================== */
+    function buildApiUrl(profile) {
+        var params = new URLSearchParams();
+
+        // Condition query
+        var conditionQuery = CONDITION_MAP[profile.condition];
+        if (!conditionQuery) return null;
+        params.set('query.cond', conditionQuery);
+
+        // Intervention
+        if (profile.intervention && profile.intervention.trim()) {
+            params.set('query.intr', profile.intervention.trim());
+        }
+
+        // Filters
+        params.set('filter.overallStatus', 'COMPLETED');
+        params.set('filter.phase', 'PHASE3,PHASE4');
+        params.set('filter.advanced', 'results:true');
+
+        // Response shape
+        params.set('pageSize', '50');
+        params.set('format', 'json');
+
+        // Request needed fields
+        params.set('fields', [
+            'NCTId',
+            'BriefTitle',
+            'OfficialTitle',
+            'Phase',
+            'EnrollmentCount',
+            'BriefSummary',
+            'EligibilityCriteria',
+            'MinimumAge',
+            'MaximumAge',
+            'Sex',
+            'InterventionName',
+            'InterventionType',
+            'PrimaryOutcomeMeasure',
+            'OverallStatus',
+            'StudyType'
+        ].join(','));
+
+        return API_BASE + '?' + params.toString();
+    }
+
+    function fetchTrials(profile) {
+        return new Promise(function(resolve, reject) {
+            var url = buildApiUrl(profile);
+            if (!url) {
+                reject(new Error('Please select a primary condition.'));
+                return;
+            }
+
+            var controller = new AbortController();
+            var timeoutId = setTimeout(function() {
+                controller.abort();
+            }, API_TIMEOUT);
+
+            fetch(url, { signal: controller.signal })
+                .then(function(response) {
+                    clearTimeout(timeoutId);
+                    if (!response.ok) {
+                        throw new Error('API returned status ' + response.status);
+                    }
+                    return response.json();
+                })
+                .then(function(data) {
+                    resolve(data);
+                })
+                .catch(function(err) {
+                    clearTimeout(timeoutId);
+                    if (err.name === 'AbortError') {
+                        reject(new Error('Request timed out. ClinicalTrials.gov may be slow right now. Please try again.'));
+                    } else {
+                        reject(err);
+                    }
+                });
+        });
+    }
+
+    /* ==========================================================
+       STUDY PARSING
+       ========================================================== */
+    function parseStudy(study) {
+        var proto = study.protocolSection || {};
+        var id = proto.identificationModule || {};
+        var design = proto.designModule || {};
+        var desc = proto.descriptionModule || {};
+        var elig = proto.eligibilityModule || {};
+        var arms = proto.armsInterventionsModule || {};
+        var outcomes = proto.outcomesModule || {};
+
+        var nctId = id.nctId || 'Unknown';
+        var title = id.briefTitle || id.officialTitle || 'Untitled Study';
+
+        // Phase
+        var phases = (design.phases || []);
+        var phaseStr = phases.length > 0 ? phases.join(', ') : 'N/A';
+
+        // Enrollment
+        var enrollInfo = design.enrollmentInfo || {};
+        var enrollment = enrollInfo.count !== undefined ? enrollInfo.count : null;
+
+        // Summary
+        var summary = desc.briefSummary || '';
+
+        // Eligibility
+        var eligText = elig.eligibilityCriteria || '';
+        var minAge = elig.minimumAge || '';
+        var maxAge = elig.maximumAge || '';
+        var sexElig = elig.sex || 'ALL';
+
+        // Interventions
+        var interventions = [];
+        var intrvs = arms.interventions || [];
+        for (var i = 0; i < intrvs.length; i++) {
+            var intv = intrvs[i];
+            interventions.push({
+                name: intv.name || 'Unknown',
+                type: intv.type || ''
+            });
+        }
+
+        // Primary outcomes
+        var primaryOutcomes = [];
+        var primOut = outcomes.primaryOutcomes || [];
+        for (var j = 0; j < primOut.length; j++) {
+            if (primOut[j].measure) {
+                primaryOutcomes.push(primOut[j].measure);
+            }
+        }
+
+        return {
+            nctId: nctId,
+            title: title,
+            phase: phaseStr,
+            phases: phases,
+            enrollment: enrollment,
+            summary: summary,
+            eligText: eligText,
+            minAge: minAge,
+            maxAge: maxAge,
+            sexElig: sexElig,
+            interventions: interventions,
+            primaryOutcomes: primaryOutcomes
+        };
+    }
+
+    /* ==========================================================
+       ELIGIBILITY ASSESSMENT
+       ========================================================== */
+    function parseAgeString(ageStr) {
+        // Parses strings like "18 Years", "65 years", "6 Months"
+        if (!ageStr) return null;
+        var match = ageStr.match(/(\d+)\s*(year|month|week|day)/i);
+        if (!match) return null;
+        var num = parseInt(match[1], 10);
+        var unit = match[2].toLowerCase();
+        if (unit === 'month') return num / 12;
+        if (unit === 'week') return num / 52;
+        if (unit === 'day') return num / 365;
+        return num; // years
+    }
+
+    function assessEligibility(parsedStudy, profile) {
+        var reasons = [];
+        var status = 'green'; // default: likely eligible
+
+        // Check age
+        var patientAge = parseInt(profile.age, 10);
+        if (!isNaN(patientAge)) {
+            var minAge = parseAgeString(parsedStudy.minAge);
+            var maxAge = parseAgeString(parsedStudy.maxAge);
+
+            if (minAge !== null && patientAge < minAge) {
+                reasons.push('Minimum age: ' + parsedStudy.minAge + ' (you: ' + patientAge + ')');
+                status = 'red';
+            }
+            if (maxAge !== null && patientAge > maxAge) {
+                reasons.push('Maximum age: ' + parsedStudy.maxAge + ' (you: ' + patientAge + ')');
+                status = 'red';
+            }
+        }
+
+        // Check sex
+        if (profile.sex && parsedStudy.sexElig && parsedStudy.sexElig !== 'ALL') {
+            if (parsedStudy.sexElig.toUpperCase() === 'FEMALE' && profile.sex === 'Male') {
+                reasons.push('Study is female-only');
+                status = 'red';
+            } else if (parsedStudy.sexElig.toUpperCase() === 'MALE' && profile.sex === 'Female') {
+                reasons.push('Study is male-only');
+                status = 'red';
+            }
+        }
+
+        // Check comorbidity conflicts in exclusion criteria
+        var eligLower = parsedStudy.eligText.toLowerCase();
+
+        // Split into inclusion and exclusion parts
+        var exclusionText = '';
+        var exclIdx = eligLower.indexOf('exclusion');
+        if (exclIdx !== -1) {
+            exclusionText = eligLower.substring(exclIdx);
+        } else {
+            // Sometimes exclusion criteria listed with "exclude" or after "not eligible"
+            var exclIdx2 = eligLower.indexOf('exclude');
+            if (exclIdx2 !== -1) {
+                exclusionText = eligLower.substring(exclIdx2);
+            }
+        }
+
+        if (exclusionText && profile.comorbidities && profile.comorbidities.length > 0) {
+            for (var c = 0; c < profile.comorbidities.length; c++) {
+                var comorbKey = profile.comorbidities[c];
+                var keywords = COMORBIDITY_KEYWORDS[comorbKey];
+                if (!keywords) continue;
+
+                for (var k = 0; k < keywords.length; k++) {
+                    if (exclusionText.indexOf(keywords[k].toLowerCase()) !== -1) {
+                        var label = COMORBIDITY_LABELS[comorbKey] || comorbKey;
+                        reasons.push('Exclusion mentions "' + keywords[k] + '" (your comorbidity: ' + label + ')');
+                        if (status === 'green') status = 'amber';
+                        break; // only flag once per comorbidity
+                    }
+                }
+            }
+        }
+
+        // If no eligibility text at all, mark as uncertain
+        if (!parsedStudy.eligText.trim()) {
+            if (status === 'green') {
+                reasons.push('No eligibility criteria available to check');
+                status = 'amber';
+            }
+        }
+
+        // Determine label
+        var label = 'Likely Eligible';
+        if (status === 'amber') label = 'May Be Excluded';
+        if (status === 'red') label = 'Excluded';
+
+        return {
+            status: status,
+            label: label,
+            reasons: reasons
+        };
+    }
+
+    /* ==========================================================
+       SORTING
+       ========================================================== */
+    function phaseNumeric(phases) {
+        // Convert phase array to numeric for sorting
+        var max = 0;
+        for (var i = 0; i < phases.length; i++) {
+            var p = phases[i];
+            if (p === 'PHASE4') max = Math.max(max, 4);
+            else if (p === 'PHASE3') max = Math.max(max, 3);
+            else if (p === 'PHASE2') max = Math.max(max, 2);
+            else if (p === 'PHASE1') max = Math.max(max, 1);
+            else if (p === 'NA') max = Math.max(max, 0);
+        }
+        return max;
+    }
+
+    function eligibilityScore(status) {
+        if (status === 'green') return 3;
+        if (status === 'amber') return 2;
+        return 1;
+    }
+
+    function sortTrials(trials, sortBy) {
+        var sorted = trials.slice();
+        sorted.sort(function(a, b) {
+            if (sortBy === 'enrollment') {
+                return (b.enrollment || 0) - (a.enrollment || 0);
+            } else if (sortBy === 'phase') {
+                var pa = phaseNumeric(a.phases);
+                var pb = phaseNumeric(b.phases);
+                if (pb !== pa) return pb - pa;
+                return (b.enrollment || 0) - (a.enrollment || 0);
+            } else {
+                // relevance: green > amber > red, then enrollment
+                var ea = eligibilityScore(a.eligibility.status);
+                var eb = eligibilityScore(b.eligibility.status);
+                if (eb !== ea) return eb - ea;
+                return (b.enrollment || 0) - (a.enrollment || 0);
+            }
+        });
+        return sorted;
+    }
+
+    /* ==========================================================
+       RENDERING
+       ========================================================== */
+    function renderTrialCard(trial) {
+        var badgeClass = 'ce-badge-' + trial.eligibility.status;
+        var reasonText = trial.eligibility.reasons.length > 0
+            ? trial.eligibility.reasons.join(' | ')
+            : 'No conflicts detected with your profile.';
+
+        var intrvHtml = '';
+        if (trial.interventions.length > 0) {
+            intrvHtml = '<div class="ce-trial-interventions"><h4>Interventions</h4><ul>';
+            for (var i = 0; i < trial.interventions.length && i < 6; i++) {
+                intrvHtml += '<li title="' + escapeHtml(trial.interventions[i].name) + '">' + escapeHtml(trial.interventions[i].name) + '</li>';
+            }
+            if (trial.interventions.length > 6) {
+                intrvHtml += '<li>+' + (trial.interventions.length - 6) + ' more</li>';
+            }
+            intrvHtml += '</ul></div>';
+        }
+
+        var outHtml = '';
+        if (trial.primaryOutcomes.length > 0) {
+            outHtml = '<div class="ce-trial-outcomes"><h4>Primary Outcomes</h4><ul>';
+            for (var j = 0; j < trial.primaryOutcomes.length && j < 4; j++) {
+                var oText = truncateText(trial.primaryOutcomes[j], 80);
+                outHtml += '<li title="' + escapeHtml(trial.primaryOutcomes[j]) + '">' + escapeHtml(oText) + '</li>';
+            }
+            if (trial.primaryOutcomes.length > 4) {
+                outHtml += '<li>+' + (trial.primaryOutcomes.length - 4) + ' more</li>';
+            }
+            outHtml += '</ul></div>';
+        }
+
+        var summaryHtml = '';
+        if (trial.summary) {
+            summaryHtml = '<div class="ce-trial-summary">' + escapeHtml(truncateText(trial.summary, 200)) + '</div>';
+        }
+
+        var phaseDisplay = trial.phase.replace(/PHASE/g, 'Phase ');
+
+        return '<article class="ce-trial-card">' +
+            '<div class="ce-trial-card-header">' +
+                '<a class="ce-trial-title" href="https://clinicaltrials.gov/study/' + escapeHtml(trial.nctId) + '" target="_blank" rel="noopener noreferrer">' +
+                    escapeHtml(trial.title) +
+                '</a>' +
+                '<span class="ce-badge ' + badgeClass + '" tabindex="0" role="status" aria-label="Eligibility: ' + escapeHtml(trial.eligibility.label) + '">' +
+                    escapeHtml(trial.eligibility.label) +
+                    '<span class="ce-tooltip">' + escapeHtml(reasonText) + '</span>' +
+                '</span>' +
+            '</div>' +
+            '<div class="ce-trial-meta">' +
+                '<span class="ce-trial-meta-item"><strong>NCT:</strong> ' + escapeHtml(trial.nctId) + '</span>' +
+                '<span class="ce-trial-meta-item"><strong>Phase:</strong> ' + escapeHtml(phaseDisplay) + '</span>' +
+                '<span class="ce-trial-meta-item"><strong>Enrollment:</strong> ' + formatNumber(trial.enrollment) + '</span>' +
+            '</div>' +
+            intrvHtml +
+            outHtml +
+            summaryHtml +
+        '</article>';
+    }
+
+    function renderResults(trials) {
+        elTrialList.innerHTML = '';
+        elEmptyState.classList.add('ce-hidden');
+        elResultsHeader.classList.remove('ce-hidden');
+
+        elResultsCount.innerHTML = 'Found <span>' + trials.length + '</span> completed Phase III/IV trial' + (trials.length !== 1 ? 's' : '') + ' with results';
+
+        var sorted = sortTrials(trials, elSortSelect.value);
+        var html = '';
+        for (var i = 0; i < sorted.length; i++) {
+            html += renderTrialCard(sorted[i]);
+        }
+        elTrialList.innerHTML = html;
+
+        // Chart
+        if (sorted.length >= 3) {
+            renderEnrollmentChart(sorted);
+            elChartSection.classList.remove('ce-hidden');
+        } else {
+            elChartSection.classList.add('ce-hidden');
+        }
+    }
+
+    function renderNoResults() {
+        elTrialList.innerHTML = '';
+        elResultsHeader.classList.add('ce-hidden');
+        elChartSection.classList.add('ce-hidden');
+        elEmptyState.classList.remove('ce-hidden');
+        elEmptyState.innerHTML =
+            '<svg viewBox="0 0 24 24"><path d="M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>' +
+            '<h3>No matching trials found</h3>' +
+            '<p>Try broadening your search: remove the intervention filter, or try a different condition. ClinicalTrials.gov may not have completed Phase III/IV trials with results for this exact query.</p>';
+    }
+
+    function renderError(message) {
+        elTrialList.innerHTML = '';
+        elResultsHeader.classList.add('ce-hidden');
+        elChartSection.classList.add('ce-hidden');
+        elEmptyState.classList.remove('ce-hidden');
+        elEmptyState.innerHTML =
+            '<div class="ce-error-state">' +
+                '<h3>Something went wrong</h3>' +
+                '<p>' + escapeHtml(message) + '</p>' +
+            '</div>';
+    }
+
+    function showLoading() {
+        elLoading.classList.add('active');
+        elTrialList.innerHTML = '';
+        elEmptyState.classList.add('ce-hidden');
+        elResultsHeader.classList.add('ce-hidden');
+        elChartSection.classList.add('ce-hidden');
+    }
+
+    function hideLoading() {
+        elLoading.classList.remove('active');
+    }
+
+    /* ==========================================================
+       ENROLLMENT BAR CHART (Canvas)
+       ========================================================== */
+    function renderEnrollmentChart(trials) {
+        // Take top 15 by enrollment
+        var chartData = trials.slice().sort(function(a, b) {
+            return (b.enrollment || 0) - (a.enrollment || 0);
+        }).slice(0, 15).filter(function(t) { return t.enrollment > 0; });
+
+        if (chartData.length < 3) {
+            elChartSection.classList.add('ce-hidden');
+            return;
+        }
+
+        var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+
+        // Sizing
+        var barHeight = 28;
+        var gap = 8;
+        var labelWidth = 200;
+        var rightPad = 70;
+        var topPad = 10;
+        var chartHeight = topPad + chartData.length * (barHeight + gap) + 10;
+
+        var container = elCanvas.parentElement;
+        var containerWidth = container.clientWidth - 40; // padding
+        if (containerWidth < 300) containerWidth = 300;
+
+        var dpr = window.devicePixelRatio || 1;
+        elCanvas.width = containerWidth * dpr;
+        elCanvas.height = chartHeight * dpr;
+        elCanvas.style.width = containerWidth + 'px';
+        elCanvas.style.height = chartHeight + 'px';
+
+        var ctx = elCanvas.getContext('2d');
+        ctx.scale(dpr, dpr);
+        ctx.clearRect(0, 0, containerWidth, chartHeight);
+
+        var maxEnroll = 0;
+        for (var i = 0; i < chartData.length; i++) {
+            if (chartData[i].enrollment > maxEnroll) maxEnroll = chartData[i].enrollment;
+        }
+
+        var barAreaWidth = containerWidth - labelWidth - rightPad;
+        if (barAreaWidth < 50) barAreaWidth = 50;
+
+        var textColor = isDark ? '#e2e8f0' : '#1a2332';
+        var mutedColor = isDark ? '#94a3b8' : '#718096';
+
+        for (var j = 0; j < chartData.length; j++) {
+            var trial = chartData[j];
+            var y = topPad + j * (barHeight + gap);
+            var enr = trial.enrollment || 0;
+            var barW = maxEnroll > 0 ? (enr / maxEnroll) * barAreaWidth : 0;
+            if (barW < 2) barW = 2;
+
+            // Label
+            ctx.fillStyle = textColor;
+            ctx.font = '12px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+            ctx.textAlign = 'right';
+            ctx.textBaseline = 'middle';
+            var label = trial.nctId;
+            ctx.fillText(label, labelWidth - 10, y + barHeight / 2);
+
+            // Bar color based on eligibility
+            var barColor;
+            if (trial.eligibility.status === 'green') {
+                barColor = isDark ? '#22c55e' : '#16a34a';
+            } else if (trial.eligibility.status === 'amber') {
+                barColor = isDark ? '#f59e0b' : '#d97706';
+            } else {
+                barColor = isDark ? '#ef4444' : '#dc2626';
+            }
+
+            // Bar
+            ctx.fillStyle = barColor;
+            ctx.beginPath();
+            roundRect(ctx, labelWidth, y, barW, barHeight, 4);
+            ctx.fill();
+
+            // Enrollment count
+            ctx.fillStyle = mutedColor;
+            ctx.font = '11px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+            ctx.textAlign = 'left';
+            ctx.fillText(formatNumber(enr), labelWidth + barW + 6, y + barHeight / 2);
+        }
+    }
+
+    function roundRect(ctx, x, y, width, height, radius) {
+        ctx.moveTo(x + radius, y);
+        ctx.lineTo(x + width - radius, y);
+        ctx.arcTo(x + width, y, x + width, y + radius, radius);
+        ctx.lineTo(x + width, y + height - radius);
+        ctx.arcTo(x + width, y + height, x + width - radius, y + height, radius);
+        ctx.lineTo(x + radius, y + height);
+        ctx.arcTo(x, y + height, x, y + height - radius, radius);
+        ctx.lineTo(x, y + radius);
+        ctx.arcTo(x, y, x + radius, y, radius);
+        ctx.closePath();
+    }
+
+    /* ==========================================================
+       SEARCH HANDLER
+       ========================================================== */
+    function doSearch() {
+        if (isSearching) return;
+
+        var profile = gatherProfile();
+
+        // Validation
+        if (!profile.condition) {
+            renderError('Please select a primary condition before searching.');
+            return;
+        }
+
+        isSearching = true;
+        elSearchBtn.disabled = true;
+        showLoading();
+
+        fetchTrials(profile)
+            .then(function(data) {
+                var studies = data.studies || [];
+                if (studies.length === 0) {
+                    renderNoResults();
+                    return;
+                }
+
+                currentTrials = [];
+                for (var i = 0; i < studies.length; i++) {
+                    var parsed = parseStudy(studies[i]);
+                    parsed.eligibility = assessEligibility(parsed, profile);
+                    currentTrials.push(parsed);
+                }
+
+                renderResults(currentTrials);
+            })
+            .catch(function(err) {
+                var msg = err.message || 'An unknown error occurred while searching ClinicalTrials.gov.';
+                renderError(msg);
+            })
+            .finally(function() {
+                isSearching = false;
+                elSearchBtn.disabled = false;
+                hideLoading();
+            });
+    }
+
+    /* ==========================================================
+       RE-SORT HANDLER
+       ========================================================== */
+    function onSortChange() {
+        if (currentTrials.length > 0) {
+            renderResults(currentTrials);
+        }
+    }
+
+    /* ==========================================================
+       EVENT LISTENERS
+       ========================================================== */
+    elSearchBtn.addEventListener('click', doSearch);
+    elSortSelect.addEventListener('change', onSortChange);
+    elThemeBtn.addEventListener('click', toggleTheme);
+    elSaveProfileBtn.addEventListener('click', showSaveModal);
+    elLoadProfileBtn.addEventListener('click', showLoadModal);
+
+    // Modal close buttons
+    elModalClose.addEventListener('click', closeAllModals);
+    elSaveModalClose.addEventListener('click', closeAllModals);
+
+    // Modal overlay click to close
+    elModalOverlay.addEventListener('click', function(e) {
+        if (e.target === elModalOverlay) closeAllModals();
+    });
+    elSaveModalOverlay.addEventListener('click', function(e) {
+        if (e.target === elSaveModalOverlay) closeAllModals();
+    });
+
+    // Save confirm
+    elConfirmSaveBtn.addEventListener('click', confirmSave);
+    elProfileNameInput.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') confirmSave();
+    });
+
+    // Enter key on search fields
+    elIntervention.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') doSearch();
+    });
+    elAge.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') doSearch();
+    });
+
+    // Resize chart on window resize
+    var resizeTimeout;
+    window.addEventListener('resize', function() {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(function() {
+            if (currentTrials.length >= 3) {
+                var sorted = sortTrials(currentTrials, elSortSelect.value);
+                renderEnrollmentChart(sorted);
+            }
+        }, 200);
+    });
+
+    /* ==========================================================
+       INITIALIZATION
+       ========================================================== */
+    initTheme();
+
+})();
+</script>
+</body>
+</html>
