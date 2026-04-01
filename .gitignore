@@ -1,0 +1,6 @@
+shared/cv_trials.csv
+OutcomeGap/outputs/classified_trials.csv
+TrialFit/outputs/trial_fit_results.csv
+__pycache__/
+*.pyc
+.pytest_cache/
