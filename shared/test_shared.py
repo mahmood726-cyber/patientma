@@ -57,3 +57,104 @@ class TestCometTaxonomy:
         assert "_meta" in data
         assert data["_meta"]["version"] == "1.0.0"
         assert len(data["_meta"]["conditions"]) == 4
+
+
+from unittest.mock import patch, MagicMock
+from fetch_cv_trials import parse_study_row, build_query_url, FIELDS
+
+
+class TestBuildQueryUrl:
+    def test_default_url_has_cardiovascular_condition(self):
+        url = build_query_url(page_token=None)
+        assert "query.cond=cardiovascular" in url
+        assert "pageSize=1000" in url
+        assert "countTotal=true" in url
+
+    def test_url_with_page_token(self):
+        url = build_query_url(page_token="abc123")
+        assert "pageToken=abc123" in url
+
+    def test_url_without_page_token_has_no_pageToken_param(self):
+        url = build_query_url(page_token=None)
+        assert "pageToken" not in url
+
+
+class TestParseStudyRow:
+    def test_extracts_nct_id(self):
+        study = {
+            "protocolSection": {
+                "identificationModule": {"nctId": "NCT00000001"},
+                "statusModule": {"overallStatus": "COMPLETED"},
+                "conditionsModule": {"conditions": ["Heart Failure"]},
+                "designModule": {"phases": ["PHASE3"], "enrollmentInfo": {"count": 500}},
+                "sponsorCollaboratorsModule": {"leadSponsor": {"name": "Pfizer", "class": "INDUSTRY"}},
+                "outcomesModule": {
+                    "primaryOutcomes": [{"measure": "All-cause mortality", "timeFrame": "1 year"}],
+                    "secondaryOutcomes": [{"measure": "LVEF change", "timeFrame": "6 months"}]
+                },
+                "eligibilityModule": {"eligibilityCriteria": "Inclusion:\n- Age >= 18\nExclusion:\n- CKD stage 5"},
+            },
+            "hasResults": True,
+        }
+        row = parse_study_row(study)
+        assert row["nct_id"] == "NCT00000001"
+        assert row["status"] == "COMPLETED"
+        assert row["conditions"] == "Heart Failure"
+        assert row["phase"] == "PHASE3"
+        assert row["enrollment"] == 500
+        assert row["sponsor_name"] == "Pfizer"
+        assert row["sponsor_class"] == "INDUSTRY"
+        assert row["primary_outcomes"] == "All-cause mortality"
+        assert row["secondary_outcomes"] == "LVEF change"
+        assert "Age >= 18" in row["eligibility_criteria"]
+        assert row["has_results"] is True
+
+    def test_handles_missing_optional_fields(self):
+        study = {
+            "protocolSection": {
+                "identificationModule": {"nctId": "NCT99999999"},
+                "statusModule": {"overallStatus": "RECRUITING"},
+                "conditionsModule": {},
+                "designModule": {},
+                "sponsorCollaboratorsModule": {},
+                "outcomesModule": {},
+                "eligibilityModule": {},
+            },
+            "hasResults": False,
+        }
+        row = parse_study_row(study)
+        assert row["nct_id"] == "NCT99999999"
+        assert row["conditions"] == ""
+        assert row["phase"] == ""
+        assert row["enrollment"] == 0
+        assert row["sponsor_name"] == ""
+        assert row["sponsor_class"] == ""
+        assert row["primary_outcomes"] == ""
+        assert row["secondary_outcomes"] == ""
+        assert row["eligibility_criteria"] == ""
+        assert row["has_results"] is False
+
+    def test_joins_multiple_conditions(self):
+        study = {
+            "protocolSection": {
+                "identificationModule": {"nctId": "NCT00000002"},
+                "statusModule": {"overallStatus": "COMPLETED"},
+                "conditionsModule": {"conditions": ["Heart Failure", "Diabetes"]},
+                "designModule": {"phases": ["PHASE2", "PHASE3"], "enrollmentInfo": {"count": 100}},
+                "sponsorCollaboratorsModule": {"leadSponsor": {"name": "NIH", "class": "NIH"}},
+                "outcomesModule": {
+                    "primaryOutcomes": [
+                        {"measure": "Mortality", "timeFrame": "2y"},
+                        {"measure": "HF hospitalization", "timeFrame": "2y"},
+                    ],
+                    "secondaryOutcomes": [],
+                },
+                "eligibilityModule": {"eligibilityCriteria": "Age 18-80"},
+            },
+            "hasResults": True,
+        }
+        row = parse_study_row(study)
+        assert row["conditions"] == "Heart Failure|Diabetes"
+        assert row["phase"] == "PHASE2|PHASE3"
+        assert row["primary_outcomes"] == "Mortality|HF hospitalization"
+        assert row["secondary_outcomes"] == ""
